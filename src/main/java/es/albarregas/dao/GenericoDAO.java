@@ -56,6 +56,20 @@ public class GenericoDAO<T> implements IGenericoDAO<T> {
         return listadoResultados;
     }
 
+     @Override
+    public <T> List<T> ObtenerUno(String entidad, String where) {
+        List<T> listadoResultados = null;
+        try {
+            iniciaSesion();
+            listadoResultados = sesion.createQuery(" from " + entidad+" "+where).list();
+        } catch (HibernateException he) {
+            this.manejaExcepcion(he);
+        } finally {
+            this.cierraSesion();
+        }
+        return listadoResultados;
+    }
+    
     @Override
     public <T> T getOne(Serializable pk, Class<T> claseEntidad) {
         T objetoRecuperado = null;

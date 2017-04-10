@@ -29,7 +29,7 @@ import org.hibernate.annotations.IndexColumn;
  * @author Alfonso
  */
 @Entity
-@ManagedBean(name = "Modelo")
+@ManagedBean(name = "modelo")
 @Table(name = "Modelo")
 public class Modelo implements Serializable {
 
@@ -63,6 +63,19 @@ public class Modelo implements Serializable {
 
         }
 
+    }
+    
+     public ArrayList allModeloWhere(int id) {
+         ArrayList<Modelo> modelos=null;
+        if (id > 0) {
+            DAOFactory df = DAOFactory.getDAOFactory();
+            IGenericoDAO igd = df.getGenericoDAO();
+            
+            modelos = (ArrayList<Modelo>) igd.ObtenerUno("Modelo", " where idlcaracteristicas="+id);
+            
+            
+        }
+        return modelos;
     }
 
     public ArrayList allModelos() {
