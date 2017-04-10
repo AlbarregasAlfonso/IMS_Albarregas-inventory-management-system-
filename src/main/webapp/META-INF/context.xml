@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context antiJARLocking="true" docBase="CRUDHibernateJSF" path="/20170222_CRUDHibernateJSF">
+  <Resource auth="Container" driverClassName="com.mysql.jdbc.Driver" maxActive="100" maxIdle="30" maxWait="10000" name="jdbc/UAU" password="2017" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/inventario" username="java2017"/>
+</Context>

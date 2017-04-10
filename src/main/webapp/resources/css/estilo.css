@@ -1,0 +1,69 @@
+
+body{
+    background: slategray;
+    font-family: Arial, sans-serif;
+}
+
+header{
+    border-bottom: solid 2px black;
+    border-radius: 10px 10px 0px 0px;
+}
+
+footer{
+    border-top: solid 1px black;
+    border-radius: 0px 0px 10px 10px;
+}
+
+header, footer, #principal{
+    width: 75%;
+    margin: 0px auto;
+    background: rgb(250,250,250);
+    overflow: hidden;
+}
+
+header, footer{
+    color: blue;
+    text-align: center;
+}
+
+#principal{
+    color: black;
+}
+
+table{
+    margin: 30px auto;
+    border: solid 1px black;
+    border-radius: 10px;
+    background: white;
+    box-shadow: 10px 10px 15px gray;
+}
+
+tr, td, th{
+    border:none;
+    padding: 5px 30px;
+}
+
+.boton{
+    padding: 10px;
+    margin: 5px 10px;
+    border-radius: 5px;
+}
+
+input, select{
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.boton:hover{
+    background: rgb(50,50,50);
+    color: rgb(220,220,200);
+    cursor: pointer;
+}
+
+label{
+    font-size: 1.1em;
+}
+
+h3{
+    color: green
+}

@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:mio="http://java.sun.com/jsf/composite/components">
+
+    <h:head>
+        <ui:define name="titulo">
+            <title>Plantillas</title>
+        </ui:define>
+        <title>Inventario</title>
+        <meta charset="utf-8"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+      <!--<link rel="stylesheet" href="CSS/estilo.css"></link>-->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </h:head>
+    <h:body>
+       <ui:decorate template="/resources/plantilla/template.xhtml">
+            <ui:define name="cabeceraPrincipal">
+                <h1>Sistema de plantillas facelets</h1>
+            </ui:define>
+
+            <ui:define name="content">
+                <h2>Contenido de la página</h2>
+            </ui:define>
+        </ui:decorate>
+    
+  <div class="row">
+      <div class="col-sm-2">
+          <mio:componente imagen="imagen" id="imagen"/>
+          </div>
+      
+    <div class="col-sm-3">
+      <div class="panel panel-primary">
+        <div class="panel-heading">NOTICIAS IMPORTANTES</div>
+        <div class="panel-body"><ul>
+                <li>noticias importantes</li>
+                <li>material dañado</li>
+            </ul></div>
+        <div class="panel-footer">IMPORTANTE</div>
+      </div>
+    </div>
+    <div class="col-sm-3"> 
+      <div class="panel panel-success">
+        <div class="panel-heading">MENSAJES DE PROFESORES</div>
+       <div class="panel-body"><ul>
+                <li>Mensajes importantes</li>
+                <li>Aula Asir: Necesitamos ampliar la cantidad de ordenadores</li>
+            </ul></div><div class="panel-footer">Profesores</div>
+      </div>
+    </div>
+      <div class="col-sm-3">
+      <div class="panel panel-primary">
+        <div class="panel-heading">NOTAS PROPIAS</div>
+       <div class="panel-body"><ul>
+                <li>Tengo que revisar los ordenadores del aula 1</li>
+                <li>He quedado con el proveedor a las 12:00 del martes</li>
+                <li>He quedado con el profesor del aula de bachiller para ver que le pasa a un ordenador a las 11:00 del Jueves</li>
+            </ul></div><div class="panel-footer">Notas</div>
+      </div>
+    </div>
+      <div class="col-sm-1">
+          <p></p>
+          </div>
+  </div>
+       <br></br>
+    
+    </h:body>
+
+</html>
