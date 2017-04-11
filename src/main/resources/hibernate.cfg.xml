@@ -7,19 +7,22 @@
         <property name="format_sql">true</property>
         <property name="use_sql_comments">true</property>
         <!-- Si ponemos esta propiedad nos crea las tablas de la base de datos -->
-<!--         <property name="hibernate.hbm2ddl.auto">create</property>-->
+<!--        <property name="hibernate.hbm2ddl.auto">create</property>-->
         <!-- Pool de conexiones -->
         <property name="hibernate.connection.pool_size">1</property>
         <property name="hibernate.connection.datasource">java:comp/env/jdbc/UAU</property>
     
-        <mapping class="es.albarregas.beans.Localizacion"/>
-        <mapping class="es.albarregas.beans.Estancia"/>
-        <mapping class="es.albarregas.beans.Estado"/>
-        <mapping class="es.albarregas.beans.Modelo"/>
-        <mapping class="es.albarregas.beans.Marca"/>
-        <mapping class="es.albarregas.beans.Producto"/>
+    
+        <mapping class="es.albarregas.beans.Alumno"/>
         <mapping class="es.albarregas.beans.Caracteristicas"/>
         <mapping class="es.albarregas.beans.Categoria"/>
+        <mapping class="es.albarregas.beans.Estado"/>
+        <mapping class="es.albarregas.beans.Estancia"/>
+        <mapping class="es.albarregas.beans.Localizacion"/>
+        <mapping class="es.albarregas.beans.Modelo"/>
+        <mapping class="es.albarregas.beans.Marca"/>
+        <mapping class="es.albarregas.beans.Producto"/>       
+        <mapping class="es.albarregas.beans.Stock"/>
         
 
         

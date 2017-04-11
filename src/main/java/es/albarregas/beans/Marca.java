@@ -47,6 +47,10 @@ public class Marca implements Serializable {
     @JoinColumn(name="IdMarca")
     private List<Producto> productos;
     
+    @OneToMany(cascade= CascadeType.ALL)
+    @JoinColumn(name="IdMarca")
+    private List<Modelo> modelos;
+    
     public void oneMarca() {
         if (this.id > 0) {
             DAOFactory df = DAOFactory.getDAOFactory();

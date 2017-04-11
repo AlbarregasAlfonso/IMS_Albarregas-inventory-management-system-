@@ -49,9 +49,18 @@ public class Modelo implements Serializable {
 //    @IndexColumn(name="idx")
     private List<Producto> productos;
     
+     @OneToMany(cascade= CascadeType.ALL)
+    @JoinColumn(name="IdModelo")
+//    @IndexColumn(name="idx")
+    private List<Stock> Stocks;
+    
     @ManyToOne
     @JoinColumn(name = "IdLCaracteristicas")
     private Caracteristicas host;
+    
+    @ManyToOne
+    @JoinColumn(name = "IdMarca")
+    private Caracteristicas marca;
     
     public void oneModelo() {
         if (this.id > 0) {

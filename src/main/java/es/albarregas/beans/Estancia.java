@@ -51,7 +51,7 @@ public class Estancia implements Serializable {
 //    private List<Alumno> correosElectronicos;
     
     @OneToMany(cascade= CascadeType.ALL)
-    @JoinColumn(name="IdLocalizacion")
+    @JoinColumn(name="IdEstancia")
     private List<Localizacion> localizaciones;
     
     public void oneEstancia() {

@@ -37,9 +37,9 @@ public class Localizacion implements Serializable {
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "IdLocalizacion")
     private int id;
-    private String nombre;
-    private String apellidos;
-    private String posicion;
+    private String descripcion;
+    private String num_planta;
+    
     //Campo usuario y una relación uno a muchos con direcciones
     //Para atributos que no forman parte de la tabla
     @Transient
@@ -52,7 +52,7 @@ public class Localizacion implements Serializable {
     
     @ManyToOne
     @JoinColumn(name = "IdEstancia")
-    private Caracteristicas host;
+    private Estancia host;
     
     public void oneLocalizacion() {
         if (this.id > 0) {
@@ -60,9 +60,9 @@ public class Localizacion implements Serializable {
             IGenericoDAO igd = df.getGenericoDAO();
             Localizacion localizacion = (Localizacion) igd.getOne(this.id, Localizacion.class);
             this.id = localizacion.getId();
-            this.nombre = localizacion.getNombre();
-            this.apellidos = localizacion.getApellidos();
-            this.posicion = localizacion.getPosicion();
+            this.descripcion = localizacion.getDescripcion();
+            this.num_planta = localizacion.getNum_planta();
+          
         }
 
     }
@@ -78,7 +78,7 @@ public class Localizacion implements Serializable {
         DAOFactory df = DAOFactory.getDAOFactory();
         IGenericoDAO igd = df.getGenericoDAO();
         igd.add(Localizacion.this); //Localizacion.this = this
-        this.mensaje = "Se ha añadido correctamente el localizacion " + this.nombre + " " + this.apellidos;
+        this.mensaje = "Se ha añadido correctamente el localizacion " + this.descripcion;
         borrarTodo();
     }
 
@@ -104,9 +104,9 @@ public class Localizacion implements Serializable {
 
     private void borrarTodo() {
         this.id = 0;
-        this.nombre = "";
-        this.apellidos = "";
-        this.posicion = "";
+        this.descripcion = "";
+        this.num_planta = "";
+      
     }
 
     public int getId() {
@@ -117,28 +117,28 @@ public class Localizacion implements Serializable {
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
-    public String getApellidos() {
-        return apellidos;
+    public String getNum_planta() {
+        return num_planta;
     }
 
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
+    public void setNum_planta(String num_planta) {
+        this.num_planta = num_planta;
     }
 
-    public String getPosicion() {
-        return posicion;
+    public Estancia getHost() {
+        return host;
     }
 
-    public void setPosicion(String posicion) {
-        this.posicion = posicion;
+    public void setHost(Estancia host) {
+        this.host = host;
     }
 
     public String getMensaje() {

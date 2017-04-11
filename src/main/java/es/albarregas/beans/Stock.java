@@ -28,49 +28,49 @@ import org.hibernate.annotations.IndexColumn;
  * @author Alfonso
  */
 @Entity
-@ManagedBean(name = "Marca")
-@Table(name = "Marca")
-public class Marca implements Serializable {
+@ManagedBean(name = "stock")
+@Table(name = "Stock")
+public class Stock implements Serializable {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "IdMarca")
+    @Column(name = "IdStock")
     private int id;
-    private String nombre;
+    private int cantidad;
 
+    @OneToMany(cascade= CascadeType.ALL)
+    @JoinColumn(name="IdModelo")
     //Campo usuario y una relación uno a muchos con direcciones
     //Para atributos que no forman parte de la tabla
     @Transient
     private String mensaje;
 
-    @OneToMany(cascade= CascadeType.ALL)
-    @JoinColumn(name="IdMarca")
-    private List<Producto> productos;
     
-    public void oneMarca() {
+    
+    public void oneStock() {
         if (this.id > 0) {
             DAOFactory df = DAOFactory.getDAOFactory();
             IGenericoDAO igd = df.getGenericoDAO();
-            Marca marca = (Marca) igd.getOne(this.id, Marca.class);
-            this.id = marca.getId();
-            this.nombre = marca.getNombre();
+            Stock stock = (Stock) igd.getOne(this.id, Stock.class);
+            this.id = stock.getId();
+            this.cantidad = stock.getCantidad();
 
         }
 
     }
 
-    public ArrayList allMarcas() {
+    public ArrayList allStocks() {
         DAOFactory df = DAOFactory.getDAOFactory();
         IGenericoDAO igd = df.getGenericoDAO();
-        ArrayList listaMarcas = (ArrayList<Marca>) igd.get("Marca");
-        return listaMarcas;
+        ArrayList listaStocks = (ArrayList<Stock>) igd.get("Stock");
+        return listaStocks;
     }
 
     public void addDatos() {
         DAOFactory df = DAOFactory.getDAOFactory();
         IGenericoDAO igd = df.getGenericoDAO();
-        igd.add(Marca.this); //Marca.this = this
-        this.mensaje = "Se ha añadido correctamente el marca " + this.nombre;
+        igd.add(Stock.this); //Stock.this = this
+        this.mensaje = "Se ha añadido correctamente el stock " + this.cantidad;
         borrarTodo();
     }
 
@@ -78,8 +78,8 @@ public class Marca implements Serializable {
         if (this.id > 0) {
             DAOFactory df = DAOFactory.getDAOFactory();
             IGenericoDAO igd = df.getGenericoDAO();
-            igd.update(Marca.this); //Marca.this = this
-            this.mensaje = "Se ha actualizado correctamente el marca con id = " + this.id;
+            igd.update(Stock.this); //Stock.this = this
+            this.mensaje = "Se ha actualizado correctamente el stock con id = " + this.id;
             borrarTodo();
         }
     }
@@ -88,15 +88,15 @@ public class Marca implements Serializable {
         if (this.id > 0) {
             DAOFactory df = DAOFactory.getDAOFactory();
             IGenericoDAO igd = df.getGenericoDAO();
-            igd.delete(Marca.this); //Marca.this = this
-            this.mensaje = "Se ha eliminado correctamente el marca con id = " + this.id;
+            igd.delete(Stock.this); //Stock.this = this
+            this.mensaje = "Se ha eliminado correctamente el stock con id = " + this.id;
             borrarTodo();
         }
     }
 
     private void borrarTodo() {
         this.id = 0;
-        this.nombre = "";
+        this.cantidad = 0;
     }
 
     public int getId() {
@@ -107,13 +107,15 @@ public class Marca implements Serializable {
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public int getCantidad() {
+        return cantidad;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
+
+    
 
     public String getMensaje() {
         return mensaje;

@@ -25,7 +25,7 @@ import javax.persistence.Transient;
  * @author Alfonso
  */
 @Entity
-@ManagedBean(name = "Producto")
+@ManagedBean(name = "producto")
 @Table(name = "Producto")
 public class Producto implements Serializable {
 
@@ -46,7 +46,7 @@ public class Producto implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "IdLocalizacion")
-    private Localizacion host;
+    private Localizacion localizacion;
 
     @ManyToOne
     @JoinColumn(name = "IdEstado")
