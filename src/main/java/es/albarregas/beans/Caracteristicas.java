@@ -108,6 +108,32 @@ public class Caracteristicas implements Serializable {
         this.ram = "";
     }
 
+    public String getMensaje() {
+        return mensaje;
+    }
+
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
+    }
+
+    public List<Producto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(List<Producto> productos) {
+        this.productos = productos;
+    }
+
+    public List<Modelo> getModelos() {
+        return Modelos;
+    }
+
+    public void setModelos(List<Modelo> Modelos) {
+        this.Modelos = Modelos;
+    }
+
+    
+    
     public int getId() {
         return id;
     }

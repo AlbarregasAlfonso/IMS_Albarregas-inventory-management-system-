@@ -28,7 +28,7 @@ import org.hibernate.annotations.IndexColumn;
  * @author Alfonso
  */
 @Entity
-@ManagedBean(name = "Estancia")
+@ManagedBean(name = "estancia")
 @Table(name = "Estancia")
 public class Estancia implements Serializable {
 
@@ -71,10 +71,34 @@ public class Estancia implements Serializable {
     public ArrayList allEstancias() {
         DAOFactory df = DAOFactory.getDAOFactory();
         IGenericoDAO igd = df.getGenericoDAO();
-        ArrayList listaestancia = (ArrayList<Estancia>) igd.get("stancia");
+        ArrayList listaestancia = (ArrayList<Estancia>) igd.get("Estancia");
         return listaestancia;
     }
-
+    
+//      public ArrayList allEstanciasWhere() {
+//         ArrayList<Estancia> estancias=null;
+//        if (id > 0) {
+//            DAOFactory df = DAOFactory.getDAOFactory();
+//            IGenericoDAO igd = df.getGenericoDAO();
+//            
+//            estancias = (ArrayList<Estancia>) igd.ObtenerUno("Estancias","");
+//            
+//            
+//        }
+//        return estancias;
+//    }
+public ArrayList allLocalizacionWhere() {
+         ArrayList<Estancia> estancias=null;
+        if (id > 0) {
+            DAOFactory df = DAOFactory.getDAOFactory();
+            IGenericoDAO igd = df.getGenericoDAO();
+            
+            estancias = (ArrayList<Estancia>) igd.ObtenerUno("Estancias", " where idEstancia="+id);
+            
+            
+        }
+        return estancias;
+    }
     public void addDatos() {
         DAOFactory df = DAOFactory.getDAOFactory();
         IGenericoDAO igd = df.getGenericoDAO();

@@ -98,6 +98,8 @@ public class Alumno implements Serializable {
         this.posicion = "";
     }
 
+    
+    
     public int getId() {
         return id;
     }

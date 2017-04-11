@@ -98,6 +98,22 @@ public class Marca implements Serializable {
         }
     }
 
+    public List<Producto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(List<Producto> productos) {
+        this.productos = productos;
+    }
+
+    public List<Modelo> getModelos() {
+        return modelos;
+    }
+
+    public void setModelos(List<Modelo> modelos) {
+        this.modelos = modelos;
+    }
+
     private void borrarTodo() {
         this.id = 0;
         this.nombre = "";

@@ -127,6 +127,40 @@ public class Modelo implements Serializable {
         this.nombre = "";
     }
 
+    public List<Producto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(List<Producto> productos) {
+        this.productos = productos;
+    }
+
+    public List<Stock> getStocks() {
+        return Stocks;
+    }
+
+    public void setStocks(List<Stock> Stocks) {
+        this.Stocks = Stocks;
+    }
+
+    public Caracteristicas getHost() {
+        return host;
+    }
+
+    public void setHost(Caracteristicas host) {
+        this.host = host;
+    }
+
+    public Caracteristicas getMarca() {
+        return marca;
+    }
+
+    public void setMarca(Caracteristicas marca) {
+        this.marca = marca;
+    }
+
+    
+    
     public int getId() {
         return id;
     }

@@ -99,6 +99,9 @@ public class Stock implements Serializable {
         this.cantidad = 0;
     }
 
+    
+    
+    
     public int getId() {
         return id;
     }

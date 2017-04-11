@@ -100,6 +100,16 @@ public class Categoria implements Serializable {
         this.nombre = "";
     }
 
+    public List<Producto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(List<Producto> productos) {
+        this.productos = productos;
+    }
+
+    
+    
     public int getId() {
         return id;
     }

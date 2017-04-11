@@ -68,6 +68,20 @@ public class Producto implements Serializable {
         }
 
     }
+    
+    
+      public ArrayList allProductosWherePorClase(int id) {
+         ArrayList<Producto> productos=null;
+        if (id > 0) {
+            DAOFactory df = DAOFactory.getDAOFactory();
+            IGenericoDAO igd = df.getGenericoDAO();
+            
+            productos = (ArrayList<Producto>) igd.ObtenerUno("Producto", " where IdLocalizacion="+id);
+            
+            
+        }
+        return productos;
+    }
 
     public ArrayList allProductos() {
         DAOFactory df = DAOFactory.getDAOFactory();
@@ -112,6 +126,16 @@ public class Producto implements Serializable {
         this.ubicacion = "";
     }
 
+    public Localizacion getLocalizacion() {
+        return localizacion;
+    }
+
+    public void setLocalizacion(Localizacion localizacion) {
+        this.localizacion = localizacion;
+    }
+
+    
+    
     public int getId() {
         return id;
     }

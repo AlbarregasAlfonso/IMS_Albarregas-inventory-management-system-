@@ -66,6 +66,19 @@ public class Localizacion implements Serializable {
         }
 
     }
+    
+         public ArrayList alllocalizacionWhere(int id) {
+         ArrayList<Localizacion> localizacion=null;
+        if (id > 0) {
+            DAOFactory df = DAOFactory.getDAOFactory();
+            IGenericoDAO igd = df.getGenericoDAO();
+            
+            localizacion = (ArrayList<Localizacion>) igd.ObtenerUno("localizacion", " where IdEstancia="+id);
+            
+            
+        }
+        return localizacion;
+    }
 
     public ArrayList allLocalizacions() {
         DAOFactory df = DAOFactory.getDAOFactory();
@@ -107,6 +120,14 @@ public class Localizacion implements Serializable {
         this.descripcion = "";
         this.num_planta = "";
       
+    }
+
+    public List<Producto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(List<Producto> productos) {
+        this.productos = productos;
     }
 
     public int getId() {

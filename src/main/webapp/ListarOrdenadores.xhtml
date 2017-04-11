@@ -6,7 +6,8 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:mio="http://java.sun.com/jsf/composite/components"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <h:head>
         <ui:define name="titulo">
@@ -36,10 +37,36 @@
             <div class="col-sm-8">
                 <section>
                     <h:form id="formularioUpd">
+                        
+                        <h:selectOneListbox value="#{estancia.id}" size="3">
+                            <f:selectItems value="#{estancia.allEstancias()}" var="c" itemLabel=" #{c.nombre}"/>
+                           
+                            <f:ajax event="change" listener="#{estancia.allEstanciasWhere()}" render="todosProductos" execute="@form"/>
+                        </h:selectOneListbox>
+                        <p:selectOneMenu value="#{estancia.id}" >
+                            <f:selectItems value="#{estancia.allEstancias()}" var="c" itemLabel="#{c.nombre}" />
+                            <p:ajax update="todosProductos" listener="#{estancia.allLocalizacionWhere()}" event="change" /> 
+                        </p:selectOneMenu>
+                        
+                        
+                        
                         <h:selectOneListbox value="#{producto.id}" size="3">
-                            <f:selectItems value="#{producto.allProductos()}" var="c" itemLabel=" #{c.ubicacion} #{c.fecha_compra} #{c.fecha_baja} #{c.fecha_baja} #{c.precio}" itemValue="#{c.id}"/>
+                            <f:selectItems value="#{producto.allProductosWherePorClase(producto.id)}" var="c" itemLabel=" #{c.localizacion.host.nombre}"/>
+                           
+<!--                            <f:ajax render="localizacion1" execute="@form"/>-->
+                        </h:selectOneListbox>
+                        
+                        
+                        
+                        <h:selectOneListbox id="todosProductos" value="#{localizacion.id}" size="3">
+                            <f:selectItems value="#{localizacion.allLocalizaciones(estancia.id)}" var="c" itemLabel=" #{c.id}"/>
+                           
+<!--                            <f:ajax render="localizacion1" execute="@form"/>-->
                         </h:selectOneListbox>
 
+                            
+<!--                        <h:inputText id="localizacion1"  value="# {producto.localizacion.descripcion}"/>-->
+                        
                     </h:form>
                 </section>
             </div>
