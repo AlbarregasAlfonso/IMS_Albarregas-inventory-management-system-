@@ -9,6 +9,7 @@ import es.albarregas.dao.IGenericoDAO;
 import es.albarregas.daofactory.DAOFactory;
 import java.io.Serializable;
 import java.util.ArrayList;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -37,6 +38,8 @@ public class Producto implements Serializable {
     private String fecha_compra;
     private String fecha_baja;
     private float precio;
+   
+    private ArrayList<Producto> listaProductos = new ArrayList<Producto>();
     //Campo usuario y una relación uno a muchos con direcciones
     //Para atributos que no forman parte de la tabla
     @Transient
@@ -83,19 +86,38 @@ public class Producto implements Serializable {
 
     }
     
+  @PostConstruct
+    public void init() {
+        DAOFactory df = DAOFactory.getDAOFactory();
+        IGenericoDAO igd = df.getGenericoDAO();
+        System.out.println("Estamos en INIT");
+        listaProductos = (ArrayList<Producto>) igd.get("Producto");  
+        
+        System.out.println("Estamos en INIT2");
+        for (Producto p:listaProductos){
+            System.out.println(p.caracteristicas);   
+        }
+    }
+    
+    public void productosPorClases(){
+        System.out.println("Entramos aqui");
+    }
+    
     
       public ArrayList allProductosWherePorClase(int id) {
+          System.out.print("El valor de la variable es: "+id);
          ArrayList<Producto> productos=null;
         if (id > 0) {
             DAOFactory df = DAOFactory.getDAOFactory();
             IGenericoDAO igd = df.getGenericoDAO();
             
             productos = (ArrayList<Producto>) igd.ObtenerUno("Producto", " where IdLocalizacion="+id);
-            
-            
+                       
         }
         return productos;
     }
+      
+      
 
     public ArrayList allProductos() {
         DAOFactory df = DAOFactory.getDAOFactory();
@@ -236,5 +258,15 @@ public class Producto implements Serializable {
         this.mensaje = mensaje;
     }
 
+    public ArrayList getListaProductos() {
+        return listaProductos;
+    }
+
+    public void setListaProductos(ArrayList<Producto> listaProductos) {
+        this.listaProductos = listaProductos;
+    }
+
+    
+    
 }
 
