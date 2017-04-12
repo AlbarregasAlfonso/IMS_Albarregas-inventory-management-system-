@@ -50,10 +50,24 @@ public class Producto implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "IdEstado")
-//    private Estado id;
+    private Estado estado;
     
-//    @ManyToOne
-//    @JoinColumn(name = "IdMarca")
+    @ManyToOne
+    @JoinColumn(name = "IdMarca")
+    private Marca marca;
+    
+    @ManyToOne
+    @JoinColumn(name = "IdModelo")
+    private Modelo modelo;
+    
+    @ManyToOne
+    @JoinColumn(name = "IdLCaracteristicas")
+    private Caracteristicas caracteristicas;
+    
+    @ManyToOne
+    @JoinColumn(name = "IdCategoria")
+    private Categoria categoria;
+
     public void oneProducto() {
         if (this.id > 0) {
             DAOFactory df = DAOFactory.getDAOFactory();
@@ -134,7 +148,45 @@ public class Producto implements Serializable {
         this.localizacion = localizacion;
     }
 
-    
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    }
+
+    public Marca getMarca() {
+        return marca;
+    }
+
+    public void setMarca(Marca marca) {
+        this.marca = marca;
+    }
+
+    public Modelo getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(Modelo modelo) {
+        this.modelo = modelo;
+    }
+
+    public Caracteristicas getCaracteristicas() {
+        return caracteristicas;
+    }
+
+    public void setCaracteristicas(Caracteristicas caracteristicas) {
+        this.caracteristicas = caracteristicas;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
     
     public int getId() {
         return id;

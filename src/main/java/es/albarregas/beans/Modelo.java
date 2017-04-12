@@ -56,7 +56,7 @@ public class Modelo implements Serializable {
     
     @ManyToOne
     @JoinColumn(name = "IdLCaracteristicas")
-    private Caracteristicas host;
+    private Caracteristicas caracteristicas;
     
     @ManyToOne
     @JoinColumn(name = "IdMarca")
@@ -143,12 +143,12 @@ public class Modelo implements Serializable {
         this.Stocks = Stocks;
     }
 
-    public Caracteristicas getHost() {
-        return host;
+    public Caracteristicas getCaracteristicas() {
+        return caracteristicas;
     }
 
-    public void setHost(Caracteristicas host) {
-        this.host = host;
+    public void setCaracteristicas(Caracteristicas host) {
+        this.caracteristicas = host;
     }
 
     public Caracteristicas getMarca() {
