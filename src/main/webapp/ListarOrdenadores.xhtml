@@ -24,24 +24,21 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </h:head>
     <h:body>
-        
-        
-<pm:page id="main">
-<pm:header title="Main Page"></pm:header>
-<pm:content>
-<p:link outcome="pm:second" value="Go" />
-</pm:content>
-</pm:page>
-<pm:page id="second" lazy="true">
-<pm:header title="Second Page"></pm:header>
-<pm:content>
-//Lazy loaded content
-</pm:content>
-</pm:page>
-        
-        
-        
-        
+
+
+        <pm:page id="main">
+            <pm:header title="Main Page"></pm:header>
+            <pm:content>
+                <p:link outcome="pm:second" value="Go" />
+            </pm:content>
+        </pm:page>
+        <pm:page id="second" lazy="true">
+            <pm:header title="Second Page"></pm:header>
+            <pm:content>
+                //Lazy loaded content
+            </pm:content>
+        </pm:page>
+
         <ui:decorate template="/resources/plantilla/template.xhtml">
             <ui:define name="cabeceraPrincipal">
                 <h1>Sistema de plantillas facelets</h1>
@@ -58,69 +55,24 @@
                 <section>
                     <h:form id="formularioUpd">
 
-                                               <p:selectOneMenu value="#{estancia.id}" id="selectClase">
-                                                   <f:selectItems value="#{estancia.allEstancias()}" var="c" itemLabel=" #{c.nombre}" itemValue="#{c.nombre}"/>
-                                                   <p:ajax listener="#{producto.productosPorClases()}" process="formularioUpd:selectClase" update="formularioUpd:tablaProductos"/>
-                                                </p:selectOneMenu>
-                        
-                        
-<!--                                                <p:selectOneMenu value="# {estancia.id}" >
-                                                    <f:selectItems value="# {estancia.allEstancias()}" var="c" itemLabel="# {c.nombre}" />
-                                                </p:selectOneMenu>-->
+                        <p:selectOneMenu value="#{producto.id}" id="selectClase">
+                            <f:selectItems value="#{estancia.allEstancias()}" var="c" itemLabel=" #{c.nombre}" itemValue="#{c.nombre}"/>
+                            <p:ajax event="keyup" listener="#{producto.productosPorClases()}" process="formularioUpd:selectClase" update="formularioUpd:tablaProductos"/>
+                        </p:selectOneMenu>
+
+<!--                        <p:outputLabel for="# {estancia.allEstancias()}" value="Country: " />
+                        <p:selectOneMenu id="country" value="# {producto.id}" style="width:150px">
+                            <p:ajax listener="# {producto.productosPorClases}" update="tablaProductos" />
+                            <f:selectItem itemLabel="Selecciona una clase" itemValue="" noSelectionOption="true" />
+                            <f:selectItems value="#{estancia.allEstancias()}" />
+                        </p:selectOneMenu>-->
 
 
+                        <!--                                                <p:selectOneMenu value="# {estancia.id}" >
+                                                                            <f:selectItems value="# {estancia.allEstancias()}" var="c" itemLabel="# {c.nombre}" />
+                                                                        </p:selectOneMenu>-->
 
 
-                        <p:dataTable var="pro" value="#{producto.allProductos()}" id="tablaProductos">
-                            <p:columnGroup type="header">
-                                <p:row>
-                                    <p:column colspan="12" headerText="Productos" />
-                                </p:row>             
-                                <p:row>                    
-
-                                    <p:column colspan="1" headerText="Categoria" />             
-                                    <p:column colspan="2" headerText="Producto" />             
-                                    <p:column colspan="3" headerText="Caracteristicas" />             
-                                    <p:column colspan="1" headerText="Estado" />             
-                                    <p:column colspan="2" headerText="Fechas" /> 
-                                    <p:column colspan="1" headerText="Precio" />
-                                    <p:column colspan="1" headerText="Ubicacion" />
-                                    <p:column colspan="1" headerText="Localizacion" />
-
-                                </p:row>             
-                                <p:row>             
-                                    <p:column headerText="Categoría" />              
-                                    <p:column headerText="Marca" />              
-                                    <p:column headerText="Modelo" />             
-                                    <p:column headerText="Disco Duro" />    
-                                    <p:column headerText="Ram" />
-                                    <p:column headerText="Procesador" />
-                                    <p:column headerText="Estado" />
-                                    <p:column headerText="Fecha Compra" />
-                                    <p:column headerText="Fecha Baja" />
-                                    <p:column headerText="Precio" />
-                                    <p:column headerText="Ubicación" />
-                                    <p:column headerText="Localización" />
-                                </p:row> 
-                            </p:columnGroup> 
-
-                            <p:column>#{pro.categoria.nombre}</p:column> 
-                            <p:column>#{pro.marca.nombre}</p:column> 
-                            <p:column>#{pro.modelo.nombre}</p:column>  
-                            <p:column>#{pro.caracteristicas.hd}</p:column> 
-                            <p:column>#{pro.caracteristicas.ram}</p:column>
-                            <p:column>#{pro.caracteristicas.procesador}</p:column>  
-                            <p:column>#{pro.estado.descripcion}</p:column> 
-                            <p:column>#{pro.fecha_compra}</p:column>  
-                            <p:column>#{pro.fecha_baja}</p:column> 
-                            <p:column>#{pro.precio}</p:column> 
-                            <p:column>#{pro.ubicacion}</p:column>
-                            <p:column>#{pro.localizacion.descripcion}</p:column>  
-                            <p:columnGroup type="footer"> 
-                                <p:row> <p:column colspan="12" style="text-align:left" footerText="Albarregas"/>                             
-                                </p:row>   
-                            </p:columnGroup>                   
-                        </p:dataTable>
 
 
                         <p:dataTable var="pro" value="#{producto.listaProductos}" id="tablaProductos">
@@ -129,7 +81,6 @@
                                     <p:column colspan="12" headerText="Productos" />
                                 </p:row>             
                                 <p:row>                    
-
                                     <p:column colspan="1" headerText="Categoria" />             
                                     <p:column colspan="2" headerText="Producto" />             
                                     <p:column colspan="3" headerText="Caracteristicas" />             
@@ -173,6 +124,7 @@
                                 </p:row>   
                             </p:columnGroup>                   
                         </p:dataTable>
+
 
 
 
@@ -195,9 +147,9 @@
 
 
                     </h:form>
-                    
 
-                    
+
+
                 </section>
             </div>
             <div class="col-sm-1"></div>

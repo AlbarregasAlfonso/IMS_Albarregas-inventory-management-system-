@@ -38,14 +38,14 @@ public class Producto implements Serializable {
     private String fecha_compra;
     private String fecha_baja;
     private float precio;
+    static ArrayList<Producto> listaProductos = new ArrayList<Producto>();
+//    ArrayList<Producto> listaProductos = new ArrayList<Producto>();
    
-    private ArrayList<Producto> listaProductos = new ArrayList<Producto>();
+    
     //Campo usuario y una relación uno a muchos con direcciones
     //Para atributos que no forman parte de la tabla
     @Transient
     private String mensaje;
-
-
 
     @ManyToOne
     @JoinColumn(name = "IdLocalizacion")
@@ -90,23 +90,16 @@ public class Producto implements Serializable {
     public void init() {
         DAOFactory df = DAOFactory.getDAOFactory();
         IGenericoDAO igd = df.getGenericoDAO();
-        System.out.println("Estamos en INIT");
-        listaProductos = (ArrayList<Producto>) igd.get("Producto");  
-        
-        System.out.println("Estamos en INIT2");
-        for (Producto p:listaProductos){
-            System.out.println(p.caracteristicas);   
-        }
+        listaProductos = (ArrayList<Producto>) igd.get("Producto");
+
     }
     
     public void productosPorClases(){
         System.out.println("Entramos aqui");
     }
     
-    
       public ArrayList allProductosWherePorClase(int id) {
-          System.out.print("El valor de la variable es: "+id);
-         ArrayList<Producto> productos=null;
+        ArrayList<Producto> productos=null;
         if (id > 0) {
             DAOFactory df = DAOFactory.getDAOFactory();
             IGenericoDAO igd = df.getGenericoDAO();
@@ -122,7 +115,7 @@ public class Producto implements Serializable {
     public ArrayList allProductos() {
         DAOFactory df = DAOFactory.getDAOFactory();
         IGenericoDAO igd = df.getGenericoDAO();
-        ArrayList listaProductos = (ArrayList<Producto>) igd.get("Producto");
+        listaProductos = (ArrayList<Producto>) igd.get("Producto");
         return listaProductos;
     }
 
@@ -258,7 +251,7 @@ public class Producto implements Serializable {
         this.mensaje = mensaje;
     }
 
-    public ArrayList getListaProductos() {
+    public ArrayList<Producto> getListaProductos() {
         return listaProductos;
     }
 
@@ -266,7 +259,7 @@ public class Producto implements Serializable {
         this.listaProductos = listaProductos;
     }
 
-    
+
     
 }
 
