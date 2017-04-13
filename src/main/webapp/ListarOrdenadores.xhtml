@@ -28,9 +28,7 @@
 
         <pm:page id="main">
             <pm:header title="Main Page"></pm:header>
-            <pm:content>
-                <p:link outcome="pm:second" value="Go" />
-            </pm:content>
+
         </pm:page>
         <pm:page id="second" lazy="true">
             <pm:header title="Second Page"></pm:header>
@@ -55,17 +53,21 @@
                 <section>
                     <h:form id="formularioUpd">
 
-                        <p:selectOneMenu value="#{producto.id}" id="selectClase">
-                            <f:selectItems value="#{estancia.allEstancias()}" var="c" itemLabel=" #{c.nombre}" itemValue="#{c.nombre}"/>
-                            <p:ajax event="keyup" listener="#{producto.productosPorClases()}" process="formularioUpd:selectClase" update="formularioUpd:tablaProductos"/>
-                        </p:selectOneMenu>
 
-<!--                        <p:outputLabel for="# {estancia.allEstancias()}" value="Country: " />
-                        <p:selectOneMenu id="country" value="# {producto.id}" style="width:150px">
-                            <p:ajax listener="# {producto.productosPorClases}" update="tablaProductos" />
-                            <f:selectItem itemLabel="Selecciona una clase" itemValue="" noSelectionOption="true" />
-                            <f:selectItems value="#{estancia.allEstancias()}" />
+
+
+<!--                        <p:selectOneMenu value="# {producto.id}" id="selectClase">
+                            <f:selectItems value="# {producto.listaProductos}" var="c" itemLabel=" # {c.marca.nombre}" itemValue="# {c.marca.nombre}"/>
+                            <p:ajax listener="# {producto.productosPorClases}" update="tablaProductos"/>
+                            <p:ajax listener="# {prueba.nose()}" update="tablaProductos" />
                         </p:selectOneMenu>-->
+
+                        <!--                        <p:outputLabel for="# {estancia.allEstancias()}" value="Country: " />
+                                                <p:selectOneMenu id="country" value="# {producto.id}" style="width:150px">
+                                                    <p:ajax listener="# {producto.productosPorClases}" update="tablaProductos" />
+                                                    <f:selectItem itemLabel="Selecciona una clase" itemValue="" noSelectionOption="true" />
+                                                    <f:selectItems value="# {estancia.allEstancias()}" />
+                                                </p:selectOneMenu>-->
 
 
                         <!--                                                <p:selectOneMenu value="# {estancia.id}" >
