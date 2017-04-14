@@ -56,6 +56,24 @@
 
 
 
+
+
+
+                        <h:panelGrid columns="4" cellpadding="5">
+                            <h:outputLabel for="name" value="Name:" style="font-weight:bold" />
+                            <p:inputText id="name" value="#{dropdownView.text}" />
+                            <p:commandButton value="Submit" update="display" icon="ui-icon-check" />
+                            <h:outputText id="display" value="#{dropdownView.text}" />
+                        </h:panelGrid>
+
+
+
+
+
+
+
+
+
                         <!--                        <p:selectOneMenu value="# {producto.id}" id="selectClase">
                                                     <f:selectItems value="# {producto.listaProductos}" var="c" itemLabel=" # {c.marca.nombre}" itemValue="# {c.marca.nombre}"/>
                                                     <p:ajax event="change" listener="# {producto.productosPorClases()}" update="tablaProductos"/>
@@ -64,15 +82,15 @@
                         
                         -->                     
 
-<!--                       <p:selectOneMenu value="# {producto.id}" >
-                                <f:selectItem itemLabel="Seleccione provincia" itemValue=""/>
-                                <f:selectItems value="# {producto.allProductos()}" var="c" itemLabel=" # {c.marca.nombre}" itemValue="# {c.marca.nombre}"/>
-                                <p:ajax update="selectClase1" listener="# {producto.productosPorClases()}" event="change"/>
-                            </p:selectOneMenu>-->
+                        <!--                       <p:selectOneMenu value="# {producto.id}" >
+                                                        <f:selectItem itemLabel="Seleccione provincia" itemValue=""/>
+                                                        <f:selectItems value="# {producto.allProductos()}" var="c" itemLabel=" # {c.marca.nombre}" itemValue="# {c.marca.nombre}"/>
+                                                        <p:ajax update="selectClase1" listener="# {producto.productosPorClases()}" event="change"/>
+                                                    </p:selectOneMenu>-->
 
-<!--                        <p:selectOneMenu value="# {producto.id}" id="selectClase1">
-                            <f:selectItems value="# {producto.listaProductos}" var="c" itemLabel=" # {c.marca.nombre}" itemValue="# {c.marca.nombre}"/>
-                        </p:selectOneMenu>-->
+                        <!--                        <p:selectOneMenu value="# {producto.id}" id="selectClase1">
+                                                    <f:selectItems value="# {producto.listaProductos}" var="c" itemLabel=" # {c.marca.nombre}" itemValue="# {c.marca.nombre}"/>
+                                                </p:selectOneMenu>-->
 
 
                         <!--
@@ -95,23 +113,23 @@
                                                                             <f:selectItems value="# {estancia.allEstancias()}" var="c" itemLabel="# {c.nombre}" />
                                                                         </p:selectOneMenu>-->
 
-                                
 
 
-                        
-                       
-                        
-                       <p:selectOneMenu value="#{producto.id}" id="selectClase">
+
+
+
+
+                        <p:selectOneMenu value="#{producto.id}" id="selectClase">
                             <f:selectItems value="#{estancia.allEstancias()}" var="c" itemLabel=" #{c.nombre}" itemValue="#{c.nombre}"/>
                             <p:ajax event="change" listener="#{producto.setFecha_baja('21')}" update="prueba"/>
                         </p:selectOneMenu>
-                        
-                        
-                        <p:outputLabel id="prueba" value="#{producto.fecha_baja}hola"/>
-                        
-                        
 
-                        
+
+                        <p:outputLabel id="prueba" value="#{producto.fecha_baja}hola"/>
+
+
+
+
                         <p:dataTable var="pro" value="#{producto.listaProductos}" id="tablaProductos">
                             <p:columnGroup type="header">
                                 <p:row>

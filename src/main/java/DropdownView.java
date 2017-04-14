@@ -18,6 +18,7 @@ public class DropdownView implements Serializable {
     private String city;  
     private Map<String,String> countries;
     private Map<String,String> cities;
+    private String text="Hola";
      
     @PostConstruct
     public void init() {
@@ -88,5 +89,12 @@ public class DropdownView implements Serializable {
             msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Invalid", "City is not selected."); 
              
         FacesContext.getCurrentInstance().addMessage(null, msg);  
+    }
+    
+     public String getText() {
+        return text;
+    }
+    public void setText(String text) {
+        this.text = text;
     }
 }
