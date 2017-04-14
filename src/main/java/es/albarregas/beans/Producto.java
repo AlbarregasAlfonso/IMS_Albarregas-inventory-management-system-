@@ -1,13 +1,10 @@
-package es.albarregas.beans;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package es.albarregas.beans;
 
-
-import es.albarregas.beans.*;
 import es.albarregas.dao.IGenericoDAO;
 import es.albarregas.daofactory.DAOFactory;
 import java.io.Serializable;

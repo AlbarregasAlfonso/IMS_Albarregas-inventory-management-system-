@@ -6,7 +6,10 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:mio="http://java.sun.com/jsf/composite/components"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pm="http://primefaces.org/mobile">
+    <f:view renderKitId="PRIMEFACES_MOBILE" />
 
     <h:head>
         <ui:define name="titulo">
@@ -21,100 +24,177 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </h:head>
     <h:body>
+
+
+        <pm:page id="main">
+            <pm:header title="Main Page"></pm:header>
+
+        </pm:page>
+        <pm:page id="second" lazy="true">
+            <pm:header title="Second Page"></pm:header>
+            <pm:content>
+                //Lazy loaded content
+            </pm:content>
+        </pm:page>
+
         <ui:decorate template="/resources/plantilla/template.xhtml">
             <ui:define name="cabeceraPrincipal">
                 <h1>Sistema de plantillas facelets</h1>
             </ui:define>
 
             <ui:define name="content">
-                <h2>Contenido de la página</h2>
+                <h2>Listado por Aula</h2>
             </ui:define>
         </ui:decorate>
 
         <div class="row">
-            <div class="col-sm-2">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-9">
                 <section>
                     <h:form id="formularioUpd">
-                        <h:panelGrid columns="2" cellpadding="1" border="1" width="50%" styleClass="panel">
-                            <!--                       
-                                                    <f:facet name="header1">
-                                                        <h2><h:outputText value="# {msj.titulo_upd}"/></h2>
-                                                        <h3><h:outputText id="mensaje" value="Seleccione un modelo"/></h3>
-                                                    </f:facet>
-                                                    <h:outputLabel for="modelo" value="Seleccione un modelo"/>
-                                                    <h:selectOneMenu value="# {modelo.id}" id="umenu1">
-                                                        <f:selectItem itemLabel="seleccione un modelo" itemValue="0" />
-                                                        <f:selectItems value="# {modelo.allModelos()}" var="c" itemLabel="# {c.nombre}" itemValue="# {c.id}"/>
-                                                        <f:ajax event="change" render="id1 nombre1" listener="# {modelo.oneModelo()}"/>
-                                                    </h:selectOneMenu>-->
 
-                            <f:facet name="header2">
-                                <h2><h:outputText value="#{msj.titulo_upd}"/></h2>
-                                <h3><h:outputText id="mensaje" value="Seleccione un modelo"/></h3>
-                            </f:facet>
-                            <h:outputLabel for="modelo" value="Seleccione un modelo"/>
-                            
-                            <h:selectOneMenu value="#{modelo.id}" id="umenu2" >
-                                <f:selectItem itemLabel="seleccione un modelo" itemValue="0" />
-                                <f:selectItems value="#{modelo.allModeloWhere(2)}" var="c" itemLabel="#{c.nombre}" itemValue="#{c.id}"/>
-                                <!--                            <f:ajax event="change" render="id1 nombre1" listener="# {modelo.oneModelo()}"/>-->
-                            </h:selectOneMenu>
-                          
-<!--                            <select name="cars" multiple="multiple">
-                            <c:forEach items="$ {modelo.allModeloWhere(2)}" var="ps">
-                                <option value="$ {ps}">Volvo</option>
-                        <td><c:out value="$ {ps.cantidadQueFaltaEnStock}"/></td>
-                 
-            </c:forEach>
-                                 </select>-->
-                            
-                        </h:panelGrid>
-                        <h:selectOneListbox value="#{modelo.id}" size="2">
-                            <f:selectItems value="#{modelo.allModeloWhere(2)}" var="c" itemLabel="#{c.nombre}" itemValue="#{c.id}"/>
-                            <f:ajax event="change" render="nombre1 id1" listener="#{modelo.oneModelo()}" /> 
-                        </h:selectOneListbox>
+
+
+
+                        <!--                        <p:selectOneMenu value="# {producto.id}" id="selectClase">
+                                                    <f:selectItems value="# {producto.listaProductos}" var="c" itemLabel=" # {c.marca.nombre}" itemValue="# {c.marca.nombre}"/>
+                                                    <p:ajax event="change" listener="# {producto.productosPorClases()}" update="tablaProductos"/>
+                                                   
+                                                </p:selectOneMenu>
                         
-                         <h:inputText id="nombre1" value="#{modelo.nombre}"/>
-                         <h:inputText id="id1" value="#{modelo.id}"/>
-                   </h:form>
-                </section>
-                <mio:componente imagen="imagen" id="imagen"/>
-            </div>
+                        -->                     
 
-            <div class="col-sm-3">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">NOTICIAS IMPORTANTES</div>
-                    <div class="panel-body"><ul>
-                            <li>noticias importantes</li>
-                            <li>material dañado</li>
-                        </ul></div>
-                    <div class="panel-footer">IMPORTANTE</div>
-                </div>
+<!--                       <p:selectOneMenu value="# {producto.id}" >
+                                <f:selectItem itemLabel="Seleccione provincia" itemValue=""/>
+                                <f:selectItems value="# {producto.allProductos()}" var="c" itemLabel=" # {c.marca.nombre}" itemValue="# {c.marca.nombre}"/>
+                                <p:ajax update="selectClase1" listener="# {producto.productosPorClases()}" event="change"/>
+                            </p:selectOneMenu>-->
+
+<!--                        <p:selectOneMenu value="# {producto.id}" id="selectClase1">
+                            <f:selectItems value="# {producto.listaProductos}" var="c" itemLabel=" # {c.marca.nombre}" itemValue="# {c.marca.nombre}"/>
+                        </p:selectOneMenu>-->
+
+
+                        <!--
+                                                
+                        
+                        
+                        
+                        -->
+
+
+                        <!--                        <p:outputLabel for="# {estancia.allEstancias()}" value="Country: " />
+                                                <p:selectOneMenu id="country" value="# {producto.id}" style="width:150px">
+                                                    <p:ajax listener="# {producto.productosPorClases}" update="tablaProductos" />
+                                                    <f:selectItem itemLabel="Selecciona una clase" itemValue="" noSelectionOption="true" />
+                                                    <f:selectItems value="# {estancia.allEstancias()}" />
+                                                </p:selectOneMenu>-->
+
+
+                        <!--                                                <p:selectOneMenu value="# {estancia.id}" >
+                                                                            <f:selectItems value="# {estancia.allEstancias()}" var="c" itemLabel="# {c.nombre}" />
+                                                                        </p:selectOneMenu>-->
+
+                                
+
+
+                        
+                       
+                        
+                       <p:selectOneMenu value="#{producto.id}" id="selectClase">
+                            <f:selectItems value="#{estancia.allEstancias()}" var="c" itemLabel=" #{c.nombre}" itemValue="#{c.nombre}"/>
+                            <p:ajax event="change" listener="#{producto.setFecha_baja('21')}" update="prueba"/>
+                        </p:selectOneMenu>
+                        
+                        
+                        <p:outputLabel id="prueba" value="#{producto.fecha_baja}hola"/>
+                        
+                        
+
+                        
+                        <p:dataTable var="pro" value="#{producto.listaProductos}" id="tablaProductos">
+                            <p:columnGroup type="header">
+                                <p:row>
+                                    <p:column colspan="12" headerText="Productos" />
+                                </p:row>             
+                                <p:row>                    
+                                    <p:column colspan="1" headerText="Categoria" />             
+                                    <p:column colspan="2" headerText="Producto" />             
+                                    <p:column colspan="3" headerText="Caracteristicas" />             
+                                    <p:column colspan="1" headerText="Estado" />             
+                                    <p:column colspan="2" headerText="Fechas" /> 
+                                    <p:column colspan="1" headerText="Precio" />
+                                    <p:column colspan="1" headerText="Ubicacion" />
+                                    <p:column colspan="1" headerText="Localizacion" />
+
+                                </p:row>             
+                                <p:row>             
+                                    <p:column headerText="Categoría" />              
+                                    <p:column headerText="Marca" />              
+                                    <p:column headerText="Modelo" />             
+                                    <p:column headerText="Disco Duro" />    
+                                    <p:column headerText="Ram" />
+                                    <p:column headerText="Procesador" />
+                                    <p:column headerText="Estado" />
+                                    <p:column headerText="Fecha Compra" />
+                                    <p:column headerText="Fecha Baja" />
+                                    <p:column headerText="Precio" />
+                                    <p:column headerText="Ubicación" />
+                                    <p:column headerText="Localización" />
+                                </p:row> 
+                            </p:columnGroup> 
+
+                            <p:column>#{pro.categoria.nombre}</p:column> 
+                            <p:column>#{pro.marca.nombre}</p:column> 
+                            <p:column>#{pro.modelo.nombre}</p:column>  
+                            <p:column>#{pro.caracteristicas.hd}</p:column> 
+                            <p:column>#{pro.caracteristicas.ram}</p:column>
+                            <p:column>#{pro.caracteristicas.procesador}</p:column>  
+                            <p:column>#{pro.estado.descripcion}</p:column> 
+                            <p:column>#{pro.fecha_compra}</p:column>  
+                            <p:column>#{pro.fecha_baja}</p:column> 
+                            <p:column>#{pro.precio}</p:column> 
+                            <p:column>#{pro.ubicacion}</p:column>
+                            <p:column>#{pro.localizacion.descripcion}</p:column>  
+                            <p:columnGroup type="footer"> 
+                                <p:row> <p:column colspan="12" style="text-align:left" footerText="Albarregas"/>                             
+                                </p:row>   
+                            </p:columnGroup>                   
+                        </p:dataTable>
+
+
+
+
+                        <!--                        <h:selectOneListbox value="# {producto.id}" size="3">
+                                                    <f:selectItems value="# {producto.allProductosWherePorClase(producto.id)}" var="c" itemLabel=" # {c.localizacion.host.nombre}"/>
+                        
+                                                                                <f:ajax render="localizacion1" execute="@form"/>
+                                                </h:selectOneListbox>
+                        
+                        
+                        
+                                                <h:selectOneListbox id="todosProductos" value="# {localizacion.id}" size="3">
+                                                    <f:selectItems value="# {localizacion.allLocalizaciones(estancia.id)}" var="c" itemLabel=" # {c.id}"/>
+                        
+                                                                                <f:ajax render="localizacion1" execute="@form"/>
+                                                </h:selectOneListbox>
+                        -->
+
+                        <!--                        <h:inputText id="localizacion1"  value="# {producto.localizacion.descripcion}"/>-->
+
+
+                    </h:form>
+
+
+
+                </section>
             </div>
-            <div class="col-sm-3"> 
-                <div class="panel panel-success">
-                    <div class="panel-heading">MENSAJES DE PROFESORES</div>
-                    <div class="panel-body"><ul>
-                            <li>Mensajes importantes</li>
-                            <li>Aula Asir: Necesitamos ampliar la cantidad de ordenadores</li>
-                        </ul></div><div class="panel-footer">Profesores</div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">NOTAS PROPIAS</div>
-                    <div class="panel-body"><ul>
-                            <li>Tengo que revisar los ordenadores del aula 1</li>
-                            <li>He quedado con el proveedor a las 12:00 del martes</li>
-                            <li>He quedado con el profesor del aula de bachiller para ver que le pasa a un ordenador a las 11:00 del Jueves</li>
-                        </ul></div><div class="panel-footer">Notas</div>
-                </div>
-            </div>
-            <div class="col-sm-1">
-                <p></p>
-            </div>
+            <div class="col-sm-1"></div>
         </div>
-        <br></br>
+
+
+
+
 
     </h:body>
 
