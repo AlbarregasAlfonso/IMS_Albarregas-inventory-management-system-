@@ -14,6 +14,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     
+      
     <dependencies>
         <dependency>
             <groupId>javax</groupId>
@@ -21,11 +22,6 @@
             <version>7.0</version>
             <scope>provided</scope>
         </dependency>
-<!--        <dependency>
-            <groupId>org.primefaces</groupId>
-            <artifactId>primefaces</artifactId>
-            <version>5.3</version>
-        </dependency>-->
         <dependency>
             <groupId>org.glassfish</groupId>
             <artifactId>javax.faces</artifactId>
@@ -41,26 +37,24 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.38</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.primefaces.themes/bootstrap -->
-<!--<dependency>
-    <groupId>org.primefaces.themes</groupId>
-    <artifactId>bootstrap</artifactId>
-    <version>1.0.10</version>
-</dependency>-->
-<!-- https://mvnrepository.com/artifact/org.primefaces.extensions/primefaces-extensions -->
-<dependency>
-    <groupId>org.primefaces.extensions</groupId>
-    <artifactId>primefaces-extensions</artifactId>
-    <version>6.0.0</version>
-</dependency>
+        <!-- https://mvnrepository.com/artifact/org.primefaces.extensions/primefaces-extensions -->
+        <dependency>
+            <groupId>org.primefaces.extensions</groupId>
+            <artifactId>primefaces-extensions</artifactId>
+            <version>6.0.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.primefaces/primefaces -->
+<!--        <dependency>
+            <groupId>org.primefaces</groupId>
+            <artifactId>primefaces</artifactId>
+            <version>6.1.RC2</version>
+        </dependency>-->
 <!-- https://mvnrepository.com/artifact/org.primefaces/primefaces -->
 <dependency>
     <groupId>org.primefaces</groupId>
     <artifactId>primefaces</artifactId>
     <version>6.0</version>
 </dependency>
-
-
 
     </dependencies>
 

@@ -1,5 +1,10 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package es.albarregas.beans;
 
- 
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -9,8 +14,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
  
-@ManagedBean
+
 @ViewScoped
+@ManagedBean
 public class DropdownView implements Serializable {
      
     private Map<String,Map<String,String>> data = new HashMap<String, Map<String,String>>();
@@ -18,7 +24,6 @@ public class DropdownView implements Serializable {
     private String city;  
     private Map<String,String> countries;
     private Map<String,String> cities;
-    private String text="Hola";
      
     @PostConstruct
     public void init() {
@@ -89,12 +94,5 @@ public class DropdownView implements Serializable {
             msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Invalid", "City is not selected."); 
              
         FacesContext.getCurrentInstance().addMessage(null, msg);  
-    }
-    
-     public String getText() {
-        return text;
-    }
-    public void setText(String text) {
-        this.text = text;
     }
 }
