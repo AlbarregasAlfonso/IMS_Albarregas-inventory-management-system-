@@ -97,6 +97,10 @@ public class Producto implements Serializable {
 
     }
     
+     public void onCountryChange(int valor) {
+       valor=valor+1;    
+    }
+     
     public void productosPorClases(){
         System.out.println("Entramos aqui");
     }

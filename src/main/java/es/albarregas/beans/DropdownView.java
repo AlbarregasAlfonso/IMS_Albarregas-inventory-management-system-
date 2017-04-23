@@ -79,11 +79,10 @@ public class DropdownView implements Serializable {
         return cities;
     }
  
-    public void onCountryChange() {
+    public void onCountryChange(int valor) {
         if(country !=null && !country.equals(""))
-            cities = data.get(country);
-        else
-            cities = new HashMap<String, String>();
+            cities = data.get(country); 
+       valor=valor+1;
     }
      
     public void displayLocation() {

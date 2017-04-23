@@ -20,15 +20,69 @@
     <body>
 
         <h:form>
+
+
+
+            <p:dataTable var="pro" value="#{producto.listaProductos}" id="tablaProductos">
+                <p:columnGroup type="header">
+                    <p:row>
+                        <p:column colspan="12" headerText="Productos" />
+                    </p:row>             
+                    <p:row>                    
+                        <p:column colspan="1" headerText="Categoria" />             
+                        <p:column colspan="2" headerText="Producto" />             
+                        <p:column colspan="3" headerText="Caracteristicas" />             
+                        <p:column colspan="1" headerText="Estado" />             
+                        <p:column colspan="2" headerText="Fechas" /> 
+                        <p:column colspan="1" headerText="Precio" />
+                        <p:column colspan="1" headerText="Ubicacion" />
+                        <p:column colspan="1" headerText="Localizacion" />
+
+                    </p:row>             
+                    <p:row>             
+                        <p:column headerText="Categoría" />              
+                        <p:column headerText="Marca" />              
+                        <p:column headerText="Modelo" />             
+                        <p:column headerText="Disco Duro" />    
+                        <p:column headerText="Ram" />
+                        <p:column headerText="Procesador" />
+                        <p:column headerText="Estado" />
+                        <p:column headerText="Fecha Compra" />
+                        <p:column headerText="Fecha Baja" />
+                        <p:column headerText="Precio" />
+                        <p:column headerText="Ubicación" />
+                        <p:column headerText="Localización" />
+                    </p:row> 
+                </p:columnGroup> 
+
+                <p:column>#{pro.categoria.nombre}</p:column> 
+                <p:column>#{pro.marca.nombre}</p:column> 
+                <p:column>#{pro.modelo.nombre}</p:column>  
+                <p:column>#{pro.caracteristicas.hd}</p:column> 
+                <p:column>#{pro.caracteristicas.ram}</p:column>
+                <p:column>#{pro.caracteristicas.procesador}</p:column>  
+                <p:column>#{pro.estado.descripcion}</p:column> 
+                <p:column>#{pro.fecha_compra}</p:column>  
+                <p:column>#{pro.fecha_baja}</p:column> 
+                <p:column>#{pro.precio}</p:column> 
+                <p:column>#{pro.ubicacion}</p:column>
+                <p:column>#{pro.localizacion.descripcion}</p:column>  
+                <p:columnGroup type="footer"> 
+                    <p:row> <p:column colspan="12" style="text-align:left" footerText="Albarregas"/>                             
+                    </p:row>   
+                </p:columnGroup>                   
+            </p:dataTable>
+
+
             <p:growl id="msgs" showDetail="true" />
 
             <p:panel header="Select a Location" style="margin-bottom:10px;">
                 <h:panelGrid columns="2" cellpadding="5">
                     <p:outputLabel for="country" value="Country: " />
                     <p:selectOneMenu id="country" value="#{dropdownView.country}" style="width:150px">
-                        <p:ajax listener="#{dropdownView.onCountryChange}" update="city" />
+                        <p:ajax listener="#{producto.addDatos()}" update="city" />
                         <f:selectItem itemLabel="Select Country" itemValue="" noSelectionOption="true" />
-                        <f:selectItems value="#{dropdownView.countries}" />
+                        <f:selectItems value="#{estancia.allEstancias()}" var="c" itemLabel=" #{c.nombre}" itemValue="#{c.nombre}"/>
                     </p:selectOneMenu>
 
                     <p:outputLabel for="city" value="City: " />
@@ -37,6 +91,12 @@
                         <f:selectItems value="#{dropdownView.cities}" />
                     </p:selectOneMenu>
                 </h:panelGrid>
+
+                <p:selectOneMenu value="#{producto.id}" id="selectClase">
+                    <p:ajax listener="#{producto.addDatos()}" update="tablaProductos"/>
+                    <f:selectItem itemLabel="Select Country" itemValue="" noSelectionOption="true" />
+                    <f:selectItems value="#{estancia.allEstancias()}" var="c" itemLabel=" #{c.nombre}" itemValue="#{c.nombre}"/>
+                </p:selectOneMenu>
 
                 <p:separator />
 
