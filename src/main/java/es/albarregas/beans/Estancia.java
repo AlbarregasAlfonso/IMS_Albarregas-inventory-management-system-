@@ -52,7 +52,7 @@ public class Estancia implements Serializable {
     
     @OneToMany(cascade= CascadeType.ALL)
     @JoinColumn(name="IdEstancia")
-    private List<Localizacion> localizaciones;
+    private List<Producto> productos;
     
     public void oneEstancia() {
         if (this.id > 0) {
@@ -175,15 +175,13 @@ public ArrayList allLocalizacionWhere() {
         this.acondicionado = acondicionado;
     }
 
-    public List<Localizacion> getLocalizaciones() {
-        return localizaciones;
+    public List<Producto> getProductos() {
+        return productos;
     }
 
-    public void setLocalizaciones(List<Localizacion> localizaciones) {
-        this.localizaciones = localizaciones;
+    public void setProductos(List<Producto> productos) {
+        this.productos = productos;
     }
-
- 
 
     public String getMensaje() {
         return mensaje;

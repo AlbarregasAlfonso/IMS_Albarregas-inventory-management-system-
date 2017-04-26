@@ -21,6 +21,19 @@
 
         <h:form>
 
+            <p:growl id="msgs" showDetail="true" />
+
+            <p:panel header="Seleccione un Aula" style="margin-bottom:10px;">
+                <h:panelGrid columns="1" cellpadding="5">
+                    <p:outputLabel for="aula" value="Aulas " />
+                    <p:selectOneMenu id="aula" value="#{estancia.id}" style="width:150px">
+                        <p:ajax listener="#{producto.allProductosWherePorAula(estancia.id)}" update="tablaProductos" />
+                        <f:selectItem itemLabel="Seleccione un Aula" itemValue="" noSelectionOption="true" />
+                        <f:selectItems value="#{estancia.allEstancias()}" var="e" itemLabel=" #{e.nombre}" itemValue="#{e.id}"/>
+                    </p:selectOneMenu>
+                </h:panelGrid>
+                <!--<p:separator />-->
+            </p:panel>
 
 
             <p:dataTable var="pro" value="#{producto.listaProductos}" id="tablaProductos">
@@ -36,7 +49,7 @@
                         <p:column colspan="2" headerText="Fechas" /> 
                         <p:column colspan="1" headerText="Precio" />
                         <p:column colspan="1" headerText="Ubicacion" />
-                        <p:column colspan="1" headerText="Localizacion" />
+                        <p:column colspan="1" headerText="Aula" />
 
                     </p:row>             
                     <p:row>             
@@ -51,7 +64,7 @@
                         <p:column headerText="Fecha Baja" />
                         <p:column headerText="Precio" />
                         <p:column headerText="Ubicación" />
-                        <p:column headerText="Localización" />
+                        <p:column headerText="Aula" />
                     </p:row> 
                 </p:columnGroup> 
 
@@ -64,44 +77,51 @@
                 <p:column>#{pro.estado.descripcion}</p:column> 
                 <p:column>#{pro.fecha_compra}</p:column>  
                 <p:column>#{pro.fecha_baja}</p:column> 
-                <p:column>#{pro.precio}</p:column> 
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Precio"/>
+                    </f:facet>
+                    <h:outputText value="#{pro.precio}" />
+                </p:column>
+
+                <!--<p:column># {pro.precio}</p:column>--> 
                 <p:column>#{pro.ubicacion}</p:column>
-                <p:column>#{pro.localizacion.descripcion}</p:column>  
+                <p:column>#{pro.estancia.nombre}</p:column>  
                 <p:columnGroup type="footer"> 
                     <p:row> <p:column colspan="12" style="text-align:left" footerText="Albarregas"/>                             
                     </p:row>   
                 </p:columnGroup>                   
             </p:dataTable>
 
+            <h:commandLink>
+                <p:graphicImage name="/Imagenes/pdf.jpg" />
+                <p:dataExporter type="pdf" target="tablaProductos" fileName="cars" pageOnly="true" />
+            </h:commandLink>
 
-            <p:growl id="msgs" showDetail="true" />
+            <!--            <p:commandLink >
+                            <p:graphicImage value="images/excel.png" width="48"/>
+                            <p:dataExporter type="xls" target="table" fileName="tablexls" encoding="UTF-8" />
+                        </p:commandLink>-->
 
-            <p:panel header="Select a Location" style="margin-bottom:10px;">
-                <h:panelGrid columns="2" cellpadding="5">
-                    <p:outputLabel for="country" value="Country: " />
-                    <p:selectOneMenu id="country" value="#{dropdownView.country}" style="width:150px">
-                        <p:ajax listener="#{producto.addDatos()}" update="city" />
-                        <f:selectItem itemLabel="Select Country" itemValue="" noSelectionOption="true" />
-                        <f:selectItems value="#{estancia.allEstancias()}" var="c" itemLabel=" #{c.nombre}" itemValue="#{c.nombre}"/>
-                    </p:selectOneMenu>
+            <p:commandLink >
+                <p:graphicImage value="images/excel.png" width="48"/>
+                <p:dataExporter type="xls" target="tablaProductos" fileName="tablexls" encoding="UTF-8" />
+            </p:commandLink>
 
-                    <p:outputLabel for="city" value="City: " />
-                    <p:selectOneMenu id="city" value="#{dropdownView.city}" style="width:150px">
-                        <f:selectItem itemLabel="Select City" itemValue="" noSelectionOption="true" />
-                        <f:selectItems value="#{dropdownView.cities}" />
-                    </p:selectOneMenu>
-                </h:panelGrid>
+            <h:commandLink >
+                <p:graphicImage value="images/custom/excel.png" width="48"/>
+                <p:dataExporter type="xls" target="tablaProductos" fileName="tablexls" encoding="UTF-8" />
+            </h:commandLink>
 
-                <p:selectOneMenu value="#{producto.id}" id="selectClase">
-                    <p:ajax listener="#{producto.addDatos()}" update="tablaProductos"/>
-                    <f:selectItem itemLabel="Select Country" itemValue="" noSelectionOption="true" />
-                    <f:selectItems value="#{estancia.allEstancias()}" var="c" itemLabel=" #{c.nombre}" itemValue="#{c.nombre}"/>
-                </p:selectOneMenu>
+            <p:commandButton value="Export as PDF" ajax="false" >
+                <p:dataExporter type="pdf" target="tablaProductos" fileName="cars"/>
+            </p:commandButton>
 
-                <p:separator />
+            <h:commandLink>
+                <p:graphicImage name="/demo/images/xml.png" width="24"/>
+                <p:dataExporter type="xml" target="tablaProductos" fileName="cars" />
+            </h:commandLink>
 
-                <p:commandButton value="Submit" update="msgs" actionListener="#{dropdownView.displayLocation}" icon="ui-icon-check" />
-            </p:panel>
         </h:form>
     </body>
 </html>

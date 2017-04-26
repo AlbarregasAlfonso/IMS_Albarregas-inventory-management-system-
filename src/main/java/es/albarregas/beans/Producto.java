@@ -22,6 +22,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.primefaces.component.export.DataExporterTagHandler;
+import org.primefaces.component.export.DataExporter;
+
+import org.primefaces.component.picklist.PickList;
+import org.primefaces.component.panel.Panel;
+
+
 
 /**
  *
@@ -51,8 +58,8 @@ public class Producto implements Serializable {
     private String mensaje;
 
     @ManyToOne
-    @JoinColumn(name = "IdLocalizacion")
-    private Localizacion localizacion;
+    @JoinColumn(name = "IdEstancia")
+    private Estancia estancia;
 
     @ManyToOne
     @JoinColumn(name = "IdEstado")
@@ -105,7 +112,7 @@ public class Producto implements Serializable {
         System.out.println("Entramos aqui");
     }
     
-      public ArrayList allProductosWherePorClase(int id) {
+      public ArrayList allProductosWherePorLocalizacion(int id) {
         ArrayList<Producto> productos=null;
         if (id > 0) {
             DAOFactory df = DAOFactory.getDAOFactory();
@@ -117,6 +124,17 @@ public class Producto implements Serializable {
         return productos;
     }
       
+      public ArrayList allProductosWherePorAula(int id) {
+        listaProductos=null;
+        if (id > 0) {
+            DAOFactory df = DAOFactory.getDAOFactory();
+            IGenericoDAO igd = df.getGenericoDAO();
+            
+            listaProductos = (ArrayList<Producto>) igd.ObtenerUno("Producto", " where IdEstancia="+id);
+                       
+        }
+        return listaProductos;
+    }
       
 
     public ArrayList allProductos() {
@@ -162,12 +180,12 @@ public class Producto implements Serializable {
         this.ubicacion = "";
     }
 
-    public Localizacion getLocalizacion() {
-        return localizacion;
+    public Estancia getEstancia() {
+        return estancia;
     }
 
-    public void setLocalizacion(Localizacion localizacion) {
-        this.localizacion = localizacion;
+    public void setEstancia(Estancia estancia) {
+        this.estancia = estancia;
     }
 
     public Estado getEstado() {
@@ -230,6 +248,7 @@ public class Producto implements Serializable {
         return fecha_compra;
     }
 
+    
     public void setFecha_compra(String fecha_compra) {
         this.fecha_compra = fecha_compra;
     }

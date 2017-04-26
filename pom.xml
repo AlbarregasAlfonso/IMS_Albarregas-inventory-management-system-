@@ -54,7 +54,41 @@
     <groupId>org.primefaces</groupId>
     <artifactId>primefaces</artifactId>
     <version>6.0</version>
+    <type>jar</type>
 </dependency>
+
+<!-- para obtener PDF -->
+<dependency>
+    <groupId>com.itextpdf</groupId>
+    <artifactId>itextpdf</artifactId>
+    <version>5.5.10</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/br.com.objectos/xls -->
+<dependency>
+    <groupId>br.com.objectos</groupId>
+    <artifactId>xls</artifactId>
+    <version>0.3.1</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.eclipse.core/runtime -->
+<dependency>
+    <groupId>org.eclipse.core</groupId>
+    <artifactId>runtime</artifactId>
+    <version>3.10.0-v20140318-2214</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+<dependency>
+    <groupId>org.apache.poi</groupId>
+    <artifactId>poi</artifactId>
+    <version>3.15</version>
+</dependency>
+<!-- PDF!!-->
+<dependency>
+    <groupId>com.lowagie</groupId>
+    <artifactId>itext</artifactId>
+    <version>2.1.7</version>
+</dependency>
+
+
 
     </dependencies>
 

@@ -48,7 +48,7 @@ public class Localizacion implements Serializable {
     @OneToMany(cascade= CascadeType.ALL)
     @JoinColumn(name="IdLocalizacion")
 //    @IndexColumn(name="idx")
-    private List<Producto> productos;
+    private List<Estancia> estancias;
     
     @ManyToOne
     @JoinColumn(name = "IdEstancia")
@@ -122,12 +122,12 @@ public class Localizacion implements Serializable {
       
     }
 
-    public List<Producto> getProductos() {
-        return productos;
+    public List<Estancia> getEstancias() {
+        return estancias;
     }
 
-    public void setProductos(List<Producto> productos) {
-        this.productos = productos;
+    public void setEstancias(List<Estancia> estancias) {
+        this.estancias = estancias;
     }
 
     public int getId() {
