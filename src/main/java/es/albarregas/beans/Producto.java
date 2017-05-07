@@ -96,6 +96,7 @@ public class Producto implements Serializable {
 
     }
     
+  
   @PostConstruct
     public void init() {
         DAOFactory df = DAOFactory.getDAOFactory();

@@ -36,7 +36,7 @@
             </p:panel>
 
 
-            <p:dataTable var="pro" value="#{producto.listaProductos}" id="tablaProductos">
+            <p:dataTable var="pro" value="#{producto.listaProductos}" id="tablaProductos" editable="true" editMode="cell" widgetVar="cellProductos">
                 <p:columnGroup type="header">
                     <p:row>
                         <p:column colspan="12" headerText="Productos" />
@@ -86,7 +86,20 @@
 
                 <!--<p:column># {pro.precio}</p:column>--> 
                 <p:column>#{pro.ubicacion}</p:column>
-                <p:column>#{pro.estancia.nombre}</p:column>  
+
+                <p:column headerText="Color">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{pro.estancia.nombre}" /></f:facet>
+                        <f:facet name="input">
+                            <h:selectOneMenu value="#{pro.estancia.nombre}" style="width:100%">
+                                <f:selectItems value="#{estancia.allEstancias()}" var="aula" itemLabel="#{aula.nombre}" itemValue="#{color}" />
+                            </h:selectOneMenu>
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+
+
                 <p:columnGroup type="footer"> 
                     <p:row> <p:column colspan="12" style="text-align:left" footerText="Albarregas"/>                             
                     </p:row>   
@@ -125,3 +138,4 @@
         </h:form>
     </body>
 </html>
+
