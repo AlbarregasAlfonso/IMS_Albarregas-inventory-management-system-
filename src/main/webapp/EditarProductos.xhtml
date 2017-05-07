@@ -37,6 +37,7 @@
 
 
             <p:dataTable var="pro" value="#{producto.listaProductos}" id="tablaProductos" editable="true" editMode="cell" widgetVar="cellProductos">
+                 <p:ajax event="cellEdit" listener="" update="tablaProductos" />
                 <p:columnGroup type="header">
                     <p:row>
                         <p:column colspan="12" headerText="Productos" />

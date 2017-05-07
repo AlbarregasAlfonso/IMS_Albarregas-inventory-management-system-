@@ -163,6 +163,7 @@ public class Producto implements Serializable {
         }
     }
 
+
     public void delDatos() {
         if (this.id > 0) {
             DAOFactory df = DAOFactory.getDAOFactory();
