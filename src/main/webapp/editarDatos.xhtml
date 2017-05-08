@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"   
+      xmlns:ui="http://java.sun.com/jsf/facelets"     
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <head>
+        <h:head>
+            <ui:define name="titulo">
+                <title>Plantillas</title>
+            </ui:define>
+            <title>Inventario</title>
+            <meta charset="utf-8"></meta>
+            <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+        </h:head>
+    </head>
+    <body>
+
+        <h:form>
+            <h:selectOneMenu value="#{producto.id}" id="umenu">
+                <!--                            <f:selectItem itemLabel="# {msj.opcion0}" itemValue="0" />-->
+                <f:selectItems value="#{producto.listaProductos}" var="c" itemLabel="#{c.fecha_compra}" itemValue="#{c.id}"/>
+
+                <f:ajax event="change" render="aula" listener="#{producto.oneProducto()}"/>
+
+            </h:selectOneMenu>
+
+
+            <h:inputText value="#{producto.estancia.nombre}" id="aula" />
+
+
+
+            <h:commandButton value="Actualizar" action="#{producto.updDatos()}" styleClass="boton">
+                <f:ajax render="aula" execute="@form"/>
+            </h:commandButton>
+
+
+
+            <!--<h:inputText value="# {producto.estancia.nombre}" id="nombre1" required="true" requiredMessage="Introduzca el nombre"/>-->
+
+
+            <!--<h:inputText value="# {producto.estancia.nombre}" id="apellidos1" required="true" requiredMessage="Introduzca los apellidos"/>-->
+
+        </h:form>
+    </body>
+</html>
