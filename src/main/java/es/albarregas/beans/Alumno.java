@@ -33,14 +33,23 @@ public class Alumno implements Serializable {
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "IdAlumno")
     private int id;
+    
     private String nombre;
     private String apellidos;
-    private String posicion;
     //Campo usuario y una relación uno a muchos con direcciones
     //Para atributos que no forman parte de la tabla
     @Transient
     private String mensaje;
+    
+    @ManyToOne
+    @JoinColumn(name = "idProducto")
+    private Producto idProducto;
 
+    @ManyToOne
+    @JoinColumn(name = "IdEstancia")
+    private Estancia IdEstancia;
+    
+    
     @ManyToOne
     @JoinColumn(name="IdAulaz")
     public void oneCliente() {
@@ -51,7 +60,6 @@ public class Alumno implements Serializable {
             this.id = cliente.getId();
             this.nombre = cliente.getNombre();
             this.apellidos = cliente.getApellidos();
-            this.posicion = cliente.getPosicion();
         }
 
     }
@@ -95,7 +103,6 @@ public class Alumno implements Serializable {
         this.id = 0;
         this.nombre = "";
         this.apellidos = "";
-        this.posicion = "";
     }
 
     
@@ -124,20 +131,28 @@ public class Alumno implements Serializable {
         this.apellidos = apellidos;
     }
 
-    public String getPosicion() {
-        return posicion;
-    }
-
-    public void setPosicion(String posicion) {
-        this.posicion = posicion;
-    }
-
     public String getMensaje() {
         return mensaje;
     }
 
     public void setMensaje(String mensaje) {
         this.mensaje = mensaje;
+    }
+
+    public Producto getIdProducto() {
+        return idProducto;
+    }
+
+    public void setIdProducto(Producto idProducto) {
+        this.idProducto = idProducto;
+    }
+
+    public Estancia getIdEstancia() {
+        return IdEstancia;
+    }
+
+    public void setIdEstancia(Estancia IdEstancia) {
+        this.IdEstancia = IdEstancia;
     }
 
 }

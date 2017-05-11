@@ -49,6 +49,10 @@ public class Estancia implements Serializable {
 //    @JoinColumn(name="IdLocalizacion")
 ////    @IndexColumn(name="idx")
 //    private List<Alumno> correosElectronicos;
+     @OneToMany(cascade= CascadeType.ALL)
+    @JoinColumn(name="IdEstancia")
+//    @IndexColumn(name="idx")
+    private List<Alumno> Alumnos;
     
     @OneToMany(cascade= CascadeType.ALL)
     @JoinColumn(name="IdEstancia")

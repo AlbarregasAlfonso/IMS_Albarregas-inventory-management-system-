@@ -9,9 +9,11 @@ import es.albarregas.dao.IGenericoDAO;
 import es.albarregas.daofactory.DAOFactory;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,6 +21,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -81,6 +84,11 @@ public class Producto implements Serializable {
     @JoinColumn(name = "IdCategoria")
     private Categoria categoria;
 
+    @OneToMany(cascade= CascadeType.ALL)
+    @JoinColumn(name="idProducto")
+//    @IndexColumn(name="idx")
+    private List<Alumno> Alumnos;
+    
     public void oneProducto() {
         if (this.id > 0) {
             DAOFactory df = DAOFactory.getDAOFactory();
@@ -93,13 +101,13 @@ public class Producto implements Serializable {
             this.precio = producto.getPrecio();
             this.estancia = producto.getEstancia();
             this.caracteristicas = producto.getCaracteristicas();
-            this.categoria = producto.getCategoria();
-            this.estado=producto.getEstado();
-            this.ubicacion= producto.getUbicacion();
-            this.modelo = producto.getModelo();
-            this.marca = producto.getMarca();
-            
-            
+//            this.categoria = producto.getCategoria();
+//            this.estado=producto.getEstado();
+//            this.ubicacion= producto.getUbicacion();
+//            this.modelo = producto.getModelo();
+//            this.marca = producto.getMarca();
+//            
+//            
         }
 
     }
