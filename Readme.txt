@@ -1,0 +1,1 @@
+14/05/2017: 	Estamos intentando sacar los ordenadores que tienen cada alumno
