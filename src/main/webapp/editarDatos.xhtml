@@ -24,18 +24,18 @@
                 <!--                            <f:selectItem itemLabel="# {msj.opcion0}" itemValue="0" />-->
                 <f:selectItems value="#{producto.listaProductos}" var="c" itemLabel="#{c.fecha_compra}" itemValue="#{c.id}"/>
 
-                <f:ajax event="change" render="aula idProducto idEstancia idModelo idEstancia idEstado" listener="#{producto.oneProducto()}"/>
+                <f:ajax event="change" render="aula idProducto idEstancia idModelo idEstancia idEstado idCaracteristica" listener="#{producto.oneProducto()}"/>
 
             </h:selectOneMenu>
 
 
-            <h:inputText style="visibility:hidden" value="#{producto.id}" id="idProducto"/>
-            <h:inputText style="visibility:hidden" value="#{producto.caracteristicas.id}" id="idCaracteristica"/>
-            <h:inputText style="visibility:hidden" value="#{producto.marca.id}" id="idMarca"/>
-            <h:inputText style="visibility:hidden" value="#{producto.modelo.id}" id="idModelo"/>
-            <h:inputText style="visibility:hidden" value="#{producto.estancia.id}" id="idEstancia"/>
-            <h:inputText style="visibility:hidden" value="#{producto.estado.id}" id="idEstado"/>    
-            <h:inputText style="visibility:hidden" value="#{producto.categoria.id}" id="idCategoria"/>
+<!--            <h:inputText style="visibility:hidden" value="# {producto.id}" id="idProducto"/>
+            <h:inputText style="visibility:hidden" value="# {producto.caracteristicas.id}" id="idCaracteristica"/>
+            <h:inputText style="visibility:hidden" value="# {producto.marca.id}" id="idMarca"/>
+            <h:inputText style="visibility:hidden" value="# {producto.modelo.id}" id="idModelo"/>
+            <h:inputText style="visibility:hidden" value="# {producto.estancia.id}" id="idEstancia"/>
+            <h:inputText style="visibility:hidden" value="# {producto.estado.id}" id="idEstado"/>    
+            <h:inputText style="visibility:hidden" value="# {producto.categoria.id}" id="idCategoria"/>-->
 
             <h:selectOneMenu value="#{producto.estancia.id}" id="aula">
                 <f:selectItems value="#{estancia.allEstancias()}" var="c" itemLabel="#{c.nombre}" itemValue="#{c.id}"/>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"   
+      xmlns:ui="http://java.sun.com/jsf/facelets"     
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <head>
+        <h:head>
+            <ui:define name="titulo">
+                <title>Plantillas</title>
+            </ui:define>
+            <title>Inventario</title>
+            <meta charset="utf-8"></meta>
+            <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+        </h:head>
+    </head>
+    <body>
+
+        <h:form>
+            <h:panelGrid columns="2" cellpadding="5">
+                <h:outputLabel for="menu" value="Basic:" />
+                <p:selectCheckboxMenu id="menu" value="#{alumno.listaNombreAlumnos}" label="Alumnos" filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
+                    <f:selectItems value="#{alumno.listaNombreAlumnos}"/>
+                </p:selectCheckboxMenu>
+            </h:panelGrid>
+
+            <p:dialog header="Selected Cities" modal="true" showEffect="fade" hideEffect="fade" widgetVar="cityDialog" width="250">
+                <p:outputPanel id="displayCities">
+                    <p:dataList value="#{checkboxView.selectedCities}" var="city" emptyMessage="No cities selected" style="margin-bottom: 10px;">
+                        <f:facet name="header">
+                            Basic
+                        </f:facet>
+                        #{alumno.nombre}
+                    </p:dataList>
+                </p:outputPanel>
+            </p:dialog>
+        </h:form>
+    </body>
+</html>

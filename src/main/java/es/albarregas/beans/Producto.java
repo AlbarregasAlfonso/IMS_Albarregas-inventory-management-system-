@@ -101,13 +101,12 @@ public class Producto implements Serializable {
             this.precio = producto.getPrecio();
             this.estancia = producto.getEstancia();
             this.caracteristicas = producto.getCaracteristicas();
-//            this.categoria = producto.getCategoria();
-//            this.estado=producto.getEstado();
-//            this.ubicacion= producto.getUbicacion();
-//            this.modelo = producto.getModelo();
-//            this.marca = producto.getMarca();
-//            
-//            
+            this.categoria = producto.getCategoria();
+            this.estado=producto.getEstado();
+            this.ubicacion= producto.getUbicacion();
+            this.modelo = producto.getModelo();
+            this.marca = producto.getMarca();       
+            
         }
 
     }

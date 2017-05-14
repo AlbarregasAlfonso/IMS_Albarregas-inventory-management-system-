@@ -9,6 +9,7 @@ import es.albarregas.dao.IGenericoDAO;
 import es.albarregas.daofactory.DAOFactory;
 import java.io.Serializable;
 import java.util.ArrayList;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,7 +26,7 @@ import javax.persistence.Transient;
  * @author Alfonso
  */
 @Entity
-@ManagedBean(name = "Alumno")
+@ManagedBean(name = "alumno")
 @Table(name = "Alumno")
 public class Alumno implements Serializable {
 
@@ -33,49 +34,50 @@ public class Alumno implements Serializable {
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "IdAlumno")
     private int id;
-    
+
     private String nombre;
     private String apellidos;
     //Campo usuario y una relación uno a muchos con direcciones
     //Para atributos que no forman parte de la tabla
     @Transient
     private String mensaje;
-    
+    static ArrayList<Alumno> listaAlumnos = new ArrayList<Alumno>();
+    static ArrayList<String> listaNombreAlumnos = new ArrayList<String>();
+
     @ManyToOne
-    @JoinColumn(name = "idProducto")
-    private Producto idProducto;
+    @JoinColumn(name = "idAlumno")
+    private Alumno idAlumno;
 
     @ManyToOne
     @JoinColumn(name = "IdEstancia")
     private Estancia IdEstancia;
-    
-    
+
     @ManyToOne
-    @JoinColumn(name="IdAulaz")
-    public void oneCliente() {
+    @JoinColumn(name = "IdAulaz")
+    public void oneAlumno() {
         if (this.id > 0) {
             DAOFactory df = DAOFactory.getDAOFactory();
             IGenericoDAO igd = df.getGenericoDAO();
-            Alumno cliente = (Alumno) igd.getOne(this.id, Alumno.class);
-            this.id = cliente.getId();
-            this.nombre = cliente.getNombre();
-            this.apellidos = cliente.getApellidos();
+            Alumno alumno = (Alumno) igd.getOne(this.id, Alumno.class);
+            this.id = alumno.getId();
+            this.nombre = alumno.getNombre();
+            this.apellidos = alumno.getApellidos();
         }
 
     }
 
-    public ArrayList allClientes() {
+    public ArrayList allAlumnos() {
         DAOFactory df = DAOFactory.getDAOFactory();
         IGenericoDAO igd = df.getGenericoDAO();
-        ArrayList listaClientes = (ArrayList<Alumno>) igd.get("Cliente");
-        return listaClientes;
+        ArrayList listaAlumnos = (ArrayList<Alumno>) igd.get("Alumno");
+        return listaAlumnos;
     }
 
     public void addDatos() {
         DAOFactory df = DAOFactory.getDAOFactory();
         IGenericoDAO igd = df.getGenericoDAO();
-        igd.add(Alumno.this); //Cliente.this = this
-        this.mensaje = "Se ha añadido correctamente el cliente " + this.nombre + " " + this.apellidos;
+        igd.add(Alumno.this); //Alumno.this = this
+        this.mensaje = "Se ha añadido correctamente el alumno " + this.nombre + " " + this.apellidos;
         borrarTodo();
     }
 
@@ -83,8 +85,8 @@ public class Alumno implements Serializable {
         if (this.id > 0) {
             DAOFactory df = DAOFactory.getDAOFactory();
             IGenericoDAO igd = df.getGenericoDAO();
-            igd.update(Alumno.this); //Cliente.this = this
-            this.mensaje = "Se ha actualizado correctamente el cliente con id = " + this.id;
+            igd.update(Alumno.this); //Alumno.this = this
+            this.mensaje = "Se ha actualizado correctamente el alumno con id = " + this.id;
             borrarTodo();
         }
     }
@@ -93,8 +95,8 @@ public class Alumno implements Serializable {
         if (this.id > 0) {
             DAOFactory df = DAOFactory.getDAOFactory();
             IGenericoDAO igd = df.getGenericoDAO();
-            igd.delete(Alumno.this); //Cliente.this = this
-            this.mensaje = "Se ha eliminado correctamente el cliente con id = " + this.id;
+            igd.delete(Alumno.this); //Alumno.this = this
+            this.mensaje = "Se ha eliminado correctamente el alumno con id = " + this.id;
             borrarTodo();
         }
     }
@@ -105,8 +107,19 @@ public class Alumno implements Serializable {
         this.apellidos = "";
     }
 
-    
-    
+    @PostConstruct
+    public void init() {
+        DAOFactory df = DAOFactory.getDAOFactory();
+        IGenericoDAO igd = df.getGenericoDAO();
+        listaAlumnos = (ArrayList<Alumno>) igd.get("Alumno");
+
+//        if (listaAlumnos.size()==0) {
+            for (Alumno a : listaAlumnos) {
+                listaNombreAlumnos.add(a.nombre);
+            }
+//        }
+    }
+
     public int getId() {
         return id;
     }
@@ -139,12 +152,12 @@ public class Alumno implements Serializable {
         this.mensaje = mensaje;
     }
 
-    public Producto getIdProducto() {
-        return idProducto;
+    public Alumno getIdAlumno() {
+        return idAlumno;
     }
 
-    public void setIdProducto(Producto idProducto) {
-        this.idProducto = idProducto;
+    public void setIdAlumno(Alumno idAlumno) {
+        this.idAlumno = idAlumno;
     }
 
     public Estancia getIdEstancia() {
@@ -153,6 +166,22 @@ public class Alumno implements Serializable {
 
     public void setIdEstancia(Estancia IdEstancia) {
         this.IdEstancia = IdEstancia;
+    }
+
+    public ArrayList<Alumno> getListaAlumnos() {
+        return listaAlumnos;
+    }
+
+    public void setListaAlumnos(ArrayList<Alumno> listaAlumnos) {
+        Alumno.listaAlumnos = listaAlumnos;
+    }
+
+    public ArrayList<String> getListaNombreAlumnos() {
+        return listaNombreAlumnos;
+    }
+
+    public void setListaNombreAlumnos(ArrayList<String> listaNombreAlumnos) {
+        Alumno.listaNombreAlumnos = listaNombreAlumnos;
     }
 
 }
