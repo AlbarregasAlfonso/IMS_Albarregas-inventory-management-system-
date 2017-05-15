@@ -20,23 +20,108 @@
     <body>
 
         <h:form>
-            <h:panelGrid columns="2" cellpadding="5">
-                <h:outputLabel for="menu" value="Basic:" />
-                <p:selectCheckboxMenu id="menu" value="#{alumno.listaNombreAlumnos}" label="Alumnos" filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
-                    <f:selectItems value="#{alumno.listaNombreAlumnos}"/>
-                </p:selectCheckboxMenu>
-            </h:panelGrid>
 
-            <p:dialog header="Selected Cities" modal="true" showEffect="fade" hideEffect="fade" widgetVar="cityDialog" width="250">
-                <p:outputPanel id="displayCities">
-                    <p:dataList value="#{checkboxView.selectedCities}" var="city" emptyMessage="No cities selected" style="margin-bottom: 10px;">
-                        <f:facet name="header">
-                            Basic
-                        </f:facet>
-                        #{alumno.nombre}
-                    </p:dataList>
-                </p:outputPanel>
-            </p:dialog>
+            <p:growl id="msgs" showDetail="true" />
+
+            <p:panel header="Seleccione un Aula" style="margin-bottom:10px;">
+                <h:panelGrid columns="1" cellpadding="5">
+                    <p:outputLabel for="aula" value="Aulas " />
+                    <p:selectOneMenu id="aula" value="#{alumno.id}" style="width:150px">
+                        <p:ajax listener="#{producto.allProductosWherePorAlumno(alumno.id)}" update="tablaProductos" />
+                        <f:selectItem itemLabel="Seleccione un Aula" itemValue="" noSelectionOption="true" />
+                        <f:selectItems value="#{alumno.listaAlumnos}" var="e" itemLabel=" #{e.nombre}" itemValue="#{e.producto.id}"/>
+                    </p:selectOneMenu>
+                </h:panelGrid>
+                <!--<p:separator />-->
+            </p:panel>
+
+
+            <p:dataTable var="pro" value="#{producto.listaProductos}" id="tablaProductos">
+                <p:columnGroup type="header">
+                    <p:row>
+                        <p:column colspan="12" headerText="Productos" />
+                    </p:row>             
+                    <p:row>                    
+                        <p:column colspan="1" headerText="Categoria" />             
+                        <p:column colspan="2" headerText="Producto" />             
+                        <p:column colspan="3" headerText="Caracteristicas" />             
+                        <p:column colspan="1" headerText="Estado" />             
+                        <p:column colspan="2" headerText="Fechas" /> 
+                        <p:column colspan="1" headerText="Precio" />
+                        <p:column colspan="1" headerText="Ubicacion" />
+                        <p:column colspan="1" headerText="Aula" />
+
+                    </p:row>             
+                    <p:row>             
+                        <p:column headerText="Categoría" />              
+                        <p:column headerText="Marca" />              
+                        <p:column headerText="Modelo" />             
+                        <p:column headerText="Disco Duro" />    
+                        <p:column headerText="Ram" />
+                        <p:column headerText="Procesador" />
+                        <p:column headerText="Estado" />
+                        <p:column headerText="Fecha Compra" />
+                        <p:column headerText="Fecha Baja" />
+                        <p:column headerText="Precio" />
+                        <p:column headerText="Ubicación" />
+                        <p:column headerText="Aula" />
+                    </p:row> 
+                </p:columnGroup> 
+
+                <p:column>#{pro.categoria.nombre}</p:column> 
+                <p:column>#{pro.marca.nombre}</p:column> 
+                <p:column>#{pro.modelo.nombre}</p:column>  
+                <p:column>#{pro.caracteristicas.hd}</p:column> 
+                <p:column>#{pro.caracteristicas.ram}</p:column>
+                <p:column>#{pro.caracteristicas.procesador}</p:column>  
+                <p:column>#{pro.estado.descripcion}</p:column> 
+                <p:column>#{pro.fecha_compra}</p:column>  
+                <p:column>#{pro.fecha_baja}</p:column> 
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Precio"/>
+                    </f:facet>
+                    <h:outputText value="#{pro.precio}" />
+                </p:column>
+
+                <!--<p:column># {pro.precio}</p:column>--> 
+                <p:column>#{pro.ubicacion}</p:column>
+                <p:column>#{pro.estancia.nombre}</p:column>  
+                <p:columnGroup type="footer"> 
+                    <p:row> <p:column colspan="12" style="text-align:left" footerText="Albarregas"/>                             
+                    </p:row>   
+                </p:columnGroup>                   
+            </p:dataTable>
+
+            <h:commandLink>
+                <p:graphicImage name="/Imagenes/pdf.jpg" />
+                <p:dataExporter type="pdf" target="tablaProductos" fileName="cars" pageOnly="true" />
+            </h:commandLink>
+
+            <!--            <p:commandLink >
+                            <p:graphicImage value="images/excel.png" width="48"/>
+                            <p:dataExporter type="xls" target="table" fileName="tablexls" encoding="UTF-8" />
+                        </p:commandLink>-->
+
+            <p:commandLink >
+                <p:graphicImage value="images/excel.png" width="48"/>
+                <p:dataExporter type="xls" target="tablaProductos" fileName="tablexls" encoding="UTF-8" />
+            </p:commandLink>
+
+            <h:commandLink >
+                <p:graphicImage value="images/custom/excel.png" width="48"/>
+                <p:dataExporter type="xls" target="tablaProductos" fileName="tablexls" encoding="UTF-8" />
+            </h:commandLink>
+
+            <p:commandButton value="Export as PDF" ajax="false" >
+                <p:dataExporter type="pdf" target="tablaProductos" fileName="cars"/>
+            </p:commandButton>
+
+            <h:commandLink>
+                <p:graphicImage name="/demo/images/xml.png" width="24"/>
+                <p:dataExporter type="xml" target="tablaProductos" fileName="cars" />
+            </h:commandLink>
+
         </h:form>
     </body>
 </html>

@@ -45,12 +45,12 @@ public class Alumno implements Serializable {
     static ArrayList<String> listaNombreAlumnos = new ArrayList<String>();
 
     @ManyToOne
-    @JoinColumn(name = "idAlumno")
-    private Alumno idAlumno;
+    @JoinColumn(name = "idProducto")
+    private Producto Producto;
 
     @ManyToOne
     @JoinColumn(name = "IdEstancia")
-    private Estancia IdEstancia;
+    private Estancia Estancia;
 
     @ManyToOne
     @JoinColumn(name = "IdAulaz")
@@ -152,20 +152,22 @@ public class Alumno implements Serializable {
         this.mensaje = mensaje;
     }
 
-    public Alumno getIdAlumno() {
-        return idAlumno;
+    public Producto getIdProducto() {
+        return Producto;
     }
 
-    public void setIdAlumno(Alumno idAlumno) {
-        this.idAlumno = idAlumno;
+    public void setIdProducto(Producto idProducto) {
+        this.Producto = idProducto;
     }
+
+   
 
     public Estancia getIdEstancia() {
-        return IdEstancia;
+        return Estancia;
     }
 
     public void setIdEstancia(Estancia IdEstancia) {
-        this.IdEstancia = IdEstancia;
+        this.Estancia = IdEstancia;
     }
 
     public ArrayList<Alumno> getListaAlumnos() {
@@ -184,4 +186,21 @@ public class Alumno implements Serializable {
         Alumno.listaNombreAlumnos = listaNombreAlumnos;
     }
 
+    public Producto getProducto() {
+        return Producto;
+    }
+
+    public void setProducto(Producto Producto) {
+        this.Producto = Producto;
+    }
+
+    public Estancia getEstancia() {
+        return Estancia;
+    }
+
+    public void setEstancia(Estancia Estancia) {
+        this.Estancia = Estancia;
+    }
+
+    
 }

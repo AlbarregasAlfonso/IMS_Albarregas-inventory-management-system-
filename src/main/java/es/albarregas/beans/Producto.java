@@ -152,6 +152,16 @@ public class Producto implements Serializable {
         return listaProductos;
     }
       
+       public ArrayList allProductosWherePorAlumno(int id) {
+        listaProductos=null;
+        if (id > 0) {
+            DAOFactory df = DAOFactory.getDAOFactory();
+            IGenericoDAO igd = df.getGenericoDAO();          
+            listaProductos = (ArrayList<Producto>) igd.ObtenerUno("Producto", " where IdProducto="+id);                       
+        }
+        return listaProductos;
+    }
+      
 
     public ArrayList allProductos() {
         DAOFactory df = DAOFactory.getDAOFactory();
@@ -300,6 +310,14 @@ public class Producto implements Serializable {
 
     public void setListaProductos(ArrayList<Producto> listaProductos) {
         this.listaProductos = listaProductos;
+    }
+
+    public List<Alumno> getAlumnos() {
+        return Alumnos;
+    }
+
+    public void setAlumnos(List<Alumno> Alumnos) {
+        this.Alumnos = Alumnos;
     }
 
 
