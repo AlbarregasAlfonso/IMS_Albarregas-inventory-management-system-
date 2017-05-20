@@ -43,14 +43,14 @@ public class Alumno implements Serializable {
     private String mensaje;
     static ArrayList<Alumno> listaAlumnos = new ArrayList<Alumno>();
     static ArrayList<String> listaNombreAlumnos = new ArrayList<String>();
-
+   
     @ManyToOne
     @JoinColumn(name = "idProducto")
-    private Producto Producto;
+    private Producto producto;
 
     @ManyToOne
     @JoinColumn(name = "IdEstancia")
-    private Estancia Estancia;
+    private Estancia estancia;
 
     @ManyToOne
     @JoinColumn(name = "IdAulaz")
@@ -62,6 +62,8 @@ public class Alumno implements Serializable {
             this.id = alumno.getId();
             this.nombre = alumno.getNombre();
             this.apellidos = alumno.getApellidos();
+            this.estancia = alumno.getEstancia();
+            this.producto = alumno.getProducto();
         }
 
     }
@@ -88,9 +90,9 @@ public class Alumno implements Serializable {
             igd.update(Alumno.this); //Alumno.this = this
             this.mensaje = "Se ha actualizado correctamente el alumno con id = " + this.id;
             borrarTodo();
+            listaAlumnos = (ArrayList<Alumno>) igd.get("Alumno");
         }
     }
-
     public void delDatos() {
         if (this.id > 0) {
             DAOFactory df = DAOFactory.getDAOFactory();
@@ -112,7 +114,7 @@ public class Alumno implements Serializable {
         DAOFactory df = DAOFactory.getDAOFactory();
         IGenericoDAO igd = df.getGenericoDAO();
         listaAlumnos = (ArrayList<Alumno>) igd.get("Alumno");
-
+        
 //        if (listaAlumnos.size()==0) {
             for (Alumno a : listaAlumnos) {
                 listaNombreAlumnos.add(a.nombre);
@@ -152,22 +154,28 @@ public class Alumno implements Serializable {
         this.mensaje = mensaje;
     }
 
-    public Producto getIdProducto() {
-        return Producto;
+    public static ArrayList<String> getListaNombreAlumnos() {
+        return listaNombreAlumnos;
     }
 
-    public void setIdProducto(Producto idProducto) {
-        this.Producto = idProducto;
+    public static void setListaNombreAlumnos(ArrayList<String> listaNombreAlumnos) {
+        Alumno.listaNombreAlumnos = listaNombreAlumnos;
     }
 
-   
-
-    public Estancia getIdEstancia() {
-        return Estancia;
+    public Producto getProducto() {
+        return producto;
     }
 
-    public void setIdEstancia(Estancia IdEstancia) {
-        this.Estancia = IdEstancia;
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
+
+    public Estancia getEstancia() {
+        return estancia;
+    }
+
+    public void setEstancia(Estancia estancia) {
+        this.estancia = estancia;
     }
 
     public ArrayList<Alumno> getListaAlumnos() {
@@ -178,29 +186,4 @@ public class Alumno implements Serializable {
         Alumno.listaAlumnos = listaAlumnos;
     }
 
-    public ArrayList<String> getListaNombreAlumnos() {
-        return listaNombreAlumnos;
     }
-
-    public void setListaNombreAlumnos(ArrayList<String> listaNombreAlumnos) {
-        Alumno.listaNombreAlumnos = listaNombreAlumnos;
-    }
-
-    public Producto getProducto() {
-        return Producto;
-    }
-
-    public void setProducto(Producto Producto) {
-        this.Producto = Producto;
-    }
-
-    public Estancia getEstancia() {
-        return Estancia;
-    }
-
-    public void setEstancia(Estancia Estancia) {
-        this.Estancia = Estancia;
-    }
-
-    
-}
