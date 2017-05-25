@@ -2,23 +2,19 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:mio="http://java.sun.com/jsf/composite/components"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <h:head>
         <ui:define name="titulo">
             <title>Plantillas</title>
         </ui:define>
-        <title>Inventario</title>
-        <meta charset="utf-8"></meta>
-        <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
-        <!--<link rel="stylesheet" href="CSS/estilo.css"></link>-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"></link>
+        <h:outputStylesheet library="css" name="style.css"  />
     </h:head>
     <h:body>
         <ui:decorate template="/resources/plantilla/template.xhtml">
@@ -27,10 +23,126 @@
             </ui:define>
 
             <ui:define name="content">
-                <h2>Contenido de la página</h2>
+                <div id="panelPrincipal">Contenido de la página</div>
             </ui:define>
+            <div id="panelPrincipal">
+                <p>cosas</p>
+            </div>
         </ui:decorate>
 
+
+
+
+
+
+        <div  class="container">
+            <div class="row">
+                <div class="col-md-3">
+                </div>
+
+                <div class="col-md-9">
+                    <div  id="panelPrincipal" class="panel panel-primary">
+                        <!--      <div class="panel-heading">
+                                Tutorial de Bootstrap
+                              </div>
+                        -->
+                        <div class="panel-body">
+
+
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="panel panel-primary">
+                                        <div class="panel-heading">
+                                            <span style="size: 20px" class="glyphicon glyphicon-search"></span>
+                                        </div>
+                                        <div class="panel-body">
+                                            <a href="http://www.cssya.com.ar/bootstrapya">El tutorial consta de más de 40 conceptos.</a>
+                                        </div>
+                                        <div class="panel-footer">
+                                            Bootstrap
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="panel panel-success">
+                                        <div class="panel-heading">
+                                            Tutorial de Bootstrap
+                                        </div>
+                                        <div class="panel-body">
+                                            <a href="http://www.cssya.com.ar/bootstrapya">El tutorial consta de más de 40 conceptos.</a>
+                                        </div>
+                                        <div class="panel-footer">
+                                            Bootstrap
+                                        </div>
+                                    </div></div>
+                                <div class="col-md-4">
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">
+                                            Tutorial de Bootstrap
+                                        </div>
+                                        <div class="panel-body">
+                                            <a href="http://www.cssya.com.ar/bootstrapya">El tutorial consta de más de 40 conceptos.</a>
+                                        </div>
+                                        <div class="panel-footer">
+                                            Bootstrap
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="panel panel-primary">
+                                        <div class="panel-heading">
+                                            Tutorial de Bootstrap
+                                        </div>
+                                        <div class="panel-body">
+                                            <a href="http://www.cssya.com.ar/bootstrapya">El tutorial consta de más de 40 conceptos.</a>
+                                        </div>
+                                        <div class="panel-footer">
+                                            Bootstrap
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="panel panel-success">
+                                        <div class="panel-heading">
+                                            Tutorial de Bootstrap
+                                        </div>
+                                        <div class="panel-body">
+                                            <a href="http://www.cssya.com.ar/bootstrapya">El tutorial consta de más de 40 conceptos.</a>
+                                        </div>
+                                        <div class="panel-footer">
+                                            Bootstrap
+                                        </div>
+                                    </div></div>
+                                <div class="col-md-4">
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">
+                                            Tutorial de Bootstrap
+                                        </div>
+                                        <div class="panel-body">
+                                            <a href="http://www.cssya.com.ar/bootstrapya">El tutorial consta de más de 40 conceptos.</a>
+                                        </div>
+                                        <div class="panel-footer">
+                                            Bootstrap
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--    <div class="panel-footer">
+                                 Bootstrap
+                               </div> -->
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>  
     </h:body>
 
 </html>

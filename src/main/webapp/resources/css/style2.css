@@ -1,0 +1,79 @@
+body {
+    background-image: url("../../Imagenes/Fondo.png");
+}
+
+#panelPrincipal{
+    background: rgba(255,255,255,0.5);
+}
+
+#cargando{
+    position: absolute;
+    top: 48%;
+    left: 48%;
+}
+
+.glyphicon {
+    font-size: 50px;
+}
+
+#equiposporaula:hover, #equiposporaula:active {
+    animation-name: example;
+    animation-duration: 4s;
+}
+
+@keyframes example {
+    25%  {background-color: green;}
+}
+
+i#socialIco:hover {
+    animation-name: exampleIco;
+    animation-duration: 4s;
+}
+
+@keyframes exampleIco {
+    25%  {color: green;}
+}
+
+#subFooter{
+    position: fixed;
+    left: 0%;
+    bottom: 20%;
+    height: 5%;
+    width: 100%;
+    background: rgba(255,255,255,0.8);
+
+
+}
+
+footer{
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    height: 20%;
+    width: 100%;
+    background: rgba(255,255,255,0.6);
+}
+
+#redes{
+    width: 9%;
+    padding: 0.5%;
+}
+
+#Panelredes{
+    position: absolute;
+    top: 15%;
+    left: 42%;
+}
+
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    padding: 5px;
+    -moz-osx-font-smoothing: grayscale;
+}
+li{
+    list-style:none;
+}
