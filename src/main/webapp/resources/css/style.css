@@ -1,14 +1,14 @@
-body{
+/*body{
     background-image: url("../../Imagenes/Fondo.png");
     background-position: center center;
 
-    /*background-color: #FFFFCC;*/
+    background-color: #FFFFCC;
 }
-/*#panelPrincipal{
+#panelPrincipal{
     width: 20%;  
     background-color: #ffffff;
      opacity: 0.5;
-}*/
+}
 #panelPrincipal{
    background: rgba(255,255,255,0.8);
-}
+}*/

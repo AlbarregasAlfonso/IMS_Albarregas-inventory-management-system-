@@ -6,17 +6,13 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core">
 
-    <head>
-        <h:head>
-            <ui:define name="titulo">
-                <title>Plantillas</title>
-            </ui:define>
-            <title>Inventario</title>
-            <meta charset="utf-8"></meta>
-            <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-        </h:head>
-    </head>
-    <body>
+   
+      <h:head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"/>
+    </h:head>
+
+    <h:body>
+        <ui:decorate template="/resources/plantilla/template.xhtml"/>
 
         <h:form>
 
@@ -27,7 +23,7 @@
                     <p:outputLabel for="aula" value="Aulas " />
                     <p:selectOneMenu id="aula" value="#{estancia.id}" style="width:150px">
                         <p:ajax listener="#{producto.allProductosWherePorAula(estancia.id)}" update="tablaProductos" />
-                        <f:selectItem itemLabel="Seleccione un Aula" itemValue="" noSelectionOption="true" />
+                        <f:selectItem itemLabel="Seleccione aula" itemValue="" noSelectionOption="true" />
                         <f:selectItems value="#{estancia.allEstancias()}" var="e" itemLabel=" #{e.nombre}" itemValue="#{e.id}"/>
                     </p:selectOneMenu>
                 </h:panelGrid>
@@ -122,5 +118,5 @@
             </h:commandLink>
 
         </h:form>
-    </body>
+    </h:body>   
 </html>
