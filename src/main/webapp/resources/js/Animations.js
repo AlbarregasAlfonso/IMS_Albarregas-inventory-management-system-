@@ -2,9 +2,9 @@
 
 $(document).ready(function () {
 
-$("#probemos").click(function(){
-   alert("funciona"); 
-});
+    $("#probemos").click(function () {
+        alert("funciona");
+    });
 
     window.onload = funcion_primera;
     function funcion_primera() {
@@ -33,10 +33,14 @@ $("#probemos").click(function(){
     });
 
     function cambiarVentana() {
-        $("span").fadeOut("slow");;
-        $("#panelPrincipal").fadeOut("slow");;
-        $("#escudo").fadeOut("slow");;
-        $("#subFooter").fadeOut("slow");;
+        $("span").fadeOut("slow");
+        ;
+        $("#panelPrincipal").fadeOut("slow");
+        ;
+        $("#escudo").fadeOut("slow");
+        ;
+        $("#subFooter").fadeOut("slow");
+        ;
         window.location("OrdenadorYAlumno.xhtml");
     }
     function descargariconos() {
@@ -44,13 +48,9 @@ $("#probemos").click(function(){
         $("#subFooter").fadeIn(1500)
     }
 
-});
 
-var app = angular.module('appWeb', []);
-var botonPulsado = 0;
-
-
-app.controller('controladorPractica', function ($scope) {
 
 
 });
+
+
