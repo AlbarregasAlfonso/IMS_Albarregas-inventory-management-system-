@@ -43,10 +43,10 @@ public class Estado implements Serializable {
     @Transient
     private String mensaje;
 
-    @OneToMany(cascade= CascadeType.ALL)
-    @JoinColumn(name="IdEstado")
-//    @IndexColumn(name="idx")
-    private List<Producto> productos;
+//    @OneToMany(cascade= CascadeType.ALL)
+//    @JoinColumn(name="IdEstado")
+////    @IndexColumn(name="idx")
+//    private List<Producto> productos;
     
     public void oneEstado() {
         if (this.id > 0) {
@@ -100,13 +100,13 @@ public class Estado implements Serializable {
         this.descripcion = "";
     }
 
-    public List<Producto> getProductos() {
-        return productos;
-    }
-
-    public void setProductos(List<Producto> productos) {
-        this.productos = productos;
-    }
+//    public List<Producto> getProductos() {
+//        return productos;
+//    }
+//
+//    public void setProductos(List<Producto> productos) {
+//        this.productos = productos;
+//    }
 
     public int getId() {
         return id;

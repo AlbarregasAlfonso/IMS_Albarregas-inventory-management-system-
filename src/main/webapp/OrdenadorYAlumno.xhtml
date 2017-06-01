@@ -20,10 +20,10 @@
             <p:panel header="Seleccione un Aula" style="margin-bottom:10px;">
                 <h:panelGrid columns="1" cellpadding="5">
                     <p:outputLabel for="aula" value="Aulas " />
-                    <p:selectOneMenu id="aula" value="#{alumno.id}" style="width:150px">
-                        <p:ajax listener="#{producto.allProductosWherePorAlumno(alumno.id)}" update="tablaProductos" />
+                    <p:selectOneMenu id="aula" value="#{alumnos.id}" style="width:150px">
+                        <p:ajax listener="#{producto.allProductosWherePorAlumno(alumnos.id)}" update="tablaProductos" />
                         <f:selectItem itemLabel="Seleccione un Aula" itemValue="" noSelectionOption="true" />
-                        <f:selectItems value="#{alumno.listaAlumnos}" var="e" itemLabel=" #{e.nombre}" itemValue="#{e.producto.id}"/>
+                        <f:selectItems value="#{alumnos.allalumnos()}" var="e" itemLabel=" #{e.nombre}" itemValue="#{e.producto.id}"/>
                     </p:selectOneMenu>
                 </h:panelGrid>
                 <!--<p:separator />-->

@@ -8,7 +8,10 @@ package es.albarregas.beans;
 import es.albarregas.dao.IGenericoDAO;
 import es.albarregas.daofactory.DAOFactory;
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -24,14 +27,15 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import org.primefaces.component.export.DataExporterTagHandler;
 import org.primefaces.component.export.DataExporter;
 
 import org.primefaces.component.picklist.PickList;
 import org.primefaces.component.panel.Panel;
-
-
 
 /**
  *
@@ -53,8 +57,7 @@ public class Producto implements Serializable {
     private float precio;
     static ArrayList<Producto> listaProductos = new ArrayList<Producto>();
 //    ArrayList<Producto> listaProductos = new ArrayList<Producto>();
-   
-    
+
     //Campo usuario y una relación uno a muchos con direcciones
     //Para atributos que no forman parte de la tabla
     @Transient
@@ -67,28 +70,28 @@ public class Producto implements Serializable {
     @ManyToOne
     @JoinColumn(name = "IdEstado")
     private Estado estado;
-    
+
     @ManyToOne
     @JoinColumn(name = "IdMarca")
     private Marca marca;
-    
+
     @ManyToOne
     @JoinColumn(name = "IdModelo")
     private Modelo modelo;
-    
+
     @ManyToOne
     @JoinColumn(name = "IdLCaracteristicas")
     private Caracteristicas caracteristicas;
-    
+
     @ManyToOne
     @JoinColumn(name = "IdCategoria")
     private Categoria categoria;
 
-    @OneToMany(cascade= CascadeType.ALL)
-    @JoinColumn(name="idProducto")
-//    @IndexColumn(name="idx")
-    private List<Alumno> Alumnos;
-    
+//    @OneToMany(cascade= CascadeType.ALL)
+//    @JoinColumn(name="idProducto")
+////    @IndexColumn(name="idx")
+//    private List<Alumnos> Alumnos;
+
     public void oneProducto() {
         if (this.id > 0) {
             DAOFactory df = DAOFactory.getDAOFactory();
@@ -102,66 +105,64 @@ public class Producto implements Serializable {
             this.estancia = producto.getEstancia();
             this.caracteristicas = producto.getCaracteristicas();
             this.categoria = producto.getCategoria();
-            this.estado=producto.getEstado();
-            this.ubicacion= producto.getUbicacion();
+            this.estado = producto.getEstado();
+            this.ubicacion = producto.getUbicacion();
             this.modelo = producto.getModelo();
-            this.marca = producto.getMarca();       
-            
+            this.marca = producto.getMarca();
+
         }
 
     }
-    
-  
-  @PostConstruct
+
+    @PostConstruct
     public void init() {
         DAOFactory df = DAOFactory.getDAOFactory();
         IGenericoDAO igd = df.getGenericoDAO();
         listaProductos = (ArrayList<Producto>) igd.get("Producto");
 
     }
-    
-     public void onCountryChange(int valor) {
-       valor=valor+1;    
+
+    public void onCountryChange(int valor) {
+        valor = valor + 1;
     }
-     
-    public void productosPorClases(){
+
+    public void productosPorClases() {
         System.out.println("Entramos aqui");
     }
-    
-      public ArrayList allProductosWherePorLocalizacion(int id) {
-        ArrayList<Producto> productos=null;
+
+    public ArrayList allProductosWherePorLocalizacion(int id) {
+        ArrayList<Producto> productos = null;
         if (id > 0) {
             DAOFactory df = DAOFactory.getDAOFactory();
             IGenericoDAO igd = df.getGenericoDAO();
-            
-            productos = (ArrayList<Producto>) igd.ObtenerUno("Producto", " where IdLocalizacion="+id);
-                       
+
+            productos = (ArrayList<Producto>) igd.ObtenerUno("Producto", " where IdLocalizacion=" + id);
+
         }
         return productos;
     }
-      
-      public ArrayList allProductosWherePorAula(int id) {
-        listaProductos=null;
+
+    public ArrayList allProductosWherePorAula(int id) {
+        listaProductos = null;
         if (id > 0) {
             DAOFactory df = DAOFactory.getDAOFactory();
             IGenericoDAO igd = df.getGenericoDAO();
-            
-            listaProductos = (ArrayList<Producto>) igd.ObtenerUno("Producto", " where IdEstancia="+id);
-                       
+
+            listaProductos = (ArrayList<Producto>) igd.ObtenerUno("Producto", " where IdEstancia=" + id);
+
         }
         return listaProductos;
     }
-      
-       public ArrayList allProductosWherePorAlumno(int id) {
-        listaProductos=null;
+
+    public ArrayList allProductosWherePorAlumno(int id) {
+        listaProductos = null;
         if (id > 0) {
             DAOFactory df = DAOFactory.getDAOFactory();
-            IGenericoDAO igd = df.getGenericoDAO();          
-            listaProductos = (ArrayList<Producto>) igd.ObtenerUno("Producto", " where IdProducto="+id);                       
+            IGenericoDAO igd = df.getGenericoDAO();
+            listaProductos = (ArrayList<Producto>) igd.ObtenerUno("Producto", " where IdProducto=" + id);
         }
         return listaProductos;
     }
-      
 
     public ArrayList allProductos() {
         DAOFactory df = DAOFactory.getDAOFactory();
@@ -173,6 +174,12 @@ public class Producto implements Serializable {
     public void addDatos() {
         DAOFactory df = DAOFactory.getDAOFactory();
         IGenericoDAO igd = df.getGenericoDAO();
+        String DATE_FORMAT_NOW = "yyyy-MM-dd";
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT_NOW);
+        String fechaActual = sdf.format(date);
+
+        this.setFecha_compra(fechaActual);
         igd.add(Producto.this); //Producto.this = this
         this.mensaje = "Se ha añadido correctamente el producto " + this.id;
         borrarTodo();
@@ -187,7 +194,6 @@ public class Producto implements Serializable {
             borrarTodo();
         }
     }
-
 
     public void delDatos() {
         if (this.id > 0) {
@@ -254,7 +260,7 @@ public class Producto implements Serializable {
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
-    
+
     public int getId() {
         return id;
     }
@@ -275,7 +281,6 @@ public class Producto implements Serializable {
         return fecha_compra;
     }
 
-    
     public void setFecha_compra(String fecha_compra) {
         this.fecha_compra = fecha_compra;
     }
@@ -312,15 +317,12 @@ public class Producto implements Serializable {
         this.listaProductos = listaProductos;
     }
 
-    public List<Alumno> getAlumnos() {
-        return Alumnos;
-    }
+//    public List<Alumnos> getAlumnos() {
+//        return Alumnos;
+//    }
+//
+//    public void setAlumnos(List<Alumnos> Alumnos) {
+//        this.Alumnos = Alumnos;
+//    }
 
-    public void setAlumnos(List<Alumno> Alumnos) {
-        this.Alumnos = Alumnos;
-    }
-
-
-    
 }
-

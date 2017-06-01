@@ -16,16 +16,13 @@ and open the template in the editor.
     <h:head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"/>
     </h:head>
-
     <h:body>
         <ui:decorate template="/resources/plantilla/template.xhtml"/>
-
         <div id="cargando" ><h:graphicImage style=" width: 5%" alt="" name="imagenes/Cargando.gif" /></div>
         <div  ng-controller="controladorPractica" class="container">
             <br />
             <br />
             <br />
-            
             <div class="row">
                 <div class="col-md-3">
                     <br/>
@@ -35,14 +32,13 @@ and open the template in the editor.
                     <div id="escudo" ><h:graphicImage  alt="" name="imagenes/escudo.png" /></div>   
                 </div>
                 <div class="col-md-9">
-                    <div ng-model="panelPrincipal" id="panelPrincipal" class="panel panel-primary">
-                        <div class="panel-body">
-                            <div class="row">
-                                <div id="probemos" class="col-md-4">
-                                    
-                                    <h:link id="botonMenu" outcome="ListadoProductosAula" styleClass="enlace" onclick="MyFunction();return false;">
+                    <div id="panelPrincipal" class="panel panel-primary">
+                        <div id="botonMenu2" class="panel-body">
+                            <div  class="row">
+                                <div class="col-md-4">
+                                    <h:link outcome="ListadoProductosAula" styleClass="enlace" onclick="MyFunction();return false;">
                                         <div class="panel panel-primary">
-                                            <div class="panel-heading" id="equiposporaula">
+                                            <div class="panel-heading">
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="panel-heading">
@@ -55,13 +51,12 @@ and open the template in the editor.
                                                 </div>
                                             </div>
                                             <div class="panel-body">
-
                                             </div>
                                         </div>
                                     </h:link>
                                 </div>
                                 <div class="col-md-4">
-                                    <a id="botonMenu1" onclick="MyFunction();return false;" href="OrdenadorYAlumno.xhtml">
+                                    <h:link outcome="OrdenadorYAlumno" styleClass="enlace" onclick="MyFunction();return false;">
                                         <div class="panel panel-primary">
                                             <div class="panel-heading" id="equiposporaula">
                                                 <div class="row">
@@ -76,13 +71,12 @@ and open the template in the editor.
                                                 </div>
                                             </div>
                                             <div class="panel-body">
-
                                             </div>
                                         </div>
-                                    </a>
+                                    </h:link>
                                 </div>
                                 <div class="col-md-4">
-                                     <h:link id="botonMenu" outcome="editarDatos" styleClass="enlace" onclick="MyFunction();return false;">
+                                    <h:link outcome="editarDatos" styleClass="enlace" onclick="MyFunction();return false;">
                                         <div class="panel panel-primary">
                                             <div class="panel-heading" id="equiposporaula">
                                                 <div class="row">
@@ -97,17 +91,14 @@ and open the template in the editor.
                                                 </div>
                                             </div>
                                             <div class="panel-body">
-
                                             </div>
                                         </div>
-                                </h:link>
+                                    </h:link>
                                 </div>
                             </div>
-
-
                             <div class="row">
                                 <div class="col-md-4">
-                                    <a href="http://www.google.es" onclick="desaparecer()">
+                                    <h:link outcome="AsignarOrdenadorAAlumno" styleClass="enlace" onclick="MyFunction();return false;">
                                         <div class="panel panel-primary">
                                             <div class="panel-heading" id="equiposporaula">
                                                 <div class="row">
@@ -122,14 +113,13 @@ and open the template in the editor.
                                                 </div>
                                             </div>
                                             <div class="panel-body">
-
                                             </div>
                                         </div>
-                                    </a>
+                                    </h:link>
                                 </div>
                                 <div class="col-md-4">
-                                    <a href="/20170222_CRUDHibernateJSF//faces/ComprarOrdenador1.jsp" onclick="desaparecer()">
-                                    <!--<h:link id="botonMenu" outcome="ComprarOrdenador" styleClass="enlace" onclick="MyFunction();return false;">-->
+
+                                    <a class="botonesPanel" href="/20170222_CRUDHibernateJSF//faces/ComprarOrdenador.jsp">
                                         <div class="panel panel-primary">
                                             <div class="panel-heading" id="equiposporaula">
                                                 <div class="row">
@@ -144,15 +134,12 @@ and open the template in the editor.
                                                 </div>
                                             </div>
                                             <div class="panel-body">
-
                                             </div>
                                         </div>
-                                    <!--</h:link>-->
                                     </a>
                                 </div>
-                                <div class="col-md-4">
-                                    
-                                    <h:link id="botonMenu" outcome="AsignarOrdenadorAAlumno" styleClass="enlace" onclick="MyFunction();return false;">
+                                <div id="botonMenu1" class="col-md-4">
+                                     <a class="botonesPanel" href="/20170222_CRUDHibernateJSF//faces/BorradoDeOrdenador.jsp">
                                         <div class="panel panel-primary">
                                             <div class="panel-heading" id="equiposporaula">
                                                 <div class="row">
@@ -167,10 +154,9 @@ and open the template in the editor.
                                                 </div>
                                             </div>
                                             <div class="panel-body">
-
                                             </div>
                                         </div>
-                                    </h:link>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -188,7 +174,6 @@ and open the template in the editor.
                     <div class="col-md-4">
                         <label style="color: blue">Sobre el producto</label>
                         <p id="texto">En nuestra página web podremos hacer un seguimiento de los ordenadores que se encuentran en cada aula, podremos ver el estado de los quipos y quien lo está utilizando en este momento.</p>
-
                     </div>
                     <div class="col-md-4">
                         <ul>
@@ -196,21 +181,18 @@ and open the template in the editor.
                             <li><a href="#"><i id="socialIco" class="fa fa-google-plus-square fa-2x social"> <label style="font-size: 80%"> Google</label></i></a></li>
                             <li><a href="#"><i id="socialIco" class="fa fa-instagram fa-2x social" aria-hidden="true"> <label style="font-size: 80%">Instagram</label></i></a></li>
                             <li><a href="#"><i id="socialIco" class="fa fa-facebook-square fa-2x social"> <label style="font-size: 80%">Facebook</label></i></a></li>
-
                         </ul>
                     </div>
                     <div class="col-md-3">
-                         <ul>
+                        <ul>
                             <label style="color: blue">Contacto</label> 
                             <li><label id="texto">Telefono: </label> <label id="textoSecundario" >647749447</label></li>
                             <li><label id="texto">Dirección: </label> <label id="textoSecundario" >6 Camino Viejo de Mérida, s/n, 06800 Mérida</label></li>
                             <li><label id="texto">Correo: </label> <label id="textoSecundario" >alfonsotem@gmail.com</label></li>
-                  
                         </ul>
                     </div>
                 </div>
             </footer>
         </div>
     </h:body>
-
 </html>

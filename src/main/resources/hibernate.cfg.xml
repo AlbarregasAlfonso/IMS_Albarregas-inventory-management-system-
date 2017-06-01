@@ -12,7 +12,7 @@
         <property name="hibernate.connection.pool_size">1</property>
         <property name="hibernate.connection.datasource">java:comp/env/jdbc/UAU</property>
     
-    
+        <mapping class="es.albarregas.beans.Alumnos"/>
         <mapping class="es.albarregas.beans.Alumno"/>
         <mapping class="es.albarregas.beans.Caracteristicas"/>
         <mapping class="es.albarregas.beans.Categoria"/>

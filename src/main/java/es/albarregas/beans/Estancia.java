@@ -49,14 +49,14 @@ public class Estancia implements Serializable {
 //    @JoinColumn(name="IdLocalizacion")
 ////    @IndexColumn(name="idx")
 //    private List<Alumno> correosElectronicos;
-     @OneToMany(cascade= CascadeType.ALL)
-    @JoinColumn(name="IdEstancia")
-//    @IndexColumn(name="idx")
-    private List<Alumno> Alumnos;
+//     @OneToMany(cascade= CascadeType.ALL)
+//    @JoinColumn(name="IdEstancia")
+////    @IndexColumn(name="idx")
+//    private List<Alumnos> Alumnos;
     
-    @OneToMany(cascade= CascadeType.ALL)
-    @JoinColumn(name="IdEstancia")
-    private List<Producto> productos;
+//    @OneToMany(cascade= CascadeType.ALL)
+//    @JoinColumn(name="IdEstancia")
+//    private List<Producto> productos;
     
     public void oneEstancia() {
         if (this.id > 0) {
@@ -179,13 +179,13 @@ public ArrayList allLocalizacionWhere() {
         this.acondicionado = acondicionado;
     }
 
-    public List<Producto> getProductos() {
-        return productos;
-    }
-
-    public void setProductos(List<Producto> productos) {
-        this.productos = productos;
-    }
+//    public List<Producto> getProductos() {
+//        return productos;
+//    }
+//
+//    public void setProductos(List<Producto> productos) {
+//        this.productos = productos;
+//    }
 
     public String getMensaje() {
         return mensaje;
@@ -195,4 +195,13 @@ public ArrayList allLocalizacionWhere() {
         this.mensaje = mensaje;
     }
 
+//    public List<Alumnos> getAlumnos() {
+//        return Alumnos;
+//    }
+//
+//    public void setAlumnos(List<Alumnos> Alumnos) {
+//        this.Alumnos = Alumnos;
+//    }
+
+    
 }

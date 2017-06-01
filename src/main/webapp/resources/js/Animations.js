@@ -2,45 +2,37 @@
 
 $(document).ready(function () {
 
+
     $("#probemos").click(function () {
         alert("funciona");
     });
-
-    window.onload = funcion_primera;
-    function funcion_primera() {
-        alert("Se ha lanzado la PRIMERA función");
-    }
-    window.onload = funcion_primera;
-
-
+    
+    $("#docInfo").hide();
     $("span").hide();
     $("#panelPrincipal").hide();
     $("#escudo").hide();
     $("#subFooter").hide();
-    setInterval(descargar, 1000);
+    setTimeout(descargar,1000);
 
     function descargar() {
         $("#cargando").hide();
         $("#panelPrincipal").fadeIn();
         $("#escudo").fadeIn();
-        setInterval(descargariconos, 1000);
+        setTimeout(descargariconos,1000);
         $("#div2").fadeIn("slow");
     }
 
-    $('#botonMenu1').click(function () {
+    $('#botonMenu2').click(function () {
         cambiarVentana();
         return false;
     });
 
     function cambiarVentana() {
         $("span").fadeOut("slow");
-        ;
         $("#panelPrincipal").fadeOut("slow");
-        ;
         $("#escudo").fadeOut("slow");
-        ;
         $("#subFooter").fadeOut("slow");
-        ;
+        $("#cargando").show();
         window.location("OrdenadorYAlumno.xhtml");
     }
     function descargariconos() {
@@ -48,6 +40,12 @@ $(document).ready(function () {
         $("#subFooter").fadeIn(1500)
     }
 
+$("#info").mouseover(function(){
+   $("#docInfo").fadeIn("slow");
+});
+$("#info").mouseout(function(){
+    $("#docInfo").fadeOut("slow");
+});
 
 
 

@@ -44,11 +44,11 @@ public class Aula implements Serializable {
     @Transient
     private String mensaje;
 
-    @OneToMany(cascade= CascadeType.ALL)
-    @JoinColumn(name="IdAula")
-//    @IndexColumn(name="idx")
-    private List<Alumno> correosElectronicos;
-    
+//    @OneToMany(cascade= CascadeType.ALL)
+//    @JoinColumn(name="IdAula")
+////    @IndexColumn(name="idx")
+//    private List<Alumno> correosElectronicos;
+//    
     public void oneCliente() {
         if (this.id > 0) {
             DAOFactory df = DAOFactory.getDAOFactory();

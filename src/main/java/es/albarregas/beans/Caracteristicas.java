@@ -44,14 +44,14 @@ public class Caracteristicas implements Serializable {
     @Transient
     private String mensaje;
 
-    @OneToMany(cascade= CascadeType.ALL)
-    @JoinColumn(name="IdLCaracteristicas")
- //   @IndexColumn(name="idx")
-    private List<Producto> productos;
+//    @OneToMany(cascade= CascadeType.ALL)
+//    @JoinColumn(name="IdLCaracteristicas")
+// //   @IndexColumn(name="idx")
+//    private List<Producto> productos;
     
-    @OneToMany(cascade= CascadeType.ALL)
-    @JoinColumn(name="IdLCaracteristicas")
-    private List<Modelo> Modelos;
+//    @OneToMany(cascade= CascadeType.ALL)
+//    @JoinColumn(name="IdLCaracteristicas")
+//    private List<Modelo> Modelos;
     
     public void oneCaracteristicas() {
         if (this.id > 0) {
@@ -116,21 +116,21 @@ public class Caracteristicas implements Serializable {
         this.mensaje = mensaje;
     }
 
-    public List<Producto> getProductos() {
-        return productos;
-    }
-
-    public void setProductos(List<Producto> productos) {
-        this.productos = productos;
-    }
-
-    public List<Modelo> getModelos() {
-        return Modelos;
-    }
-
-    public void setModelos(List<Modelo> Modelos) {
-        this.Modelos = Modelos;
-    }
+//    public List<Producto> getProductos() {
+//        return productos;
+//    }
+//
+//    public void setProductos(List<Producto> productos) {
+//        this.productos = productos;
+//    }
+//
+//    public List<Modelo> getModelos() {
+//        return Modelos;
+//    }
+//
+//    public void setModelos(List<Modelo> Modelos) {
+//        this.Modelos = Modelos;
+//    }
 
     
     

@@ -44,16 +44,16 @@ public class Modelo implements Serializable {
     @Transient
     private String mensaje;
 
-    @OneToMany(cascade= CascadeType.ALL)
-    @JoinColumn(name="IdModelo")
-//    @IndexColumn(name="idx")
-    private List<Producto> productos;
-    
-     @OneToMany(cascade= CascadeType.ALL)
-    @JoinColumn(name="IdModelo")
-//    @IndexColumn(name="idx")
-    private List<Stock> Stocks;
-    
+//    @OneToMany(cascade= CascadeType.ALL)
+//    @JoinColumn(name="IdModelo")
+////    @IndexColumn(name="idx")
+//    private List<Producto> productos;
+//    
+//     @OneToMany(cascade= CascadeType.ALL)
+//    @JoinColumn(name="IdModelo")
+////    @IndexColumn(name="idx")
+//    private List<Stock> Stocks;
+//    
     @ManyToOne
     @JoinColumn(name = "IdLCaracteristicas")
     private Caracteristicas caracteristicas;
@@ -127,21 +127,21 @@ public class Modelo implements Serializable {
         this.nombre = "";
     }
 
-    public List<Producto> getProductos() {
-        return productos;
-    }
-
-    public void setProductos(List<Producto> productos) {
-        this.productos = productos;
-    }
-
-    public List<Stock> getStocks() {
-        return Stocks;
-    }
-
-    public void setStocks(List<Stock> Stocks) {
-        this.Stocks = Stocks;
-    }
+//    public List<Producto> getProductos() {
+//        return productos;
+//    }
+//
+//    public void setProductos(List<Producto> productos) {
+//        this.productos = productos;
+//    }
+//
+//    public List<Stock> getStocks() {
+//        return Stocks;
+//    }
+//
+//    public void setStocks(List<Stock> Stocks) {
+//        this.Stocks = Stocks;
+//    }
 
     public Caracteristicas getCaracteristicas() {
         return caracteristicas;

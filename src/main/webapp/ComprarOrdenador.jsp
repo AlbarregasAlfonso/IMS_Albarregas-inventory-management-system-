@@ -28,9 +28,6 @@
                     <div class="form-group">
                         <input ng-model="ubicacion" placeholder="ubicacion" type="text" class="form-control" id="ubicacion"/>
                     </div>
-                    <div class="form-group">
-                        <input ng-model="fechaAlta" placeholder="fechaAlta" type="text" class="form-control" id="fechaAlta"/>
-                    </div>
                     <select class="form-control" ng-model="estado" id="estado">
                         <option value="">Estado</option> 
                         <c:forEach items="#{Estado.allEstados()}" var="lp">

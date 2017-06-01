@@ -43,13 +43,13 @@ public class Marca implements Serializable {
     @Transient
     private String mensaje;
 
-    @OneToMany(cascade= CascadeType.ALL)
-    @JoinColumn(name="IdMarca")
-    private List<Producto> productos;
-    
-    @OneToMany(cascade= CascadeType.ALL)
-    @JoinColumn(name="IdMarca")
-    private List<Modelo> modelos;
+//    @OneToMany(cascade= CascadeType.ALL)
+//    @JoinColumn(name="IdMarca")
+//    private List<Producto> productos;
+//    
+//    @OneToMany(cascade= CascadeType.ALL)
+//    @JoinColumn(name="IdMarca")
+//    private List<Modelo> modelos;
     
     public void oneMarca() {
         if (this.id > 0) {
@@ -98,21 +98,21 @@ public class Marca implements Serializable {
         }
     }
 
-    public List<Producto> getProductos() {
-        return productos;
-    }
-
-    public void setProductos(List<Producto> productos) {
-        this.productos = productos;
-    }
-
-    public List<Modelo> getModelos() {
-        return modelos;
-    }
-
-    public void setModelos(List<Modelo> modelos) {
-        this.modelos = modelos;
-    }
+//    public List<Producto> getProductos() {
+//        return productos;
+//    }
+//
+//    public void setProductos(List<Producto> productos) {
+//        this.productos = productos;
+//    }
+//
+//    public List<Modelo> getModelos() {
+//        return modelos;
+//    }
+//
+//    public void setModelos(List<Modelo> modelos) {
+//        this.modelos = modelos;
+//    }
 
     private void borrarTodo() {
         this.id = 0;
