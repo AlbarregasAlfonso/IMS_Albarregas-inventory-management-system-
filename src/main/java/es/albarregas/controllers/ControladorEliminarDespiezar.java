@@ -11,8 +11,8 @@ import es.albarregas.dao.IGenericoDAO;
 import es.albarregas.daofactory.DAOFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,7 +21,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author AlfonsoTerrones
  */
-public class Controlador extends HttpServlet {
+@WebServlet(name = "ControladorEliminarDespiezar", urlPatterns = {"/ControladorEliminarDespiezar"})
+public class ControladorEliminarDespiezar extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,43 +36,20 @@ public class Controlador extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+     
         Gson gson = new Gson();
         //Lamada a la bbd
         DAOFactory df = DAOFactory.getDAOFactory();
         IGenericoDAO igd = df.getGenericoDAO();
 
-        String json = request.getParameter("ordenador");
+        String json = request.getParameter("ordenadorEliminar");
         
-        if (json != null) {
+         if (json != null) {
             //lo pasamos a objeto en el caso que sea distinto de nulo
             Producto productoNuevo = gson.fromJson(json, Producto.class);
-            productoNuevo.addDatos();
+            productoNuevo.delDatos();
         };
-        
-        String borradoString = request.getParameter("codigo");
-        
-        if(borradoString!=null){
-            int id = Integer.parseInt(borradoString);    
-            Producto p=new Producto();
-            ArrayList<Producto> productosQueBorraremos = new ArrayList();
-            
-            productosQueBorraremos=p.allProductosWherePorAlumno(id);
-            
-            for(Producto pro:productosQueBorraremos){
-                p=pro;
-            }
-//            
-//            String nombre=p.getMarca().getNombre();
-
-         //   String productoBorrarJSON = gson.toJson(productosQueBorraremos);
-         String borraryenviar = gson.toJson(p);
-         //String representacionJSON = gson.toJson(productosQueBorraremos);
-            response.getWriter().write(borraryenviar);
-         
-        }
-       
-
-    };
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -100,9 +78,13 @@ public class Controlador extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
     }
 
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
     @Override
     public String getServletInfo() {
         return "Short description";

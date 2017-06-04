@@ -94,5 +94,84 @@ li{
 #info{
     width: 10%;
     float: left;
+    transition: width 2s;
     
 }
+
+#Despiezar{
+    width: 45%;
+    float: left;
+}
+
+button#ElliminarOrdenador {
+    width: 45%;
+    float: right;
+}
+
+img#infoIcoEliminar {
+    width: 3%;
+    bottom: 73%;
+    position: fixed;
+    transition: width 2s;
+}
+
+img#infoIcoDespiezar {
+    width: 3%;
+    bottom: 73%;
+    position: fixed;
+    left: 29%;
+    transition: width 2s;
+}
+
+label#docEliminar {
+    top: 28%;
+    position: fixed;
+}
+
+label#InfoDespiezar {
+
+    position: relative;
+    top: 180px
+}
+
+label#InfoDespiezar, label#docEliminar , label#docInfo, h1#tuloBorrar, label#nombreOrdenador{
+    color: white;   
+}
+
+#infoIcoDespiezar:hover, #infoIcoEliminar:hover, #info:hover{
+    width: 0%;
+}
+
+/*casilla del codigo*/
+input#codigoBarras {
+    width: 75%;
+    position: absolute;
+    left: 12%;
+    transition: width 2s, left 2s;
+}
+/*aumenta de tamaño al poner el ratón sobre el*/
+input#codigoBarras:hover{
+    left: 0%;
+    width: 100%;
+}
+
+/*primer boton de eliminar*/
+button#borrar {
+    width: 75%;
+    position: absolute;
+    left: 12%;
+}
+
+/*formulario crear ordenador*/
+ #precio, #ubicacion, #estado, #marca, #modelo, #caracteristica, #categoria, #estancia{
+    width: 75%;
+    left: 12%;
+    transition: width 1s, left 1s;
+}
+/*aumenta de tamaño al poner el ratón sobre el*/
+ #precio:hover, #ubicacion:hover, #estado:hover, #marca:hover, #modelo:hover, #caracteristica:hover, #categoria:hover, #estancia:hover{
+    left: 0%;
+    width: 100%;
+}
+
+
