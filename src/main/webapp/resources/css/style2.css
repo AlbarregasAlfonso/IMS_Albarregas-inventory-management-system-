@@ -150,13 +150,13 @@ input#codigoBarras {
     transition: width 2s, left 2s;
 }
 /*aumenta de tamaño al poner el ratón sobre el*/
-input#codigoBarras:hover{
+input#codigoBarras:hover, #componentesDañados:hover{
     left: 0%;
     width: 100%;
 }
 
 /*primer boton de eliminar*/
-button#borrar {
+button#borrar, #componentesDañados:hover {
     width: 75%;
     position: absolute;
     left: 12%;
@@ -174,4 +174,9 @@ button#borrar {
     width: 100%;
 }
 
+div#radioDespiece {
+    position: fixed;
+    top: 33%;
+    color: white;
+}
 

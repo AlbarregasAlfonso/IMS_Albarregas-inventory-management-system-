@@ -19,6 +19,7 @@ $(document).ready(function () {
     $("#infoIcoDespiezar").hide();  //icono de informacion                  BorradoDeOrdenador.jsp 
     $("#docEliminar").hide();       //icono de informacion                  BorradoDeOrdenador.jsp
     $("#InfoDespiezar").hide();     //icono de informacion                  BorradoDeOrdenador.jsp
+    $("#radioDespiece").hide();     //check de despiece                     BorradoDeOrdenador.jsp
 
     setTimeout(descargar, 1000);
 
@@ -90,6 +91,7 @@ $(document).ready(function () {
         $("#Despiezar").fadeOut(1000);
         $("#ElliminarOrdenador").fadeOut(1000);
         $("#info").fadeOut(1000);
+        $("#radioDespiece").fadeOut(1000);
         setTimeout(botonBorrar, 1000);
     });
     
@@ -99,6 +101,14 @@ $(document).ready(function () {
                $("#infoIcoEliminar").fadeOut("slow");
               
     }
+    
+ 
+        $("#ElliminarOrdenador").click(function(){
+            $("#radioDespiece").fadeIn(1000);
+        });
+        
+        
+    
 });
 
 

@@ -13,7 +13,7 @@
         <property name="hibernate.connection.datasource">java:comp/env/jdbc/UAU</property>
     
         <mapping class="es.albarregas.beans.Alumnos"/>
-        <mapping class="es.albarregas.beans.Alumno"/>
+<!--        <mapping class="es.albarregas.beans.Alumno"/>-->
         <mapping class="es.albarregas.beans.Caracteristicas"/>
         <mapping class="es.albarregas.beans.Categoria"/>
         <mapping class="es.albarregas.beans.Estado"/>
@@ -23,6 +23,10 @@
         <mapping class="es.albarregas.beans.Marca"/>
         <mapping class="es.albarregas.beans.Producto"/>       
         <mapping class="es.albarregas.beans.Stock"/>
+        <mapping class="es.albarregas.beans.Disco"/>
+        <mapping class="es.albarregas.beans.Ram"/>
+        <mapping class="es.albarregas.beans.Procesador"/>
+        
         
 
         

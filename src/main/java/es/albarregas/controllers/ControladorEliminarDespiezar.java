@@ -6,11 +6,15 @@
 package es.albarregas.controllers;
 
 import com.google.gson.Gson;
+import es.albarregas.beans.Disco;
+import es.albarregas.beans.Procesador;
 import es.albarregas.beans.Producto;
+import es.albarregas.beans.Ram;
 import es.albarregas.dao.IGenericoDAO;
 import es.albarregas.daofactory.DAOFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,19 +40,74 @@ public class ControladorEliminarDespiezar extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-     
+
         Gson gson = new Gson();
-        //Lamada a la bbd
+        //Llamada a la bbd
         DAOFactory df = DAOFactory.getDAOFactory();
         IGenericoDAO igd = df.getGenericoDAO();
+        Producto pr = new Producto();
+        ArrayList<Producto> productoAEliminar = new ArrayList();
 
         String json = request.getParameter("ordenadorEliminar");
-        
-         if (json != null) {
+        String jsonElementoCorrupto = request.getParameter("mal");
+
+        String jsonProcesador = request.getParameter("procesador");
+        String jsonRam = request.getParameter("ram");
+        String jsonHd = request.getParameter("hd");
+        String jsonIdProducto = request.getParameter("idProducto");
+
+        if (json != null) {
             //lo pasamos a objeto en el caso que sea distinto de nulo
             Producto productoNuevo = gson.fromJson(json, Producto.class);
             productoNuevo.delDatos();
         };
+
+        if (jsonElementoCorrupto != null) {
+
+            int idProducto = Integer.parseInt(jsonIdProducto);
+            productoAEliminar = pr.allProductosWherePorAlumno(idProducto);
+            
+            for(Producto p:productoAEliminar){
+                pr=p;
+            }
+            pr.delDatos();
+
+            switch (jsonElementoCorrupto) {
+                case "Disco":
+                    {
+                        // Disco d = new Disco();
+                        // if (d.allDiscos() != null) {
+                        // response.getWriter().write("Hay");
+                        // } else {
+                        Ram ram = new Ram(0, "DDR3", jsonRam);
+                        Procesador procesador = new Procesador(0, jsonProcesador, "null");
+                        ram.addDatos();
+                        procesador.addDatos();
+                        // }
+                        break;
+                    }
+                case "Ram":
+                    {
+                        Disco disco = new Disco(0, "WD", jsonHd);
+                        Procesador procesador = new Procesador(0, jsonProcesador, "null");
+                        disco.addDatos();
+                        procesador.addDatos();
+                        break;
+                    }
+                case "Procesador":
+                    {
+                        Disco disco = new Disco(0, "WD", jsonHd);
+                        Ram ram = new Ram(0, "DDR3", jsonRam);
+                        ram.addDatos();
+                        disco.addDatos();
+                        break;
+                    }
+                default:
+                    break;
+            }
+
+        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -36,7 +36,7 @@ angular.module('miApp', []).controller('controladorPractica', ['$scope', functio
         $scope.borrar = function () {
 
             var codigoB = {
-                "codigo": $scope.codigoBarras
+                "codigo": $scope.codigoBarras               
             };
 
             $.ajax({
@@ -53,6 +53,10 @@ angular.module('miApp', []).controller('controladorPractica', ['$scope', functio
 
                     //  alert('Fonnnso'+JSON.stringify($scope.eliminar.ubicacion+' Que si que el amdrid ganara la liga'));
                     $scope.ordenador = 'El ordenador que has seleccionado es el ' + $scope.eliminar.marca.nombre + ' ' + $scope.eliminar.modelo.nombre;
+               
+                
+              
+                
                 }, error: function (jqXHR, textStatus, errorThown) {
                     alert("Algo fallo");
                 }
@@ -67,9 +71,7 @@ angular.module('miApp', []).controller('controladorPractica', ['$scope', functio
         };
 
         $scope.eliminarProducto = function () {
-            
-            
-            
+                        
             var eliminarOrdenador = {
                 "ordenadorEliminar": angular.toJson($scope.eliminar)
             };
@@ -79,6 +81,34 @@ angular.module('miApp', []).controller('controladorPractica', ['$scope', functio
                 url: '../../ControladorEliminarDespiezar',
                 type: 'post'});
             
+        };
+        
+        $scope.despieceFinal = function (){
+               
+            var elementoDanadoAEliminar = {
+                "procesador":   $scope.eliminar.caracteristicas.procesador,
+                "ram":          $scope.eliminar.caracteristicas.ram,
+                "hd":           $scope.eliminar.caracteristicas.hd,
+                "mal":          $scope.selectDespiece,
+                "idProducto":   $scope.eliminar.id  
+            };
+            alert(elementoDanadoAEliminar);
+            $.ajax({
+                data: elementoDanadoAEliminar,
+                url: '../../ControladorEliminarDespiezar',
+                type: 'post',
+                beforeSend: function () {
+
+                },
+                success: function (response) {
+                    
+                    alert(response);
+                    $scope.atencion=response;
+               
+                }, error: function (jqXHR, textStatus, errorThown) {
+                    alert("Algo fallo");
+                }
+            });
         };
 
 

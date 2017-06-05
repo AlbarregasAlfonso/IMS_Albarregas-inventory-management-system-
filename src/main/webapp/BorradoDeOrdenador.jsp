@@ -4,12 +4,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+        <script src="resources/js/jquery-3.2.1.min.js"></script>
+        <script src="resources/js/angular.min.js"></script>
         <script src="resources/js/CreateAngular.js"></script>
         <script src="resources/js/Animations.js"></script>
         <script src="resources/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="resources/css/bootstrap.min.css" />
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.js"></script>
         <link rel="stylesheet" href="resources/css/style2.css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -17,15 +17,15 @@
     </head>
     <body ng-app="miApp" >
         <div id="top">
-               
-                    <nav class="navbar navbar-default">
-                        <div class="container-fluid">
-                            <div class="navbar-header">
-                                <a class="navbar-brand" href="#">Eliminar ordenador</a>
-                            </div>
-                        </div>
-                    </nav>
-            </div>
+
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#">Eliminar ordenador</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
         <div ng-controller="controladorPractica">
             <div class="row">
                 <div class="col-sm-4">
@@ -44,8 +44,19 @@
                     <label id="nombreOrdenador">{{ordenador}}</label>
 
                     <button id="borrar" ng-click="borrar()" ng-model="botonBorrar" class="btn btn-warning">Borrar</button>
-                    <button id="ElliminarOrdenador" ng-click="eliminarProducto()" ng-model="botonElimiar" class="btn btn-danger">Eliminar</button>
-                    <button id="Despiezar" ng-click="borrar()" ng-model="botonDespiezar" class="btn btn-warning">Despiezar</button>
+                    <button id="ElliminarOrdenador" ng-model="botonElimiar" class="btn btn-danger">Inservible</button>
+                    <button id="Despiezar" ng-model="botonDespiezar" class="btn btn-warning">Arreglar</button>
+                    <div id="radioDespiece">
+                        <label for="sel1">Seleccione que componente ha sido dañado:</label>
+                        <select ng-model="selectDespiece" class="form-control" id="componentesDañados">
+                            <option>Ram</option>
+                            <option>Procesador</option>
+                            <option>Disco</option>
+                            <option>Otro</option>
+                        </select>
+                        <button id="DespiezarFinal" ng-click="despieceFinal()" ng-model="botonDespiezarFinal" class="btn btn-warning">Despiezar</button>
+                    </div>
+                    <p>{{atencion}}</p>
                 </div>
                 <div class="col-sm-4">
                     <br/>
