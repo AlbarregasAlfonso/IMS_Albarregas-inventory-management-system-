@@ -12,7 +12,6 @@ $(document).ready(function () {
     $("#panelPrincipal").hide();
     $("#escudo").hide();
     $("#subFooter").hide();
-    $("#nombreOrdenador").hide();   //Ordenador que vamos a eliminar        BorradoDeOrdenador.jsp
     $("#Despiezar").hide();         //Boton de despiezar                    BorradoDeOrdenador.jsp 
     $("#ElliminarOrdenador").hide();//Boton de eliminar definitivamente     BorradoDeOrdenador.jsp 
     $("#infoIcoEliminar").hide();   //icono de informacion                  BorradoDeOrdenador.jsp 
@@ -20,6 +19,9 @@ $(document).ready(function () {
     $("#docEliminar").hide();       //icono de informacion                  BorradoDeOrdenador.jsp
     $("#InfoDespiezar").hide();     //icono de informacion                  BorradoDeOrdenador.jsp
     $("#radioDespiece").hide();     //check de despiece                     BorradoDeOrdenador.jsp
+   // $("#tick").hide();              //Tick todo correcto                    BorradoDeOrdenador.jsp
+    $("#mensajeAlumnos").hide();
+    $(".alert").hide();
 
     setTimeout(descargar, 1000);
 
@@ -30,6 +32,7 @@ $(document).ready(function () {
         setTimeout(descargariconos, 1000);
         $("#div2").fadeIn("slow");
     }
+    ;
 
     $('#botonMenu2').click(function () {
         cambiarVentana();
@@ -44,10 +47,12 @@ $(document).ready(function () {
         $("#cargando").show();
         window.location("OrdenadorYAlumno.xhtml");
     }
+    ;
     function descargariconos() {
         $("span").fadeIn(1500);
-        $("#subFooter").fadeIn(1500)
+        $("#subFooter").fadeIn(1500);
     }
+    ;
 
 //Iconos de informacio
     $("#info").mouseover(function () {
@@ -57,58 +62,36 @@ $(document).ready(function () {
     $("#info").mouseout(function () {
         $("#docInfo").fadeOut("slow");
     });
-    //Iconos de informacio
-    $("#borrar").click(function () {
-        $("#nombreOrdenador").fadeIn("slow");
-        $("#borrar").fadeOut(1000);
-        $("#Despiezar").fadeIn(1000);
-        $("#ElliminarOrdenador").fadeIn(1000);
-        setTimeout(infoIcono, 1000);
-    })
-    function infoIcono() {
-        $("#infoIcoEliminar").fadeIn(1300);   //icono de informacion                  BorradoDeOrdenador.jsp 
-        $("#infoIcoDespiezar").fadeIn(1300);  //icono de informacion                  BorradoDeOrdenador.jsp 
-    }
-     
-     $("#infoIcoEliminar").mouseover(function () {
+
+    $("#infoIcoEliminar").mouseover(function () {
         $("#docEliminar").fadeIn("slow");
     });
 
     $("#infoIcoEliminar").mouseout(function () {
         $("#docEliminar").fadeOut("slow");
     });
-    
-  $("#infoIcoDespiezar").mouseover(function () {
+
+    $("#infoIcoDespiezar").mouseover(function () {
         $("#infoDespiezar").fadeIn("slow");
     });
 
     $("#infoIcoDespiezar").mouseout(function () {
         $("#infoDespiezar").fadeOut("slow");
     });
-    
-    $("#codigoBarras").focusin(function(){
-        $("#nombreOrdenador").fadeOut("slow");
-        $("#Despiezar").fadeOut(1000);
+
+    $("#ElliminarOrdenador").click(function () {
         $("#ElliminarOrdenador").fadeOut(1000);
-        $("#info").fadeOut(1000);
-        $("#radioDespiece").fadeOut(1000);
-        setTimeout(botonBorrar, 1000);
+        $("#Despiezar").fadeOut(1000);
+        $("#infoIcoDespiezar").fadeOut(1000);
+        setTimeout(iconosDespiece, 1000);
+
     });
-    
-    function botonBorrar() {
-               $("#borrar").fadeIn(1000); 
-               $("#infoIcoDespiezar").fadeOut("slow");
-               $("#infoIcoEliminar").fadeOut("slow");
-              
+
+    function iconosDespiece() {
+        $("#radioDespiece").fadeIn(1000);
     }
-    
- 
-        $("#ElliminarOrdenador").click(function(){
-            $("#radioDespiece").fadeIn(1000);
-        });
-        
-        
-    
+    ;
+
 });
 
 

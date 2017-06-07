@@ -6,6 +6,7 @@
 package es.albarregas.controllers;
 
 import com.google.gson.Gson;
+import es.albarregas.beans.Alumnos;
 import es.albarregas.beans.Disco;
 import es.albarregas.beans.Procesador;
 import es.albarregas.beans.Producto;
@@ -46,7 +47,9 @@ public class ControladorEliminarDespiezar extends HttpServlet {
         DAOFactory df = DAOFactory.getDAOFactory();
         IGenericoDAO igd = df.getGenericoDAO();
         Producto pr = new Producto();
+        Alumnos al = new Alumnos();
         ArrayList<Producto> productoAEliminar = new ArrayList();
+        ArrayList<Alumnos> alumnosIdProducto = new ArrayList();
 
         String json = request.getParameter("ordenadorEliminar");
         String jsonElementoCorrupto = request.getParameter("mal");
@@ -69,7 +72,21 @@ public class ControladorEliminarDespiezar extends HttpServlet {
             
             for(Producto p:productoAEliminar){
                 pr=p;
-            }
+            };
+            
+            //obtenemos los alumnos con ese ordenador para ponerlo a null, asi este alumno ya no tendra ordenador asignado
+            alumnosIdProducto = al.allAlumnosWhereidPoducto(pr.getId());
+            //Ponemos a null todos los alumnos que tuvieran ese ordenador
+            
+            String alumnosSinEquipo = gson.toJson(alumnosIdProducto);
+
+            
+            for(Alumnos a:alumnosIdProducto){
+                al=a;
+                al.setProducto(null);
+                al.updDatos();
+            };
+            
             pr.delDatos();
 
             switch (jsonElementoCorrupto) {
@@ -105,6 +122,8 @@ public class ControladorEliminarDespiezar extends HttpServlet {
                 default:
                     break;
             }
+            
+            response.getWriter().write(alumnosSinEquipo);
 
         }
 
