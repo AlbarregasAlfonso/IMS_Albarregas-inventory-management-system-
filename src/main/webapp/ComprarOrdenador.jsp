@@ -71,6 +71,22 @@
                         </c:forEach>
                     </select>
                     <br/>
+                     <div class="form-group">
+                        <input ng-model="procesador" placeholder="Procesador" type="text" class="form-control" id="procesador"/>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <input ng-model="ram" placeholder="Ram" type="text" class="form-control" id="ram"/>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <input ng-model="placa" placeholder="Placa" type="text" class="form-control" id="placa"/>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <input ng-model="discoDuro" placeholder="DiscoDuro" type="text" class="form-control" id="discoDuro"/>
+                    </div>
+                    <br/>
                     <button id="guardar" ng-click="anadir()" ng-model="botonGuardar" class="btn btn-warning">Guardar</button>
 
                 </div>

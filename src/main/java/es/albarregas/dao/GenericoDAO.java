@@ -8,7 +8,6 @@ import org.hibernate.HibernateException;
 
 import org.hibernate.Session;
 
-
 public class GenericoDAO<T> implements IGenericoDAO<T> {
 
     private Session sesion;
@@ -56,12 +55,12 @@ public class GenericoDAO<T> implements IGenericoDAO<T> {
         return listadoResultados;
     }
 
-     @Override
+    @Override
     public <T> List<T> ObtenerUno(String entidad, String where) {
         List<T> listadoResultados = null;
         try {
             iniciaSesion();
-            listadoResultados = sesion.createQuery(" from " + entidad+" "+where).list();
+            listadoResultados = sesion.createQuery(" from " + entidad + " " + where).list();
         } catch (HibernateException he) {
             this.manejaExcepcion(he);
         } finally {
@@ -69,7 +68,7 @@ public class GenericoDAO<T> implements IGenericoDAO<T> {
         }
         return listadoResultados;
     }
-    
+
     @Override
     public <T> T getOne(Serializable pk, Class<T> claseEntidad) {
         T objetoRecuperado = null;
@@ -110,4 +109,18 @@ public class GenericoDAO<T> implements IGenericoDAO<T> {
         }
     }
 
+    @Override
+    public Object getOneHQL(String hql) {
+        Object object = null;
+        try {
+            iniciaSesion();
+            object = sesion.createQuery("from " + hql).uniqueResult();
+        } catch (Exception e) {
+            System.out.println("Algo sucedio en el getOneHQL"+e);
+        } finally {
+            this.cierraSesion();
+        }
+        return object;
+
+    }
 }

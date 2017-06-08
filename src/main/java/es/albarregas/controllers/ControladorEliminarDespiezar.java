@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 import es.albarregas.beans.Alumnos;
 import es.albarregas.beans.Disco;
 import es.albarregas.beans.Procesador;
+import es.albarregas.beans.ProduPropiedad;
 import es.albarregas.beans.Producto;
 import es.albarregas.beans.Ram;
 import es.albarregas.dao.IGenericoDAO;
@@ -50,7 +51,10 @@ public class ControladorEliminarDespiezar extends HttpServlet {
         Alumnos al = new Alumnos();
         ArrayList<Producto> productoAEliminar = new ArrayList();
         ArrayList<Alumnos> alumnosIdProducto = new ArrayList();
+        ArrayList<ProduPropiedad> caracteristicasProductos = new ArrayList();
 
+        
+        
         String json = request.getParameter("ordenadorEliminar");
         String jsonElementoCorrupto = request.getParameter("mal");
 
@@ -87,8 +91,10 @@ public class ControladorEliminarDespiezar extends HttpServlet {
                 al.updDatos();
             };
             
-            pr.delDatos();
+       //     pr.delDatos();
 
+            ProduPropiedad cP = (ProduPropiedad)igd.getOneHQL("ProduPropiedad where IdProduPropiedad='1'");
+            
             switch (jsonElementoCorrupto) {
                 case "Disco":
                     {
@@ -96,10 +102,12 @@ public class ControladorEliminarDespiezar extends HttpServlet {
                         // if (d.allDiscos() != null) {
                         // response.getWriter().write("Hay");
                         // } else {
-                        Ram ram = new Ram(0, "DDR3", jsonRam);
-                        Procesador procesador = new Procesador(0, jsonProcesador, "null");
-                        ram.addDatos();
-                        procesador.addDatos();
+                        
+                        
+//                        Ram ram = new Ram(0, "DDR3", jsonRam);
+//                        Procesador procesador = new Procesador(0, jsonProcesador, "null");
+//                        ram.addDatos();
+//                        procesador.addDatos();
                         // }
                         break;
                     }

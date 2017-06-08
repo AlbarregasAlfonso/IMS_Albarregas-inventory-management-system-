@@ -24,7 +24,6 @@ angular.module('miApp', []).controller('controladorPractica', ['$scope', functio
 
         $scope.anadir = function () {
 
-
             $scope.nuevoOrdenadorPrueba = {
                 id: 0,
                 precio: $scope.precio,
@@ -37,11 +36,46 @@ angular.module('miApp', []).controller('controladorPractica', ['$scope', functio
                 caracteristicas: {id: $scope.caracteristica},
                 estancia: {id: $scope.estancia}
             };
-
+            
+            $scope.nuevaCaracteristicaProcesador = {
+                id: 0,
+                compatibilidad: $scope.placa,
+                descripcion: $scope.procesador,
+                producto:{id: 6},
+                propiedad:{id:2}
+            };
+            
+            $scope.nuevaCaracteristicaRam = {
+                id: 0,
+                compatibilidad: $scope.placa,
+                descripcion: $scope.ram,
+                producto:{id: 6},
+                propiedad:{id:1}
+            };
+            
+            $scope.nuevaCaracteristicaPlaca = {
+                id: 0,
+                compatibilidad: $scope.placa,
+                descripcion: $scope.placa,
+                producto:{id: 6},
+                propiedad:{id:3}
+            };
+            
+            $scope.nuevaCaracteristicaDiscoDuro = {
+                id: 0,
+                compatibilidad: $scope.placa,
+                descripcion: $scope.discoDuro,
+                producto:{id: 6},
+                propiedad:{id:4}
+            };
 //        alert(JSON.stringify($scope.nuevoOrdenadorPrueba));
 
             var nuevoOrdenador = {
-                "ordenador": angular.toJson($scope.nuevoOrdenadorPrueba)
+                "ordenador": angular.toJson($scope.nuevoOrdenadorPrueba),
+                "ram": angular.toJson($scope.nuevaCaracteristicaRam),
+                "procesador": angular.toJson($scope.nuevaCaracteristicaProcesador),
+                "placa": angular.toJson($scope.nuevaCaracteristicaPlaca),
+                "discoDuro": angular.toJson($scope.nuevaCaracteristicaDiscoDuro)               
             };
 
             alert(JSON.stringify(nuevoOrdenador));

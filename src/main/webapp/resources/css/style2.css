@@ -164,13 +164,13 @@ button#borrar, #componentesDañados:hover {
 }
 
 /*formulario crear ordenador*/
-#precio, #ubicacion, #estado, #marca, #modelo, #caracteristica, #categoria, #estancia{
+#precio, #ubicacion, #estado, #marca, #modelo, #caracteristica, #categoria, #estancia, #placa, #procesador, #discoDuro, #ram{
     width: 75%;
     left: 12%;
     transition: width 1s, left 1s;
 }
 /*aumenta de tamaño al poner el ratón sobre el*/
-#precio:hover, #ubicacion:hover, #estado:hover, #marca:hover, #modelo:hover, #caracteristica:hover, #categoria:hover, #estancia:hover{
+#precio:hover, #ubicacion:hover, #estado:hover, #marca:hover, #modelo:hover, #caracteristica:hover, #categoria:hover, #estancia:hover, #discoDuro, #procesador, #placa, #ram{
     left: 0%;
     width: 100%;
 }
@@ -244,3 +244,4 @@ label#mensajeAlumnos {
     top: 50%;
     right: 20%;
 }
+

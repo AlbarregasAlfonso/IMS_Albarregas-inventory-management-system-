@@ -26,9 +26,9 @@
         <mapping class="es.albarregas.beans.Disco"/>
         <mapping class="es.albarregas.beans.Ram"/>
         <mapping class="es.albarregas.beans.Procesador"/>
-        
-        
-
+        <mapping class="es.albarregas.beans.Propiedad"/>
+        <mapping class="es.albarregas.beans.ProduPropiedad"/>
+    
         
     </session-factory>
 </hibernate-configuration>

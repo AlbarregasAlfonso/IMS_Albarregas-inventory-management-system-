@@ -140,8 +140,19 @@ public class Producto implements Serializable {
 
         }
         return productos;
-    }
+    };
 
+   public ArrayList allProductosWhereMaxId() {
+        ArrayList<Producto> productos = null;
+        if (id > 0) {
+            DAOFactory df = DAOFactory.getDAOFactory();
+            IGenericoDAO igd = df.getGenericoDAO();
+
+            productos = (ArrayList<Producto>) igd.ObtenerUno("Producto", " order by idProducto desc");
+
+        }
+        return productos;
+    };
     public ArrayList allProductosWherePorAula(int id) {
         listaProductos = null;
         if (id > 0) {

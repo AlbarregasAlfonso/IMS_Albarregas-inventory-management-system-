@@ -16,4 +16,6 @@ public interface IGenericoDAO<T> {
     public void delete(T objeto);
 
     public <T> List<T> ObtenerUno(String entidad, String where);
+    
+    public Object getOneHQL(String hql);
 }
