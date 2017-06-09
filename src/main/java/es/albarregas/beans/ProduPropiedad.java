@@ -67,7 +67,7 @@ public class ProduPropiedad implements Serializable {
             DAOFactory df = DAOFactory.getDAOFactory();
             IGenericoDAO igd = df.getGenericoDAO();
 
-            produPropiedad = (ArrayList<ProduPropiedad>) igd.ObtenerUno("produPropiedad", " where IdProducto=" + id);
+            produPropiedad = (ArrayList<ProduPropiedad>) igd.ObtenerUno("ProduPropiedad", " where IdProducto=" + id);
 
         }
         return produPropiedad;
@@ -79,7 +79,7 @@ public class ProduPropiedad implements Serializable {
             DAOFactory df = DAOFactory.getDAOFactory();
             IGenericoDAO igd = df.getGenericoDAO();
 
-            produPropiedad = (ArrayList<ProduPropiedad>) igd.ObtenerUno("produPropiedad", " where IdPropiedad=" + id);
+            produPropiedad = (ArrayList<ProduPropiedad>) igd.ObtenerUno("ProduPropiedad", " where IdPropiedad=" + id);
 
         }
         return produPropiedad;

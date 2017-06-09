@@ -195,7 +195,7 @@ button#DespiezarFinal {
 
 select#componentesDanados {
     position: fixed;
-    top: 22%;
+    top: 23%;
     width: 14%;
 }
 
@@ -243,5 +243,12 @@ label#mensajeAlumnos {
     position: absolute;
     top: 50%;
     right: 20%;
+}
+
+button#IntentarArreglar {
+    position: absolute;
+    top: 122%;
+    width: 45%;
+    right: 3%;
 }
 

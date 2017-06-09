@@ -17,7 +17,6 @@
     </head>
     <body ng-app="miApp" >
         <div id="top">
-
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
                     <div class="navbar-header">
@@ -34,50 +33,49 @@
                     <label id="InfoDespiezar">Esta opción es interesante si queremos reparar algún componente que que haya sido dañado o dejarlo deshabilitado temporalmente</label>
                 </div>
                 <div class="col-sm-4">
-
                     <div class="form-group">
                         <input ng-model="codigoBarras" placeholder="codigo de barras" type="text" class="form-control" id="codigoBarras"/>
                     </div>
                     <br/>
                     <br/>
-
                     <label id="nombreOrdenador">{{ordenador}}</label>
-
                     <button id="borrar" ng-click="borrar()" ng-model="botonBorrar" class="btn btn-warning">Borrar</button>
-                    <button id="ElliminarOrdenador" ng-model="botonElimiar" class="btn btn-danger">Inservible</button>
-                    <button id="Despiezar" ng-model="botonDespiezar" class="btn btn-warning">Arreglar</button>
+                    <button id="ElliminarOrdenador" ng-click="cargarCaracteristicas()" ng-model="botonElimiar" class="btn btn-danger">Inservible</button>
+                    <button id="Despiezar" ng-click="cargarCaracteristicas()" ng-model="botonDespiezar" class="btn btn-warning">Arreglar</button>
                     <div id="radioDespiece">
-                        <select ng-model="selectDespiece" class="form-control" id="componentesDanados">
-                            <option>Ram</option>
-                            <option>Procesador</option>
-                            <option>Disco</option>
-                            <option>Otro</option>
+                        <select class="form-control" id="componentesDanados" ng-model="selectDespiece">
+                            <option  ng-repeat="x in propiedadesJson" value="{{x.IdCategoria}}">{{x.nombre}}</option>
                         </select>
-                        <button id="DespiezarFinal" ng-click="despieceFinal()" ng-model="botonDespiezarFinal" class="btn btn-warning">Despiezar</button>
+<!--                        <select ng-model="selectDespiece" class="form-control" id="componentesDanados">
+                            <option value="1">Ram</option>
+                            <option value="2">Procesador</option>
+                            <option value="4">Disco</option>
+                            <option value="3">Otro</option>
+                        </select>-->
                     </div>
- 
+                    <button id="DespiezarFinal" ng-click="despieceFinal()" ng-model="botonDespiezarFinal" class="btn btn-warning">Despiezar</button>
+                    <button id="IntentarArreglar" ng-click="arreglar()"  ng-model="IntentarArreglar" class="btn btn-warning">Arreglar</button>
+                     
                 </div>
                 <div class="col-sm-4">
                     <br/>
                     <br/>
                     <br/>
                     <img id="info" src="resources/imagenes/inf.png" alt="" > 
-
                     <label id="docInfo">mediante el código de barras podremos seleccionar el ordenador que queremos eliminar o despiezar</label>
-
                     <br/>
                     <br/>
                     <br/>
                     <br/>
                     <label id="docEliminar">Si lo que deseas es eliminar producto definitivamente pero mantener algunos de los componentes que te puedan servir para otros ordenadores seleccione esta opción</label>
                     <img id="infoIcoEliminar" src="resources/imagenes/inf.png" alt="" > 
-
                 </div>
-
             </div>
 <!--            <img id="tick" src="resources/imagenes/correcto.png" alt="" > 
             <label id="mensajeAlumnos">El ordenador que hemos seleccionado lamentablemente no tenia recuperación posible por loq eu lo hemos retirado y hemos guardado las piezas que aún servian en el almacen, los alumnos que se han quedado sin ordenador temporalmente son:{{mensajeDeAlumnos}}</label>-->
             <div class="alert alert-danger">El ordenador que hemos seleccionado lamentablemente no tenia recuperación posible por loq eu lo hemos retirado y hemos guardado las piezas que aún servian en el almacen, los alumnos que se han quedado sin ordenador temporalmente son:{{mensajeDeAlumnos}}</div> 
+            <div ng-click="buscarPiezas()" id="productosParaArreglar" class="alert alert-danger">{{HayComponenteParaReparar}}</div> 
+        
         </div>
     </body>
 </html>

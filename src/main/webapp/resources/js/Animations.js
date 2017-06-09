@@ -22,7 +22,8 @@ $(document).ready(function () {
    // $("#tick").hide();              //Tick todo correcto                    BorradoDeOrdenador.jsp
     $("#mensajeAlumnos").hide();
     $(".alert").hide();
-
+    $("#DespiezarFinal").hide();
+    $("#IntentarArreglar").hide();
     setTimeout(descargar, 1000);
 
     function descargar() {
@@ -89,9 +90,19 @@ $(document).ready(function () {
 
     function iconosDespiece() {
         $("#radioDespiece").fadeIn(1000);
-    }
-    ;
+        $("#DespiezarFinal").fadeIn(1000);
+    };
 
+    $("#Despiezar").click(function(){
+        $("#Despiezar").fadeOut("slow");
+        $("#ElliminarOrdenador").fadeOut("slow");
+        setTimeout(botonesArreglar, 1000);
+    });
+    
+    function botonesArreglar(){
+        $("#radioDespiece").fadeIn("slow");
+        $("#IntentarArreglar").fadeIn("slow");
+    }
 });
 
 

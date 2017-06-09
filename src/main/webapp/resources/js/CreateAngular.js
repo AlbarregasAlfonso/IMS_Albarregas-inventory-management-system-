@@ -1,5 +1,7 @@
 angular.module('miApp', []).controller('controladorPractica', ['$scope', function ($scope) {
 
+
+
         $("#codigoBarras").focusin(function () {
             //$("#nombreOrdenador").fadeOut("slow");
             $("#Despiezar").fadeOut(1000);
@@ -9,6 +11,7 @@ angular.module('miApp', []).controller('controladorPractica', ['$scope', functio
             $scope.ordenador = null;
             //$scope.ordenador = "";
             $("#nombreOrdenador").hide("slow");
+            $("#IntentarArreglar").fadeOut("slow");
             setTimeout(botonBorrar, 1000);
         });
 
@@ -16,11 +19,43 @@ angular.module('miApp', []).controller('controladorPractica', ['$scope', functio
             $("#borrar").fadeIn(1000);
             $("#infoIcoDespiezar").fadeOut("slow");
             $("#infoIcoEliminar").fadeOut("slow");
-
+            $(".alert").fadeOut("slow");
         }
 
         $scope.eliminar = [
         ];
+        
+        $scope.cargarCaracteristicas = function () {
+            
+            var caracteristica="caracteristicas";
+            
+            var codigoB = {
+                "caracteristicas": caracteristica
+            };
+
+            $.ajax({
+                data: codigoB,
+                url: '../../ControladorEliminarDespiezar',
+                type: 'post',
+                async: false,
+                dataType: "json",
+                beforeSend: function () {
+
+                },
+                success: function (response) {
+
+                    $scope.propiedadesJson = response;
+                    //$scope.propiedades = JSON.parse($scope.propiedadesJson);              
+                    
+
+                }, error: function (jqXHR, textStatus, errorThown) {
+                    alert("Algo fallo");
+                }
+            });
+
+
+        };
+        
 
         $scope.anadir = function () {
 
@@ -105,7 +140,7 @@ angular.module('miApp', []).controller('controladorPractica', ['$scope', functio
 
                     $scope.eliminar = response;
 
-                    if ($scope.eliminar.id === 0) {
+                    if ($scope.eliminar === null) {
                         $("#nombreOrdenador").fadeIn("slow");
                         $scope.ordenador = "El ordenador que has seleccionado no existe";
 
@@ -135,6 +170,8 @@ angular.module('miApp', []).controller('controladorPractica', ['$scope', functio
 
 
         };
+        
+        
 
         $scope.eliminarProducto = function () {
 
@@ -151,11 +188,17 @@ angular.module('miApp', []).controller('controladorPractica', ['$scope', functio
 
         $scope.despieceFinal = function () {
 
+alert($scope.selectDespiece.IdCategoria);
+alert($scope.selectDespiece);
+alert($scope.selectDespiece.nombre);
+alert(JSON.stringify($scope.selectDespiece));
+
+
             var elementoDanadoAEliminar = {
                 "procesador": $scope.eliminar.caracteristicas.procesador,
                 "ram": $scope.eliminar.caracteristicas.ram,
                 "hd": $scope.eliminar.caracteristicas.hd,
-                "mal": $scope.selectDespiece,
+                "mal": $scope.selectDespiece.IdCategoria,
                 "idProducto": $scope.eliminar.id
             };
         
@@ -176,16 +219,64 @@ angular.module('miApp', []).controller('controladorPractica', ['$scope', functio
 
                     for (var i = 0; i < $scope.alumnosSinOrdenadorArray.length; i++) {
                         $scope.mensajeDeAlumnos = $scope.mensajeDeAlumnos + $scope.alumnosSinOrdenadorArray[i].Nombre + ", ";
-                    }
-                    
+                    }                    
                     $(".alert").fadeIn(2000);
-//                    $("#tick").show(1000);
-//                    setTimeout(mostrarMensaje, 1000);
+
+                }, error: function (jqXHR, textStatus, errorThown) {
+                    alert("Algo fallo");
+                }
+            });
+        };
+        
+        $scope.arreglar = function () {
+
+            var elementoDanadoAEliminar = {
+                "Arreglarmal": $scope.selectDespiece,
+                "idProducto": $scope.eliminar.id
+            };
+        
+            $.ajax({
+                data: elementoDanadoAEliminar,
+                url: '../../ControladorEliminarDespiezar',
+                type: 'post',
+                async: false,
+                beforeSend: function () {
+
+                },
+                success: function (response) {
+
+                    $scope.HayComponenteParaReparar = response;
+                    alert($scope.HayComponenteParaReparar);
+                    $("#productosParaArreglar").fadeIn("slow");
+//                    $scope.alumnosSinOrdenadorArray = JSON.parse($scope.alumnosSinOrdenadorJson);
+//                    $scope.mensajeDeAlumnos = "";
 //
-//                    function mostrarMensaje() {
-//                        $("#mensajeAlumnos").fadeIn("slow");
-//                       
-//                    }
+//                    for (var i = 0; i < $scope.alumnosSinOrdenadorArray.length; i++) {
+//                        $scope.mensajeDeAlumnos = $scope.mensajeDeAlumnos + $scope.alumnosSinOrdenadorArray[i].Nombre + ", ";
+//                    }                    
+//                    $(".alert").fadeIn(2000);
+
+                }, error: function (jqXHR, textStatus, errorThown) {
+                    alert("Algo fallo");
+                }
+            });
+        };
+        
+        $scope.buscarPiezas = function () {
+  
+            var elementoDanadoAEliminar = {
+                "componenteMalAMostrar": $scope.selectDespiece
+            };
+        
+            $.ajax({
+                data: elementoDanadoAEliminar,
+                url: '../../ControladorEliminarDespiezar',
+                type: 'post',
+                async: false,
+                beforeSend: function () {
+
+                },
+                success: function (response) {
 
                 }, error: function (jqXHR, textStatus, errorThown) {
                     alert("Algo fallo");

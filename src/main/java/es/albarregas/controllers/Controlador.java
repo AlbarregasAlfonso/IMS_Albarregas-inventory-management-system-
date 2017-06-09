@@ -40,68 +40,50 @@ public class Controlador extends HttpServlet {
         //Lamada a la bbd
         DAOFactory df = DAOFactory.getDAOFactory();
         IGenericoDAO igd = df.getGenericoDAO();
-        ArrayList<Producto> productos = new ArrayList();
-        Producto producto = new Producto();
-        Producto productoMaxid = new Producto();
-        int idProductoMax = 0;
 
         String json = request.getParameter("ordenador");
-        String jsonProcesador = request.getParameter("procesador");
-        String jsonRam = request.getParameter("ram");
-        String jsonDiscoDuro = request.getParameter("discoDuro");
-        String jsonPlaca = request.getParameter("placa");
 
         if (json != null) {
-            //lo pasamos a objeto en el caso que sea distinto de nulo
-            Producto productoNuevo = gson.fromJson(json, Producto.class);
-            productoNuevo.addDatos();
-
-            productos = producto.allProductos();
-                     
-            for (Producto p : productos) {
-                productoNuevo = p;
-            }
-
-            ProduPropiedad procesador = gson.fromJson(jsonProcesador, ProduPropiedad.class);
-            procesador.setProducto(productoNuevo);
-            procesador.addDatos();
-
-            ProduPropiedad ram = gson.fromJson(jsonRam, ProduPropiedad.class);
-            ram.setProducto(productoNuevo);
-            ram.addDatos();
-
-            ProduPropiedad placa = gson.fromJson(jsonPlaca, ProduPropiedad.class);
-            placa.setProducto(productoNuevo);
-            placa.addDatos();
-
-            ProduPropiedad disco = gson.fromJson(jsonDiscoDuro, ProduPropiedad.class);
-            disco.setProducto(productoNuevo);
-            disco.addDatos();
-
-        };
-
-        String borradoString = request.getParameter("codigo");
-
-        if (borradoString != null) {
-            int id = Integer.parseInt(borradoString);
-            Producto p = new Producto();
-            ArrayList<Producto> productosQueBorraremos = new ArrayList();
-
-            productosQueBorraremos = p.allProductosWherePorAlumno(id);
-
-            for (Producto pro : productosQueBorraremos) {
-                p = pro;
-            }
-//            
-//            String nombre=p.getMarca().getNombre();
-
-            //   String productoBorrarJSON = gson.toJson(productosQueBorraremos);
-            String borraryenviar = gson.toJson(p);
-            //String representacionJSON = gson.toJson(productosQueBorraremos);
-            response.getWriter().write(borraryenviar);
+//            String jsonProcesador = request.getParameter("procesador");
+//            String jsonRam = request.getParameter("ram");
+//            String jsonDiscoDuro = request.getParameter("discoDuro");
+//            String jsonPlaca = request.getParameter("placa");
+//            //lo pasamos a objeto en el caso que sea distinto de nulo
+//            Producto productoNuevo = gson.fromJson(json, Producto.class);
+//            productoNuevo.addDatos();
+//
+//            productos = producto.allProductos();
+//
+//            for (Producto p : productos) {
+//                productoNuevo = p;
+//            }
+//
+//            ProduPropiedad procesador = gson.fromJson(jsonProcesador, ProduPropiedad.class);
+//            procesador.setProducto(productoNuevo);
+//            procesador.addDatos();
+//
+//            ProduPropiedad ram = gson.fromJson(jsonRam, ProduPropiedad.class);
+//            ram.setProducto(productoNuevo);
+//            ram.addDatos();
+//
+//            ProduPropiedad placa = gson.fromJson(jsonPlaca, ProduPropiedad.class);
+//            placa.setProducto(productoNuevo);
+//            placa.addDatos();
+//
+//            ProduPropiedad disco = gson.fromJson(jsonDiscoDuro, ProduPropiedad.class);
+//            disco.setProducto(productoNuevo);
+//            disco.addDatos();
 
         }
 
+        String borradoString = request.getParameter("codigo");
+        
+        if (borradoString != null) {
+            int id = Integer.parseInt(borradoString);                           //Obtenemos el id
+            Producto productoAEliminar = (Producto) igd.getOneHQL("Producto where IdProducto='" + id + "'"); //ordenador a borrar
+            String borraryenviar = gson.toJson(productoAEliminar);              //pasamos el obejeto a JSon              
+            response.getWriter().write(borraryenviar);                          //mandamos el objeto
+        }    
     }
 
     ;
