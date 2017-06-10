@@ -1,6 +1,6 @@
 angular.module('miApp', []).controller('controladorPractica', ['$scope', function ($scope) {
 
-
+$scope.propiedades=[];
 
         $("#codigoBarras").focusin(function () {
             //$("#nombreOrdenador").fadeOut("slow");
@@ -31,6 +31,7 @@ angular.module('miApp', []).controller('controladorPractica', ['$scope', functio
             
             var codigoB = {
                 "caracteristicas": caracteristica
+                
             };
 
             $.ajax({
@@ -44,9 +45,9 @@ angular.module('miApp', []).controller('controladorPractica', ['$scope', functio
                 },
                 success: function (response) {
 
-                    $scope.propiedadesJson = response;
-                    //$scope.propiedades = JSON.parse($scope.propiedadesJson);              
-                    
+                    $scope.propiedades = response;
+                  //  $scope.propiedades = JSON.parse($scope.propiedadesJson);              
+                  //  alert(JSON.stringify($scope.propiedades));
 
                 }, error: function (jqXHR, textStatus, errorThown) {
                     alert("Algo fallo");
@@ -170,8 +171,6 @@ angular.module('miApp', []).controller('controladorPractica', ['$scope', functio
 
 
         };
-        
-        
 
         $scope.eliminarProducto = function () {
 
@@ -188,18 +187,13 @@ angular.module('miApp', []).controller('controladorPractica', ['$scope', functio
 
         $scope.despieceFinal = function () {
 
-alert($scope.selectDespiece.IdCategoria);
-alert($scope.selectDespiece);
-alert($scope.selectDespiece.nombre);
-alert(JSON.stringify($scope.selectDespiece));
-
-
             var elementoDanadoAEliminar = {
                 "procesador": $scope.eliminar.caracteristicas.procesador,
                 "ram": $scope.eliminar.caracteristicas.ram,
                 "hd": $scope.eliminar.caracteristicas.hd,
-                "mal": $scope.selectDespiece.IdCategoria,
+                "mal": $scope.SelectPropiedades,
                 "idProducto": $scope.eliminar.id
+                
             };
         
             $.ajax({
@@ -231,7 +225,7 @@ alert(JSON.stringify($scope.selectDespiece));
         $scope.arreglar = function () {
 
             var elementoDanadoAEliminar = {
-                "Arreglarmal": $scope.selectDespiece,
+                "Arreglarmal":  $scope.SelectPropiedades,
                 "idProducto": $scope.eliminar.id
             };
         

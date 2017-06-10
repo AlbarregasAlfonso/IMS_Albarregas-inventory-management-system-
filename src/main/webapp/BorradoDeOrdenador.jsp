@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="resources/css/bootstrap.min.css" />
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.js"></script>
         <link rel="stylesheet" href="resources/css/style2.css" />
-        <meta http-equiv="Content-Type" content="text/html" charset=utf-8">
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
     <body ng-app="miApp" >
@@ -43,8 +43,8 @@
                     <button id="ElliminarOrdenador" ng-click="cargarCaracteristicas()" ng-model="botonElimiar" class="btn btn-danger">Inservible</button>
                     <button id="Despiezar" ng-click="cargarCaracteristicas()" ng-model="botonDespiezar" class="btn btn-warning">Arreglar</button>
                     <div id="radioDespiece">
-                        <select class="form-control" id="componentesDanados" ng-model="selectDespiece">
-                            <option  ng-repeat="x in propiedadesJson" value="{{x.IdCategoria}}">{{x.nombre}}</option>
+                        <select class="form-control" id="componentesDanados" ng-model="SelectPropiedades">
+                            <option  ng-repeat="x in propiedades" value="{{x.id}}">{{x.nombre}}</option>
                         </select>
 <!--                        <select ng-model="selectDespiece" class="form-control" id="componentesDanados">
                             <option value="1">Ram</option>
