@@ -195,7 +195,7 @@ button#DespiezarFinal {
 
 select#componentesDanados {
     position: fixed;
-    top: 23%;
+    top: 25%;
     width: 14%;
 }
 
@@ -252,3 +252,20 @@ button#IntentarArreglar {
     right: 3%;
 }
 
+div#productosParaArreglar {
+    left: 25%;
+}
+
+select#componentesAlmacen {
+    width: 15%;
+    top: 23%;
+    right: 52%;
+    position: absolute;
+}
+
+button#ArreglarOrdenadorAlmacen {
+    position: absolute;
+    width: 15%;
+    top: 23%;
+    left: 50%;
+}

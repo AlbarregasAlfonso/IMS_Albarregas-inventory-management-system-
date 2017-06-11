@@ -11,6 +11,7 @@
         <script src="resources/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="resources/css/bootstrap.min.css" />
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
         <link rel="stylesheet" href="resources/css/style2.css" />
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
@@ -46,16 +47,16 @@
                         <select class="form-control" id="componentesDanados" ng-model="SelectPropiedades">
                             <option  ng-repeat="x in propiedades" value="{{x.id}}">{{x.nombre}}</option>
                         </select>
-<!--                        <select ng-model="selectDespiece" class="form-control" id="componentesDanados">
-                            <option value="1">Ram</option>
-                            <option value="2">Procesador</option>
-                            <option value="4">Disco</option>
-                            <option value="3">Otro</option>
-                        </select>-->
+                        <!--                        <select ng-model="selectDespiece" class="form-control" id="componentesDanados">
+                                                    <option value="1">Ram</option>
+                                                    <option value="2">Procesador</option>
+                                                    <option value="4">Disco</option>
+                                                    <option value="3">Otro</option>
+                                                </select>-->
                     </div>
                     <button id="DespiezarFinal" ng-click="despieceFinal()" ng-model="botonDespiezarFinal" class="btn btn-warning">Despiezar</button>
                     <button id="IntentarArreglar" ng-click="arreglar()"  ng-model="IntentarArreglar" class="btn btn-warning">Arreglar</button>
-                     
+
                 </div>
                 <div class="col-sm-4">
                     <br/>
@@ -71,11 +72,31 @@
                     <img id="infoIcoEliminar" src="resources/imagenes/inf.png" alt="" > 
                 </div>
             </div>
-<!--            <img id="tick" src="resources/imagenes/correcto.png" alt="" > 
-            <label id="mensajeAlumnos">El ordenador que hemos seleccionado lamentablemente no tenia recuperación posible por loq eu lo hemos retirado y hemos guardado las piezas que aún servian en el almacen, los alumnos que se han quedado sin ordenador temporalmente son:{{mensajeDeAlumnos}}</label>-->
+            <!--            <img id="tick" src="resources/imagenes/correcto.png" alt="" > 
+                        <label id="mensajeAlumnos">El ordenador que hemos seleccionado lamentablemente no tenia recuperación posible por loq eu lo hemos retirado y hemos guardado las piezas que aún servian en el almacen, los alumnos que se han quedado sin ordenador temporalmente son:{{mensajeDeAlumnos}}</label>-->
             <div class="alert alert-danger">El ordenador que hemos seleccionado lamentablemente no tenia recuperación posible por loq eu lo hemos retirado y hemos guardado las piezas que aún servian en el almacen, los alumnos que se han quedado sin ordenador temporalmente son:{{mensajeDeAlumnos}}</div> 
             <div ng-click="buscarPiezas()" id="productosParaArreglar" class="alert alert-danger">{{HayComponenteParaReparar}}</div> 
-        
+<!--            <select class="form-control" id="componentesAlmacen" ng-model="SelectPropiedadesAlmacen">
+                <option  ng-repeat="x in [1, 1, 1] track by piezasAlmacen" value="{{x.id}}">{{x.nombre}}</option>
+            </select>-->
+            <table class="table table-striped table-bordered" id="componentesAlmacen" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Nombres</th>
+                        <!--<th>velocidad</th>-->
+                        <!--<th>Opcionoes</th>-->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr  ng-repeat="nombreDescripcion in arrayPiezasAlmacen">
+                        <td >{{nombreDescripcion.id}}</td>
+                        <!--<td>{{nombreDescripcion.nombre}} </td>-->
+                        <!--<td><span ng-model="practicas.editar" ng-click="practicas.seleccionarTabla($index)" class="glyphicon glyphicon-plus"></span><span ng-click="practicas.eliminarSeleccion($index)" class="glyphicon glyphicon-minus"></span></td>-->
+                    </tr>
+                </tbody>
+            </table>
+            <button id="ArreglarOrdenadorAlmacen" ng-click="" ng-model="botonDespiezar" class="btn btn-warning">Arreglar</button>
+
         </div>
     </body>
 </html>

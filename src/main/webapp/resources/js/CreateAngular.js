@@ -1,6 +1,7 @@
 angular.module('miApp', []).controller('controladorPractica', ['$scope', function ($scope) {
 
-$scope.propiedades=[];
+        $scope.propiedades = [];
+        $scope.piezasAlmacen = [];
 
         $("#codigoBarras").focusin(function () {
             //$("#nombreOrdenador").fadeOut("slow");
@@ -24,14 +25,14 @@ $scope.propiedades=[];
 
         $scope.eliminar = [
         ];
-        
+
         $scope.cargarCaracteristicas = function () {
-            
-            var caracteristica="caracteristicas";
-            
+
+            var caracteristica = "caracteristicas";
+
             var codigoB = {
                 "caracteristicas": caracteristica
-                
+
             };
 
             $.ajax({
@@ -46,8 +47,8 @@ $scope.propiedades=[];
                 success: function (response) {
 
                     $scope.propiedades = response;
-                  //  $scope.propiedades = JSON.parse($scope.propiedadesJson);              
-                  //  alert(JSON.stringify($scope.propiedades));
+                    //  $scope.propiedades = JSON.parse($scope.propiedadesJson);              
+                    //  alert(JSON.stringify($scope.propiedades));
 
                 }, error: function (jqXHR, textStatus, errorThown) {
                     alert("Algo fallo");
@@ -56,7 +57,7 @@ $scope.propiedades=[];
 
 
         };
-        
+
 
         $scope.anadir = function () {
 
@@ -72,37 +73,37 @@ $scope.propiedades=[];
                 caracteristicas: {id: $scope.caracteristica},
                 estancia: {id: $scope.estancia}
             };
-            
+
             $scope.nuevaCaracteristicaProcesador = {
                 id: 0,
                 compatibilidad: $scope.placa,
                 descripcion: $scope.procesador,
-                producto:{id: 6},
-                propiedad:{id:2}
+                producto: {id: 6},
+                propiedad: {id: 2}
             };
-            
+
             $scope.nuevaCaracteristicaRam = {
                 id: 0,
                 compatibilidad: $scope.placa,
                 descripcion: $scope.ram,
-                producto:{id: 6},
-                propiedad:{id:1}
+                producto: {id: 6},
+                propiedad: {id: 1}
             };
-            
+
             $scope.nuevaCaracteristicaPlaca = {
                 id: 0,
                 compatibilidad: $scope.placa,
                 descripcion: $scope.placa,
-                producto:{id: 6},
-                propiedad:{id:3}
+                producto: {id: 6},
+                propiedad: {id: 3}
             };
-            
+
             $scope.nuevaCaracteristicaDiscoDuro = {
                 id: 0,
                 compatibilidad: $scope.placa,
                 descripcion: $scope.discoDuro,
-                producto:{id: 6},
-                propiedad:{id:4}
+                producto: {id: 6},
+                propiedad: {id: 4}
             };
 //        alert(JSON.stringify($scope.nuevoOrdenadorPrueba));
 
@@ -111,7 +112,7 @@ $scope.propiedades=[];
                 "ram": angular.toJson($scope.nuevaCaracteristicaRam),
                 "procesador": angular.toJson($scope.nuevaCaracteristicaProcesador),
                 "placa": angular.toJson($scope.nuevaCaracteristicaPlaca),
-                "discoDuro": angular.toJson($scope.nuevaCaracteristicaDiscoDuro)               
+                "discoDuro": angular.toJson($scope.nuevaCaracteristicaDiscoDuro)
             };
 
             alert(JSON.stringify(nuevoOrdenador));
@@ -193,9 +194,9 @@ $scope.propiedades=[];
                 "hd": $scope.eliminar.caracteristicas.hd,
                 "mal": $scope.SelectPropiedades,
                 "idProducto": $scope.eliminar.id
-                
+
             };
-        
+
             $.ajax({
                 data: elementoDanadoAEliminar,
                 url: '../../ControladorEliminarDespiezar',
@@ -213,7 +214,7 @@ $scope.propiedades=[];
 
                     for (var i = 0; i < $scope.alumnosSinOrdenadorArray.length; i++) {
                         $scope.mensajeDeAlumnos = $scope.mensajeDeAlumnos + $scope.alumnosSinOrdenadorArray[i].Nombre + ", ";
-                    }                    
+                    }
                     $(".alert").fadeIn(2000);
 
                 }, error: function (jqXHR, textStatus, errorThown) {
@@ -221,14 +222,14 @@ $scope.propiedades=[];
                 }
             });
         };
-        
+
         $scope.arreglar = function () {
 
             var elementoDanadoAEliminar = {
-                "Arreglarmal":  $scope.SelectPropiedades,
+                "Arreglarmal": $scope.SelectPropiedades,
                 "idProducto": $scope.eliminar.id
             };
-        
+
             $.ajax({
                 data: elementoDanadoAEliminar,
                 url: '../../ControladorEliminarDespiezar',
@@ -255,13 +256,27 @@ $scope.propiedades=[];
                 }
             });
         };
-        
+
         $scope.buscarPiezas = function () {
-  
+
+            //Animations
+            //
+            $("#componentesDanados").fadeOut(1000);
+            $("#IntentarArreglar").fadeOut(1000);
+            $("#infoIcoEliminar").fadeOut(1000);
+            $("#infoIcoDespiezar").fadeOut(1000);
+            $("#productosParaArreglar").fadeOut(1000);
+            setTimeout(botonBorrarArreglar, 1000);
+            function botonBorrarArreglar() {
+                $("#ArreglarOrdenadorAlmacen").fadeIn(1000);
+                $("#componentesAlmacen").fadeIn(1000);
+            }
+            ;
+
             var elementoDanadoAEliminar = {
-                "componenteMalAMostrar": $scope.selectDespiece
+                "componenteMalAMostrar": $scope.SelectPropiedades
             };
-        
+
             $.ajax({
                 data: elementoDanadoAEliminar,
                 url: '../../ControladorEliminarDespiezar',
@@ -271,7 +286,11 @@ $scope.propiedades=[];
 
                 },
                 success: function (response) {
-
+                    $scope.piezasAlmacen = response;
+                    alert($scope.piezasAlmacen);
+                    $scope.arrayPiezasAlmacen = $.parseJSON(response);
+                    alert(arrayPiezasAlmacen);
+                    
                 }, error: function (jqXHR, textStatus, errorThown) {
                     alert("Algo fallo");
                 }

@@ -24,6 +24,9 @@ $(document).ready(function () {
     $(".alert").hide();
     $("#DespiezarFinal").hide();
     $("#IntentarArreglar").hide();
+    $("#ArreglarOrdenadorAlmacen").hide();
+    $("#componentesAlmacen").hide();
+    
     setTimeout(descargar, 1000);
 
     function descargar() {
@@ -103,6 +106,9 @@ $(document).ready(function () {
         $("#radioDespiece").fadeIn("slow");
         $("#IntentarArreglar").fadeIn("slow");
     }
+    
+    
+
 });
 
 

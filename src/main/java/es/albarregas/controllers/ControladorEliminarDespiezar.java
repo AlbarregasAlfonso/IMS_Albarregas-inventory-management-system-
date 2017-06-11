@@ -55,6 +55,7 @@ public class ControladorEliminarDespiezar extends HttpServlet {
         String jsonIdProducto = request.getParameter("idProducto");
         String jsonComponenteMalAMostrar = request.getParameter("componenteMalAMostrar");
         String jsonNombrePropiedades = request.getParameter("caracteristicas");
+        String jsonPropiedadParaSustituir = request.getParameter("componenteMalAMostrar");
 
         if (json != null) {
             Producto productoNuevo = gson.fromJson(json, Producto.class);
@@ -159,6 +160,43 @@ public class ControladorEliminarDespiezar extends HttpServlet {
             response.getWriter().write(propiedadesJson);
         }
 
+        if (jsonPropiedadParaSustituir != null) {
+            switch (jsonPropiedadParaSustituir) {
+                case "1": {
+                    Ram r=new Ram();
+                    ArrayList<Ram> rams = new ArrayList();
+                    rams=r.allRams();
+                    String ramsJson = gson.toJson(rams);
+                    response.getWriter().write(ramsJson);
+                break;
+                }
+                case "2": {
+                    Procesador r=new Procesador();
+                    ArrayList<Procesador> procesadores = new ArrayList();
+                    procesadores=r.allProcesadors();
+                    String procesadoresJson = gson.toJson(procesadores);
+                    response.getWriter().write(procesadoresJson);
+                break;
+                }
+                case "3": {
+                    Placa p=new Placa();
+                    ArrayList<Placa> placas = new ArrayList();
+                    placas=p.allPlacas();
+                    String placasJson = gson.toJson(placas);
+                    response.getWriter().write(placasJson);
+                break;
+                }
+                case "4": {
+                    Disco d=new Disco();
+                    ArrayList<Disco> discos = new ArrayList();
+                    discos=d.allDiscos();
+                    String discosJson = gson.toJson(discos);
+                    response.getWriter().write(discosJson);
+                break;
+                }
+            }
+        }
+
     }
 
     @Override
@@ -167,13 +205,11 @@ public class ControladorEliminarDespiezar extends HttpServlet {
         processRequest(request, response);
     }
 
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
 
     @Override
     public String getServletInfo() {
