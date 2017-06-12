@@ -37,19 +37,17 @@ public class Ram implements Serializable {
     @Column(name = "IdRam")
     private int id;
     private String nombre;
-    private String capacidad;
+    private String compatibilidad;
 
     public Ram() {
     }
 
-    public Ram(int id, String nombre, String capacidad) {
+    public Ram(int id, String nombre, String compatibilidad) {
         this.id = id;
         this.nombre = nombre;
-        this.capacidad = capacidad;
+        this.compatibilidad = compatibilidad;
     }
-    
-    
-    
+
     public void oneRam() {
         if (this.id > 0) {
             DAOFactory df = DAOFactory.getDAOFactory();
@@ -57,7 +55,7 @@ public class Ram implements Serializable {
             Ram Ram = (Ram) igd.getOne(this.id, Ram.class);
             this.id = Ram.getId();
             this.nombre = Ram.getNombre();
-            this.capacidad = Ram.getCapacidad();
+            this.compatibilidad = Ram.getCompatibilidad();
         }
     }
 
@@ -97,7 +95,7 @@ public class Ram implements Serializable {
     private void borrarTodo() {
         this.id = 0;
         this.nombre = "";
-        this.capacidad = "";
+        this.compatibilidad="";
     }
 
     public int getId() {
@@ -116,12 +114,13 @@ public class Ram implements Serializable {
         this.nombre = nombre;
     }
 
-    public String getCapacidad() {
-        return capacidad;
+    public String getCompatibilidad() {
+        return compatibilidad;
     }
 
-    public void setCapacidad(String capacidad) {
-        this.capacidad = capacidad;
+    public void setCompatibilidad(String compatibilidad) {
+        this.compatibilidad = compatibilidad;
     }
-
+    
+    
 }

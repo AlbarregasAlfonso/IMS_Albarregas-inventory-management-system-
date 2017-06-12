@@ -256,7 +256,7 @@ angular.module('miApp', []).controller('controladorPractica', ['$scope', functio
                 }
             });
         };
-
+        
         $scope.buscarPiezas = function () {
 
             //Animations
@@ -269,7 +269,7 @@ angular.module('miApp', []).controller('controladorPractica', ['$scope', functio
             setTimeout(botonBorrarArreglar, 1000);
             function botonBorrarArreglar() {
                 $("#ArreglarOrdenadorAlmacen").fadeIn(1000);
-                $("#componentesAlmacen").fadeIn(1000);
+                $("#componentesAlmacen").show(1000);
             }
             ;
 
@@ -290,6 +290,34 @@ angular.module('miApp', []).controller('controladorPractica', ['$scope', functio
                     alert($scope.piezasAlmacen);
                     $scope.arrayPiezasAlmacen = $.parseJSON(response);
                     alert(arrayPiezasAlmacen);
+                    
+                }, error: function (jqXHR, textStatus, errorThown) {
+                    alert("Algo fallo");
+                }
+            });
+        };
+        
+        $scope.sustituirComponente = function(index){
+//            alert("Id del elemento seleccionado "+$scope.arrayPiezasAlmacen[index].id);
+//            alert("Id del ordenador "+$scope.eliminar.id);
+//            alert("Tipo propiedad seleccionada "+$scope.SelectPropiedades); 
+            alert($scope.arrayPiezasAlmacen[index]);
+            
+            var UtilidadesParaArreglarOrdenador={
+                "almacenARemplazar": $scope.arrayPiezasAlmacen[index].nombre,
+                "idPropiedad": $scope.SelectPropiedades,
+                "idProductopropiedadARemplazar": $scope.eliminar.id
+            };
+            
+            $.ajax({
+                data: UtilidadesParaArreglarOrdenador,
+                url: '../../ControladorEliminarDespiezar',
+                type: 'post',
+                async: false,
+                beforeSend: function () {
+
+                },
+                success: function (response) {
                     
                 }, error: function (jqXHR, textStatus, errorThown) {
                     alert("Algo fallo");

@@ -56,6 +56,10 @@ public class ControladorEliminarDespiezar extends HttpServlet {
         String jsonComponenteMalAMostrar = request.getParameter("componenteMalAMostrar");
         String jsonNombrePropiedades = request.getParameter("caracteristicas");
         String jsonPropiedadParaSustituir = request.getParameter("componenteMalAMostrar");
+        String jsonidProductopropiedadARemplazar = request.getParameter("idProductopropiedadARemplazar");
+        String jsonidPropiedad = request.getParameter("idPropiedad");
+        String jsonalmacenARemplazar = request.getParameter("almacenARemplazar");
+        
 
         if (json != null) {
             Producto productoNuevo = gson.fromJson(json, Producto.class);
@@ -76,19 +80,21 @@ public class ControladorEliminarDespiezar extends HttpServlet {
             };
 
             caracteristicasProductos = PP.allcaracteristicasWhereIdProducto(idProducto);
-
+             ProduPropiedad propiedadesDeProductoAEliminar = (ProduPropiedad) igd.getOneHQL("ProduPropiedad where IdProducto='" + idProducto + "' and IdPropiedad='3'"); //ordenador a borrar
+            
+            
             for (ProduPropiedad x : caracteristicasProductos) {
                 if (jsonElementoCorrupto != x.getPropiedad().getId() && x.getPropiedad().getId() == 1) {
-                    Ram ram = new Ram(0, "DDR3", x.getDescripcion());
+                    Ram ram = new Ram(0,x.getDescripcion(),propiedadesDeProductoAEliminar.getDescripcion());
                     ram.addDatos();
                 } else if (jsonElementoCorrupto != x.getPropiedad().getId() && x.getPropiedad().getId() == 2) {
-                    Procesador procesador = new Procesador(0, x.getDescripcion(), "null");
+                    Procesador procesador = new Procesador(0, x.getDescripcion(),propiedadesDeProductoAEliminar.getDescripcion());
                     procesador.addDatos();
                 } else if (jsonElementoCorrupto != x.getPropiedad().getId() && x.getPropiedad().getId() == 3) {
                     Placa placa = new Placa(0, x.getDescripcion());
                     placa.addDatos();
                 } else if (jsonElementoCorrupto != x.getPropiedad().getId() && x.getPropiedad().getId() == 4) {
-                    Disco disco = new Disco(0, x.getDescripcion(), "WD");
+                    Disco disco = new Disco(0, x.getDescripcion(),propiedadesDeProductoAEliminar.getDescripcion());
                     disco.addDatos();
                 }
             }
@@ -195,6 +201,12 @@ public class ControladorEliminarDespiezar extends HttpServlet {
                 break;
                 }
             }
+        }
+        
+        if(jsonidProductopropiedadARemplazar!=null){          
+            ProduPropiedad propiedadACambiar = (ProduPropiedad) igd.getOneHQL("ProduPropiedad where IdProducto='"+jsonidProductopropiedadARemplazar+"' and IdPropiedad='"+jsonidPropiedad+"'"); //propìedad a remplazar
+            ProduPropiedad proNueva = new ProduPropiedad(propiedadACambiar.getId(),jsonalmacenARemplazar,propiedadACambiar.getProducto(),propiedadACambiar.getPropiedad());
+            proNueva.updDatos();
         }
 
     }

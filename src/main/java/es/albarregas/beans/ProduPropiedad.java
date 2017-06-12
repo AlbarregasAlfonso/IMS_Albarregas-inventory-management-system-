@@ -38,7 +38,6 @@ public class ProduPropiedad implements Serializable {
     @Column(name = "IdProduPropiedad")
     private int id;
     private String descripcion;
-    private String compatibilidad;
 
     @ManyToOne
     @JoinColumn(name = "IdProducto")
@@ -48,6 +47,16 @@ public class ProduPropiedad implements Serializable {
     @JoinColumn(name = "IdPropiedad")
     private Propiedad propiedad;
 
+    public ProduPropiedad() {
+    }
+
+    public ProduPropiedad(int id, String descripcion, Producto producto, Propiedad propiedad) {
+        this.id = id;
+        this.descripcion = descripcion;
+        this.producto = producto;
+        this.propiedad = propiedad;
+    }
+
     public void oneProduPropiedad() {
         if (this.id > 0) {
             DAOFactory df = DAOFactory.getDAOFactory();
@@ -55,8 +64,6 @@ public class ProduPropiedad implements Serializable {
             ProduPropiedad produPropiedad = (ProduPropiedad) igd.getOne(this.id, ProduPropiedad.class);
             this.id = produPropiedad.getId();
             this.descripcion = produPropiedad.getDescripcion();
-            this.compatibilidad = produPropiedad.getCompatibilidad();
-
         }
 
     }
@@ -120,7 +127,6 @@ public class ProduPropiedad implements Serializable {
     private void borrarTodo() {
         this.id = 0;
         this.descripcion = "";
-        this.compatibilidad = "";
 
     }
 
@@ -138,14 +144,6 @@ public class ProduPropiedad implements Serializable {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    public String getCompatibilidad() {
-        return compatibilidad;
-    }
-
-    public void setCompatibilidad(String compatibilidad) {
-        this.compatibilidad = compatibilidad;
     }
 
     public Producto getProducto() {

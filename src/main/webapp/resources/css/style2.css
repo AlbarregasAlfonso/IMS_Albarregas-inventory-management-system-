@@ -195,7 +195,7 @@ button#DespiezarFinal {
 
 select#componentesDanados {
     position: fixed;
-    top: 25%;
+    top: 22%;
     width: 14%;
 }
 
@@ -247,7 +247,7 @@ label#mensajeAlumnos {
 
 button#IntentarArreglar {
     position: absolute;
-    top: 122%;
+    top: 107%;
     width: 45%;
     right: 3%;
 }
@@ -263,9 +263,43 @@ select#componentesAlmacen {
     position: absolute;
 }
 
-button#ArreglarOrdenadorAlmacen {
+table#componentesAlmacen {
     position: absolute;
-    width: 15%;
-    top: 23%;
-    left: 50%;
+    width: 29%;
+    right: 35%;
 }
+
+span#icoArreglar {
+    font-size: 108%;
+    color: white;
+}
+th {
+    color: white;
+}
+
+td.ng-binding {
+    color: white;
+}
+
+span#icoMasMarcas {
+    position: absolute;
+    top: 27.5%;
+    right: 17%;
+    color: white;
+    font-size: 30px;
+}
+
+span#icoMasModelos {
+    position: absolute;
+    top: 34.5%;
+    right: 17%;
+    color: white;
+    font-size: 30px;
+}
+input#NuevaMarca {
+    position: absolute;
+    top: 28%;
+    width: 70%;
+}
+
+

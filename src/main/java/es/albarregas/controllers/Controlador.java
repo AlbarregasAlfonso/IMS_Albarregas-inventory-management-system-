@@ -44,35 +44,36 @@ public class Controlador extends HttpServlet {
         String json = request.getParameter("ordenador");
 
         if (json != null) {
-//            String jsonProcesador = request.getParameter("procesador");
-//            String jsonRam = request.getParameter("ram");
-//            String jsonDiscoDuro = request.getParameter("discoDuro");
-//            String jsonPlaca = request.getParameter("placa");
-//            //lo pasamos a objeto en el caso que sea distinto de nulo
-//            Producto productoNuevo = gson.fromJson(json, Producto.class);
-//            productoNuevo.addDatos();
-//
+            String jsonProcesador = request.getParameter("procesador");
+            String jsonRam = request.getParameter("ram");
+            String jsonDiscoDuro = request.getParameter("discoDuro");
+            String jsonPlaca = request.getParameter("placa");
+            
+            //lo pasamos a objeto en el caso que sea distinto de nulo
+            Producto productoNuevo = gson.fromJson(json, Producto.class);
+            productoNuevo.addDatos();
+
 //            productos = producto.allProductos();
 //
 //            for (Producto p : productos) {
 //                productoNuevo = p;
 //            }
-//
-//            ProduPropiedad procesador = gson.fromJson(jsonProcesador, ProduPropiedad.class);
-//            procesador.setProducto(productoNuevo);
-//            procesador.addDatos();
-//
-//            ProduPropiedad ram = gson.fromJson(jsonRam, ProduPropiedad.class);
-//            ram.setProducto(productoNuevo);
-//            ram.addDatos();
-//
-//            ProduPropiedad placa = gson.fromJson(jsonPlaca, ProduPropiedad.class);
-//            placa.setProducto(productoNuevo);
-//            placa.addDatos();
-//
-//            ProduPropiedad disco = gson.fromJson(jsonDiscoDuro, ProduPropiedad.class);
-//            disco.setProducto(productoNuevo);
-//            disco.addDatos();
+
+            ProduPropiedad procesador = gson.fromJson(jsonProcesador, ProduPropiedad.class);
+            procesador.setProducto(productoNuevo);
+            procesador.addDatos();
+
+            ProduPropiedad ram = gson.fromJson(jsonRam, ProduPropiedad.class);
+            ram.setProducto(productoNuevo);
+            ram.addDatos();
+
+            ProduPropiedad placa = gson.fromJson(jsonPlaca, ProduPropiedad.class);
+            placa.setProducto(productoNuevo);
+            placa.addDatos();
+
+            ProduPropiedad disco = gson.fromJson(jsonDiscoDuro, ProduPropiedad.class);
+            disco.setProducto(productoNuevo);
+            disco.addDatos();
 
         }
 

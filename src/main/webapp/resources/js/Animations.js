@@ -2,11 +2,6 @@
 
 $(document).ready(function () {
 
-
-    $("#probemos").click(function () {
-        alert("funciona");
-    });
-
     $("#docInfo").hide();
     $("span").hide();
     $("#panelPrincipal").hide();
@@ -19,14 +14,15 @@ $(document).ready(function () {
     $("#docEliminar").hide();       //icono de informacion                  BorradoDeOrdenador.jsp
     $("#InfoDespiezar").hide();     //icono de informacion                  BorradoDeOrdenador.jsp
     $("#radioDespiece").hide();     //check de despiece                     BorradoDeOrdenador.jsp
-   // $("#tick").hide();              //Tick todo correcto                    BorradoDeOrdenador.jsp
     $("#mensajeAlumnos").hide();
     $(".alert").hide();
     $("#DespiezarFinal").hide();
     $("#IntentarArreglar").hide();
     $("#ArreglarOrdenadorAlmacen").hide();
     $("#componentesAlmacen").hide();
-    
+    $("#NuevaMarca").hide();
+    $("#icoMenosMarca").hide();
+
     setTimeout(descargar, 1000);
 
     function descargar() {
@@ -44,7 +40,7 @@ $(document).ready(function () {
     });
 
     function cambiarVentana() {
-        $("span").fadeOut("slow");
+        $(".iconosPrincipal").fadeOut("slow");
         $("#panelPrincipal").fadeOut("slow");
         $("#escudo").fadeOut("slow");
         $("#subFooter").fadeOut("slow");
@@ -53,7 +49,7 @@ $(document).ready(function () {
     }
     ;
     function descargariconos() {
-        $("span").fadeIn(1500);
+        $(".iconosPrincipal").fadeIn(1500);
         $("#subFooter").fadeIn(1500);
     }
     ;
@@ -94,20 +90,41 @@ $(document).ready(function () {
     function iconosDespiece() {
         $("#radioDespiece").fadeIn(1000);
         $("#DespiezarFinal").fadeIn(1000);
-    };
+    }
+    ;
 
-    $("#Despiezar").click(function(){
+    $("#Despiezar").click(function () {
         $("#Despiezar").fadeOut("slow");
         $("#ElliminarOrdenador").fadeOut("slow");
         setTimeout(botonesArreglar, 1000);
     });
-    
-    function botonesArreglar(){
+
+    function botonesArreglar() {
         $("#radioDespiece").fadeIn("slow");
         $("#IntentarArreglar").fadeIn("slow");
     }
-    
-    
+
+    $("#icoMasMarcas").click(function () {
+        $("#marca").hide(1000);
+        $("#icoMenosMarcas ").show();
+        $("#icoMasMarcas").hide();
+        setTimeout(masMarcas, 1000);
+    });
+    function masMarcas() {
+        $("#NuevaMarca").show(1000);
+    }
+    ;
+    $("#icoMenosMarcas").click(function () {
+        $("#NuevaMarca").hide(1000);
+        $("#icoMasMarcas ").show();
+        $("#icoMenosMarcas").hide();
+        setTimeout(masMarcas, 1000);
+    });
+    function masMarcas() {
+        $("#marca").show(1000);
+
+    }
+    ;
 
 });
 

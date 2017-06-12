@@ -37,15 +37,15 @@ public class Procesador implements Serializable {
     @Column(name = "IdProcesador")
     private int id;
     private String nombre;
-    private String velocidad;
+    private String compatibilidad;
 
     public Procesador() {
     }
 
-    public Procesador(int id, String nombre, String velocidad) {
+    public Procesador(int id, String nombre, String compatibilidad) {
         this.id = id;
         this.nombre = nombre;
-        this.velocidad = velocidad;
+        this.compatibilidad = compatibilidad;
     }
 
     
@@ -63,7 +63,7 @@ public class Procesador implements Serializable {
             Procesador Procesador = (Procesador) igd.getOne(this.id, Procesador.class);
             this.id = Procesador.getId();
             this.nombre = Procesador.getNombre();
-            this.velocidad = Procesador.getVelocidad();
+            this.compatibilidad = Procesador.getCompatibilidad();
 
         }
 
@@ -105,7 +105,7 @@ public class Procesador implements Serializable {
     private void borrarTodo() {
         this.id = 0;
         this.nombre = "";
-        this.velocidad = "";
+        this.compatibilidad = "";
     }
 
     public int getId() {
@@ -124,12 +124,12 @@ public class Procesador implements Serializable {
         this.nombre = nombre;
     }
 
-    public String getVelocidad() {
-        return velocidad;
+    public String getCompatibilidad() {
+        return compatibilidad;
     }
 
-    public void setVelocidad(String velocidad) {
-        this.velocidad = velocidad;
+    public void setCompatibilidad(String compatibilidad) {
+        this.compatibilidad = compatibilidad;
     }
 
 }

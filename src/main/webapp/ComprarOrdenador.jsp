@@ -42,6 +42,11 @@
                             <option ng-value="${lp.id}"><c:out value="${lp.nombre}" /></option>               
                         </c:forEach>
                     </select>
+                     <div class="form-group">
+                        <input ng-model="MarcaNuevas" placeholder="Nueva Marca" type="text" class="form-control" id="NuevaMarca"/>
+                    </div>
+                    <span  class="glyphicon glyphicon-plus " id="icoMasMarcas"></span>
+                    <span  class="glyphicon glyphicon-plus " id="icoMenosMarca"></span>
                     <br/>
                     <select  class="form-control" ng-model="modelo" id="modelo">
                         <option value="">Modelo</option> 
@@ -49,6 +54,7 @@
                             <option ng-value="${lp.id}"><c:out value="${lp.nombre}" /></option>               
                         </c:forEach>
                     </select>
+                    <span class="glyphicon glyphicon-plus" id="icoMasModelos"></span>
                     <br/>
                     <select  class="form-control" ng-model="caracteristica" id="caracteristica">
                         <option value="">Procesador</option> 

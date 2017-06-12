@@ -37,17 +37,16 @@ public class Disco implements Serializable {
     @Column(name = "IdDisco")
     private int id;
     private String nombre;
-    private String capacidad;
+    private String compatibilidad;
 
     public Disco() {
     }
 
-    public Disco(int id, String nombre, String capacidad) {
+    public Disco(int id, String nombre,String compatibilidad) {
         this.id = id;
         this.nombre = nombre;
-        this.capacidad = capacidad;
+        this.compatibilidad = compatibilidad;
     }
-
 
     public void oneDisco() {
         if (this.id > 0) {
@@ -56,7 +55,7 @@ public class Disco implements Serializable {
             Disco Disco = (Disco) igd.getOne(this.id, Disco.class);
             this.id = Disco.getId();
             this.nombre = Disco.getNombre();
-            this.capacidad = Disco.getCapacidad();
+            this.compatibilidad = Disco.getCompatibilidad();
 
         }
 
@@ -98,7 +97,7 @@ public class Disco implements Serializable {
     private void borrarTodo() {
         this.id = 0;
         this.nombre = "";
-        this.capacidad = "";
+        this.compatibilidad="";
     }
 
     public int getId() {
@@ -117,12 +116,13 @@ public class Disco implements Serializable {
         this.nombre = nombre;
     }
 
-    public String getCapacidad() {
-        return capacidad;
+    public String getCompatibilidad() {
+        return compatibilidad;
     }
 
-    public void setCapacidad(String capacidad) {
-        this.capacidad = capacidad;
+    public void setCompatibilidad(String compatibilidad) {
+        this.compatibilidad = compatibilidad;
     }
-
+    
+    
 }
