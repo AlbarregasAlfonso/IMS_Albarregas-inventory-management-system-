@@ -3,7 +3,7 @@
 $(document).ready(function () {
 
     $("#docInfo").hide();
-    $("span").hide();
+    $(".iconosPrincipal").hide();
     $("#panelPrincipal").hide();
     $("#escudo").hide();
     $("#subFooter").hide();
@@ -20,8 +20,10 @@ $(document).ready(function () {
     $("#IntentarArreglar").hide();
     $("#ArreglarOrdenadorAlmacen").hide();
     $("#componentesAlmacen").hide();
+    $("#icoMenosModelos").hide();
+    $("#NuevoModelo").hide();
+    $("#icoMenosMarcas").hide();
     $("#NuevaMarca").hide();
-    $("#icoMenosMarca").hide();
 
     setTimeout(descargar, 1000);
 
@@ -104,27 +106,70 @@ $(document).ready(function () {
         $("#IntentarArreglar").fadeIn("slow");
     }
 
-    $("#icoMasMarcas").click(function () {
-        $("#marca").hide(1000);
-        $("#icoMenosMarcas ").show();
-        $("#icoMasMarcas").hide();
-        setTimeout(masMarcas, 1000);
-    });
-    function masMarcas() {
-        $("#NuevaMarca").show(1000);
-    }
-    ;
-    $("#icoMenosMarcas").click(function () {
-        $("#NuevaMarca").hide(1000);
-        $("#icoMasMarcas ").show();
-        $("#icoMenosMarcas").hide();
-        setTimeout(masMarcas, 1000);
-    });
-    function masMarcas() {
-        $("#marca").show(1000);
+    $("#icoMasModelos").click(function () {
 
+        $("#icoMasModelos").hide();
+        $("#icoMenosModelos").show();
+        $("#modelo").hide(400);
+        setTimeout(inputCompraModelo, 400);
+    });
+    function inputCompraModelo() {
+        $("#NuevoModelo").show(400);
+    }
+
+    $("#icoMenosModelos").click(function () {
+        $("#icoMasModelos").show();
+        $("#icoMenosModelos").hide();
+        $("#NuevoModelo").hide(400);
+        setTimeout(inputCompraMenosModelo, 400);
+    });
+    function inputCompraMenosModelo() {
+        $("#modelo").show(400);
+    }
+
+    $("#icoMasMarcas").click(function () {
+        $("#icoMasMarcas").hide();
+        $("#icoMenosMarcas").show();
+        $("#Marca").hide(400);
+        setTimeout(inputCompraMenosMarca, 400);
+    });
+    function inputCompraMenosMarca() {
+        $("#NuevaMarca").show(400);
     }
     ;
+
+    $("#icoMenosMarcas").click(function () {
+        $("#NuevaMarca").hide(400);
+        $("#icoMasMarcas").show();
+        $("#icoMenosMarcas").hide();
+        setTimeout(inputCompraMasMarca, 400);
+    });
+    function inputCompraMasMarca() {
+        $("#Marca").show(400);
+
+    };
+
+    $("#guardar").click(function(){
+        $("#guardar").fadeOut(300);
+        $("#modelo").fadeOut(400);
+        $("#icoMasModelos").fadeOut(400);
+        $("#icoMenosModelos").fadeOut(400);
+        $("#icoMasMarcas").fadeOut(500);
+        $("#icoMenosMarcas").fadeOut(500);
+        $("#NuevoModelo").fadeOut(500);
+        $("#Marca").fadeOut(500);
+        $("#NuevaMarca").fadeOut(500);        
+        $("#discoDuro").fadeOut(600); 
+        $("#placa").fadeOut(700);
+        $("#ram").fadeOut(800);
+        $("#procesador").fadeOut(900);    
+        $("#categoria").fadeOut(1000);
+        $("#estancia").fadeOut(1100);
+        $("#estado").fadeOut(1200);
+        $("#ubicacion").fadeOut(1300);
+        $("#precio").fadeOut(1400);
+    });
+
 
 });
 

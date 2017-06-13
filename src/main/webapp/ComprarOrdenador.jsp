@@ -17,11 +17,18 @@
     </head>
     <body ng-app="miApp" >
         <div ng-controller="controladorPractica">
+            <div id="top">
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="#">Eliminar ordenador</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
             <div class="row">
                 <div class="col-sm-4"></div>
                 <div class="col-sm-4">
-
-                    <h1>Crear un nuevo ordenador</h1>
 
                     <div class="form-group">
                         <input ng-model="precio" placeholder="precio" type="text" class="form-control" id="precio"/>
@@ -33,33 +40,6 @@
                         <option value="">Estado</option> 
                         <c:forEach items="#{Estado.allEstados()}" var="lp">
                             <option ng-value="${lp.id}"><c:out value="${lp.descripcion}"/></option>               
-                        </c:forEach>
-                    </select>
-                    <br/>
-                    <select  class="form-control" ng-model="marca" id="marca">
-                        <option value="">Marca</option> 
-                        <c:forEach items="#{Marca.allMarcas()}" var="lp">
-                            <option ng-value="${lp.id}"><c:out value="${lp.nombre}" /></option>               
-                        </c:forEach>
-                    </select>
-                     <div class="form-group">
-                        <input ng-model="MarcaNuevas" placeholder="Nueva Marca" type="text" class="form-control" id="NuevaMarca"/>
-                    </div>
-                    <span  class="glyphicon glyphicon-plus " id="icoMasMarcas"></span>
-                    <span  class="glyphicon glyphicon-plus " id="icoMenosMarca"></span>
-                    <br/>
-                    <select  class="form-control" ng-model="modelo" id="modelo">
-                        <option value="">Modelo</option> 
-                        <c:forEach items="#{modelo.allModelos()}" var="lp">
-                            <option ng-value="${lp.id}"><c:out value="${lp.nombre}" /></option>               
-                        </c:forEach>
-                    </select>
-                    <span class="glyphicon glyphicon-plus" id="icoMasModelos"></span>
-                    <br/>
-                    <select  class="form-control" ng-model="caracteristica" id="caracteristica">
-                        <option value="">Procesador</option> 
-                        <c:forEach items="#{Caracteristicas.allCaracteristicas()}" var="lp">
-                            <option ng-value="${lp.id}"><c:out value="${lp.procesador}" /></option>               
                         </c:forEach>
                     </select>
                     <br/>
@@ -77,24 +57,48 @@
                         </c:forEach>
                     </select>
                     <br/>
-                     <div class="form-group">
+                    <div class="form-group">
                         <input ng-model="procesador" placeholder="Procesador" type="text" class="form-control" id="procesador"/>
                     </div>
-                    <br/>
                     <div class="form-group">
                         <input ng-model="ram" placeholder="Ram" type="text" class="form-control" id="ram"/>
                     </div>
-                    <br/>
                     <div class="form-group">
                         <input ng-model="placa" placeholder="Placa" type="text" class="form-control" id="placa"/>
                     </div>
-                    <br/>
                     <div class="form-group">
                         <input ng-model="discoDuro" placeholder="DiscoDuro" type="text" class="form-control" id="discoDuro"/>
                     </div>
+
+                    <select  class="form-control" ng-model="caracteristica" id="Marca">
+                        <option value="">Marca</option> 
+                        <c:forEach items="#{Marca.allMarcas()}" var="lp">	
+                            <option ng-value="${lp.id}"><c:out value="${lp.nombre}"/></option>            
+                        </c:forEach>
+                    </select>
+                    <span class="glyphicon glyphicon-plus" id="icoMasModelos"></span>
+                    <span class="glyphicon glyphicon-plus" id="icoMenosModelos"></span>
+                    <span class="glyphicon glyphicon-plus" id="icoMasMarcas"></span>
+                    <span class="glyphicon glyphicon-plus" id="icoMenosMarcas"></span>
+                    <br/>
+                    <select  class="form-control" ng-model="modelo" id="modelo">
+                        <option value="">Modelo</option> 
+                        <c:forEach items="#{modelo.allModelos()}" var="lp">
+                            <option ng-value="${lp.id}"><c:out value="${lp.nombre}" /></option>               
+                        </c:forEach>
+
+                    </select>
+                    <!--                    <div class="form-group">
+                                            <input ng-model="MarcaNuevas" placeholder="Nueva Marca" type="text" class="form-control" id="NuevaMarca"/>
+                                        </div>-->
+                    <div class="form-group">
+                        <input ng-model="ModelosNuevos" placeholder="Nueva Modelo" type="text" class="form-control" id="NuevoModelo"/>
+                    </div>
+                    <div class="form-group">
+                        <input ng-model="Marcanueva" placeholder="Nueva Marca" type="text" class="form-control" id="NuevaMarca"/>
+                    </div>
                     <br/>
                     <button id="guardar" ng-click="anadir()" ng-model="botonGuardar" class="btn btn-warning">Guardar</button>
-
                 </div>
                 <div class="col-sm-4"></div>
             </div>

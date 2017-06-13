@@ -115,7 +115,7 @@ angular.module('miApp', []).controller('controladorPractica', ['$scope', functio
                 "discoDuro": angular.toJson($scope.nuevaCaracteristicaDiscoDuro)
             };
 
-            alert(JSON.stringify(nuevoOrdenador));
+      // este valeeeeeeeeeee      alert(JSON.stringify(nuevoOrdenador));
 
             $.ajax({
                 data: nuevoOrdenador,

@@ -164,13 +164,13 @@ button#borrar, #componentesDañados:hover {
 }
 
 /*formulario crear ordenador*/
-#precio, #ubicacion, #estado, #marca, #modelo, #caracteristica, #categoria, #estancia, #placa, #procesador, #discoDuro, #ram{
+#precio, #ubicacion, #estado, #marca, #modelo, #Marca, #categoria, #estancia, #placa, #procesador, #discoDuro, #ram ,#NuevaMarca, #NuevoModelo{
     width: 75%;
     left: 12%;
     transition: width 1s, left 1s;
 }
 /*aumenta de tamaño al poner el ratón sobre el*/
-#precio:hover, #ubicacion:hover, #estado:hover, #marca:hover, #modelo:hover, #caracteristica:hover, #categoria:hover, #estancia:hover, #discoDuro, #procesador, #placa, #ram{
+#precio:hover, #ubicacion:hover, #estado:hover, #marca:hover, #modelo:hover, #Marca:hover, #categoria:hover, #estancia:hover, #discoDuro:hover, #procesador:hover, #placa:hover, #ram:hover , #NuevaMarca:hover, #NuevoModelo:hover{
     left: 0%;
     width: 100%;
 }
@@ -291,15 +291,65 @@ span#icoMasMarcas {
 
 span#icoMasModelos {
     position: absolute;
-    top: 34.5%;
-    right: 17%;
-    color: white;
+    top: 99%;
+    right: 99%;
+    color: blue;
     font-size: 30px;
 }
-input#NuevaMarca {
+
+span#icoMenosModelos {
     position: absolute;
-    top: 28%;
+    top: 99%;
+    right: 99%;
+    color: blue;
+    font-size: 30px;
+}
+
+span#icoMasMarcas{
+    position: absolute;
+    top: 91%;
+    right: 99%;
+    color: blue;
+    font-size: 30px;
+}
+
+span#icoMenosMarcas{
+    position: absolute;
+    top: 91%;
+    right: 99%;
+    color: blue;
+    font-size: 30px;
+}
+
+input#NuevoModelo {
+    position: absolute;
+    top: 98%;
+    left: 3%;
+    width: 70%;
+}
+select#modelo {
+    position: absolute;
+    top: 98%;
+    left: 3%;
     width: 70%;
 }
 
+select#Marca {
+    position: absolute;
+    top: 89%;
+    left: 3%;
+    width: 70%;
+}
 
+button#guardar {
+    position: absolute;
+    top: 106%;
+    width: 70%;
+}
+
+input#NuevaMarca {
+    position: absolute;
+    top: 89%;
+    left: 3%;
+    width: 70%;
+}
