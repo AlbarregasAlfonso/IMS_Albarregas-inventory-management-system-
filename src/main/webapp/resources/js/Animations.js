@@ -24,6 +24,10 @@ $(document).ready(function () {
     $("#NuevoModelo").hide();
     $("#icoMenosMarcas").hide();
     $("#NuevaMarca").hide();
+    $("#modelo").hide();
+    $("#icoMasModelos").hide();
+    
+    
 
     setTimeout(descargar, 1000);
 
@@ -121,6 +125,8 @@ $(document).ready(function () {
         $("#icoMasModelos").show();
         $("#icoMenosModelos").hide();
         $("#NuevoModelo").hide(400);
+        $("#NuevoModelo").val(null);
+        
         setTimeout(inputCompraMenosModelo, 400);
     });
     function inputCompraMenosModelo() {
@@ -131,15 +137,18 @@ $(document).ready(function () {
         $("#icoMasMarcas").hide();
         $("#icoMenosMarcas").show();
         $("#Marca").hide(400);
+        $("#modelo").hide(400);
         setTimeout(inputCompraMenosMarca, 400);
     });
     function inputCompraMenosMarca() {
         $("#NuevaMarca").show(400);
+        $("#NuevoModelo").show(400);
     }
     ;
 
     $("#icoMenosMarcas").click(function () {
         $("#NuevaMarca").hide(400);
+        $("#NuevaMarca").val(null);
         $("#icoMasMarcas").show();
         $("#icoMenosMarcas").hide();
         setTimeout(inputCompraMasMarca, 400);
@@ -148,6 +157,8 @@ $(document).ready(function () {
         $("#Marca").show(400);
 
     };
+    
+     
 
     $("#guardar").click(function(){
         $("#guardar").fadeOut(300);
@@ -169,6 +180,7 @@ $(document).ready(function () {
         $("#ubicacion").fadeOut(1300);
         $("#precio").fadeOut(1400);
     });
+
 
 
 });

@@ -6,10 +6,17 @@
 package es.albarregas.controllers;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import es.albarregas.beans.Marca;
+import es.albarregas.beans.Modelo;
 import es.albarregas.beans.ProduPropiedad;
 import es.albarregas.beans.Producto;
+import es.albarregas.beans.Propiedad;
 import es.albarregas.dao.IGenericoDAO;
 import es.albarregas.daofactory.DAOFactory;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -40,24 +47,52 @@ public class Controlador extends HttpServlet {
         //Lamada a la bbd
         DAOFactory df = DAOFactory.getDAOFactory();
         IGenericoDAO igd = df.getGenericoDAO();
-
+        
+        
         String json = request.getParameter("ordenador");
+        String jsonIdMarca = request.getParameter("idMarca");
 
+        if(jsonIdMarca!=null){
+            Modelo mo=new Modelo();
+            ArrayList<Modelo> modelosIdMarca = new ArrayList();
+            int id=Integer.parseInt(jsonIdMarca);
+            modelosIdMarca=mo.allModeloWhere(id);
+            String modelosSegunMarca = gson.toJson(modelosIdMarca); 
+            response.getWriter().write(modelosSegunMarca);
+        }
         if (json != null) {
             String jsonProcesador = request.getParameter("procesador");
             String jsonRam = request.getParameter("ram");
             String jsonDiscoDuro = request.getParameter("discoDuro");
             String jsonPlaca = request.getParameter("placa");
             
-            //lo pasamos a objeto en el caso que sea distinto de nulo
+            String StringNuevaMarca = request.getParameter("nuevaMarca");
+            Marca objetoNuevaMarca = gson.fromJson(StringNuevaMarca, Marca.class);
+            
+            String StringNuevoModelo = request.getParameter("nuevoModelo");
+            Modelo objetoNuevoModelo = gson.fromJson(StringNuevoModelo, Modelo.class);
+           
             Producto productoNuevo = gson.fromJson(json, Producto.class);
-            productoNuevo.addDatos();
-
-//            productos = producto.allProductos();
-//
-//            for (Producto p : productos) {
-//                productoNuevo = p;
-//            }
+                
+            if(objetoNuevaMarca.getNombre()!=null){
+                objetoNuevaMarca.addDatos();
+                Marca marcaIdMax = (Marca) igd.getOneHQL("Marca where id=(select max(id) from Marca)"); //marca Max
+                objetoNuevoModelo.setMarca(marcaIdMax);
+                objetoNuevoModelo.addDatos();
+                
+                Modelo modeloIdMax = (Modelo) igd.getOneHQL("Modelo where id=(select max(id) from Modelo)"); //modelo Max
+                
+                productoNuevo.setMarca(marcaIdMax);
+                productoNuevo.setModelo(modeloIdMax);
+                productoNuevo.addDatos();
+            }else if(objetoNuevaMarca.getNombre()==null && (objetoNuevoModelo.getNombre()!=null)){
+                Marca marcaIdSeleccionado = (Marca) igd.getOneHQL("Marca where id='"+productoNuevo.getMarca().getId()+"'"); //marca Max
+                objetoNuevoModelo.setMarca(marcaIdSeleccionado);
+                objetoNuevoModelo.addDatos();
+            
+            }else{
+                productoNuevo.addDatos();
+            }
 
             ProduPropiedad procesador = gson.fromJson(jsonProcesador, ProduPropiedad.class);
             procesador.setProducto(productoNuevo);

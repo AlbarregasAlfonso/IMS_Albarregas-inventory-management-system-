@@ -70,8 +70,8 @@
                         <input ng-model="discoDuro" placeholder="DiscoDuro" type="text" class="form-control" id="discoDuro"/>
                     </div>
 
-                    <select  class="form-control" ng-model="caracteristica" id="Marca">
-                        <option value="">Marca</option> 
+                    <select  class="form-control" ng-model="marca" ng-change="mostrarModelos()" id="Marca">
+                        <option value="1">Marca</option> 
                         <c:forEach items="#{Marca.allMarcas()}" var="lp">	
                             <option ng-value="${lp.id}"><c:out value="${lp.nombre}"/></option>            
                         </c:forEach>
@@ -81,16 +81,12 @@
                     <span class="glyphicon glyphicon-plus" id="icoMasMarcas"></span>
                     <span class="glyphicon glyphicon-plus" id="icoMenosMarcas"></span>
                     <br/>
-                    <select  class="form-control" ng-model="modelo" id="modelo">
-                        <option value="">Modelo</option> 
-                        <c:forEach items="#{modelo.allModelos()}" var="lp">
-                            <option ng-value="${lp.id}"><c:out value="${lp.nombre}" /></option>               
-                        </c:forEach>
 
-                    </select>
-                    <!--                    <div class="form-group">
-                                            <input ng-model="MarcaNuevas" placeholder="Nueva Marca" type="text" class="form-control" id="NuevaMarca"/>
-                                        </div>-->
+                    
+                    <select class="form-control" id="modelo" ng-model="modelo">
+                            <option  ng-repeat="x in modelosSegunMarca" value="{{x.id}}">{{x.nombre}}</option>
+                        </select>
+
                     <div class="form-group">
                         <input ng-model="ModelosNuevos" placeholder="Nueva Modelo" type="text" class="form-control" id="NuevoModelo"/>
                     </div>

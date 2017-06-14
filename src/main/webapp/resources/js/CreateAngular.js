@@ -1,7 +1,9 @@
 angular.module('miApp', []).controller('controladorPractica', ['$scope', function ($scope) {
 
         $scope.propiedades = [];
-        $scope.piezasAlmacen = [];
+        $scope.piezasAlmacen = [];  
+        $scope.eliminar = [];
+        $scope.modelosSegunMarca = [];
 
         $("#codigoBarras").focusin(function () {
             //$("#nombreOrdenador").fadeOut("slow");
@@ -23,9 +25,34 @@ angular.module('miApp', []).controller('controladorPractica', ['$scope', functio
             $(".alert").fadeOut("slow");
         }
 
-        $scope.eliminar = [
-        ];
+//cuando hacemos seleccionamos alguna marca
+        $scope.mostrarModelos = function(){
+               $("#modelo").show(400);
+               $("#icoMasModelos").show(400);
+               
+               var idMarca = {
+                "idMarca": $scope.marca
+            };
+                 $.ajax({
+                    
+                data: idMarca,
+                url: '../../Controlador',
+                type: 'post',
+                async: false,
+                beforeSend: function () {
 
+                },
+                success: function (response) {
+                    $scope.modelosSegunMarca = JSON.parse(response);
+                    
+                }, error: function (jqXHR, textStatus, errorThown) {
+                    alert("Algo fallo");
+                }
+            });
+          
+        };
+             
+        
         $scope.cargarCaracteristicas = function () {
 
             var caracteristica = "caracteristicas";
@@ -61,22 +88,32 @@ angular.module('miApp', []).controller('controladorPractica', ['$scope', functio
 
         $scope.anadir = function () {
 
+            var f = new Date();
+
+            $scope.marcaNueva= {id:0,
+                                nombre: $scope.Marcanueva};
+
+            $scope.nuevoModelo= {id:0,
+                                nombre: $scope.ModelosNuevos,
+                                marcaNueva:{id:"0",nombre:"null"}
+            };
+
             $scope.nuevoOrdenadorPrueba = {
                 id: 0,
                 precio: $scope.precio,
                 ubicacion: $scope.ubicacion,
                 fecha_baja: "--",
+                fecha_compra: f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear(),
                 categoria: {id: $scope.categoria},
                 estado: {id: $scope.estado},
                 marca: {id: $scope.marca},
                 modelo: {id: $scope.modelo},
-                caracteristicas: {id: $scope.caracteristica},
+                caracteristicas: {id: 1},
                 estancia: {id: $scope.estancia}
             };
 
             $scope.nuevaCaracteristicaProcesador = {
                 id: 0,
-                compatibilidad: $scope.placa,
                 descripcion: $scope.procesador,
                 producto: {id: 6},
                 propiedad: {id: 2}
@@ -84,7 +121,6 @@ angular.module('miApp', []).controller('controladorPractica', ['$scope', functio
 
             $scope.nuevaCaracteristicaRam = {
                 id: 0,
-                compatibilidad: $scope.placa,
                 descripcion: $scope.ram,
                 producto: {id: 6},
                 propiedad: {id: 1}
@@ -92,7 +128,6 @@ angular.module('miApp', []).controller('controladorPractica', ['$scope', functio
 
             $scope.nuevaCaracteristicaPlaca = {
                 id: 0,
-                compatibilidad: $scope.placa,
                 descripcion: $scope.placa,
                 producto: {id: 6},
                 propiedad: {id: 3}
@@ -100,7 +135,6 @@ angular.module('miApp', []).controller('controladorPractica', ['$scope', functio
 
             $scope.nuevaCaracteristicaDiscoDuro = {
                 id: 0,
-                compatibilidad: $scope.placa,
                 descripcion: $scope.discoDuro,
                 producto: {id: 6},
                 propiedad: {id: 4}
@@ -112,10 +146,12 @@ angular.module('miApp', []).controller('controladorPractica', ['$scope', functio
                 "ram": angular.toJson($scope.nuevaCaracteristicaRam),
                 "procesador": angular.toJson($scope.nuevaCaracteristicaProcesador),
                 "placa": angular.toJson($scope.nuevaCaracteristicaPlaca),
-                "discoDuro": angular.toJson($scope.nuevaCaracteristicaDiscoDuro)
+                "discoDuro": angular.toJson($scope.nuevaCaracteristicaDiscoDuro),
+                "nuevaMarca": angular.toJson($scope.marcaNueva),
+                "nuevoModelo": angular.toJson($scope.nuevoModelo)
             };
 
-      // este valeeeeeeeeeee      alert(JSON.stringify(nuevoOrdenador));
+            alert(JSON.stringify(nuevoOrdenador));
 
             $.ajax({
                 data: nuevoOrdenador,
@@ -256,7 +292,7 @@ angular.module('miApp', []).controller('controladorPractica', ['$scope', functio
                 }
             });
         };
-        
+
         $scope.buscarPiezas = function () {
 
             //Animations
@@ -290,25 +326,25 @@ angular.module('miApp', []).controller('controladorPractica', ['$scope', functio
                     alert($scope.piezasAlmacen);
                     $scope.arrayPiezasAlmacen = $.parseJSON(response);
                     alert(arrayPiezasAlmacen);
-                    
+
                 }, error: function (jqXHR, textStatus, errorThown) {
                     alert("Algo fallo");
                 }
             });
         };
-        
-        $scope.sustituirComponente = function(index){
+
+        $scope.sustituirComponente = function (index) {
 //            alert("Id del elemento seleccionado "+$scope.arrayPiezasAlmacen[index].id);
 //            alert("Id del ordenador "+$scope.eliminar.id);
 //            alert("Tipo propiedad seleccionada "+$scope.SelectPropiedades); 
             alert($scope.arrayPiezasAlmacen[index]);
-            
-            var UtilidadesParaArreglarOrdenador={
+
+            var UtilidadesParaArreglarOrdenador = {
                 "almacenARemplazar": $scope.arrayPiezasAlmacen[index].nombre,
                 "idPropiedad": $scope.SelectPropiedades,
                 "idProductopropiedadARemplazar": $scope.eliminar.id
             };
-            
+
             $.ajax({
                 data: UtilidadesParaArreglarOrdenador,
                 url: '../../ControladorEliminarDespiezar',
@@ -318,7 +354,7 @@ angular.module('miApp', []).controller('controladorPractica', ['$scope', functio
 
                 },
                 success: function (response) {
-                    
+
                 }, error: function (jqXHR, textStatus, errorThown) {
                     alert("Algo fallo");
                 }

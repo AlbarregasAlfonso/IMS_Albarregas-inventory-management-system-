@@ -291,33 +291,32 @@ span#icoMasMarcas {
 
 span#icoMasModelos {
     position: absolute;
-    top: 99%;
-    right: 99%;
-    color: blue;
+    top: 98%;
+    right: 102%;
+    color: white;
     font-size: 30px;
 }
 
 span#icoMenosModelos {
-    position: absolute;
-    top: 99%;
-    right: 99%;
-    color: blue;
+  position: absolute;
+    top: 98%;
+    right: 102%;
+    color: white;
     font-size: 30px;
 }
 
-span#icoMasMarcas{
+span#icoMasMarcas {
     position: absolute;
-    top: 91%;
-    right: 99%;
-    color: blue;
+    top: 89%;
+    right: 102%;
+    color: white;
     font-size: 30px;
 }
 
 span#icoMenosMarcas{
-    position: absolute;
-    top: 91%;
-    right: 99%;
-    color: blue;
+ position: absolute;
+    top: 89%;
+    right: 102%;
     font-size: 30px;
 }
 

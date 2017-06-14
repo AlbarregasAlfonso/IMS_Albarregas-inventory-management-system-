@@ -38,29 +38,10 @@ public class Modelo implements Serializable {
     @Column(name = "IdModelo")
     private int id;
     private String nombre;
-
-    //Campo usuario y una relación uno a muchos con direcciones
-    //Para atributos que no forman parte de la tabla
-    @Transient
-    private String mensaje;
-
-//    @OneToMany(cascade= CascadeType.ALL)
-//    @JoinColumn(name="IdModelo")
-////    @IndexColumn(name="idx")
-//    private List<Producto> productos;
-//    
-//     @OneToMany(cascade= CascadeType.ALL)
-//    @JoinColumn(name="IdModelo")
-////    @IndexColumn(name="idx")
-//    private List<Stock> Stocks;
-//    
-    @ManyToOne
-    @JoinColumn(name = "IdLCaracteristicas")
-    private Caracteristicas caracteristicas;
     
     @ManyToOne
     @JoinColumn(name = "IdMarca")
-    private Caracteristicas marca;
+    private Marca marca;
     
     public void oneModelo() {
         if (this.id > 0) {
@@ -80,7 +61,7 @@ public class Modelo implements Serializable {
             DAOFactory df = DAOFactory.getDAOFactory();
             IGenericoDAO igd = df.getGenericoDAO();
             
-            modelos = (ArrayList<Modelo>) igd.ObtenerUno("Modelo", " where idlcaracteristicas="+id);
+            modelos = (ArrayList<Modelo>) igd.ObtenerUno("Modelo", " where IdMarca="+id);
             
             
         }
@@ -98,7 +79,6 @@ public class Modelo implements Serializable {
         DAOFactory df = DAOFactory.getDAOFactory();
         IGenericoDAO igd = df.getGenericoDAO();
         igd.add(Modelo.this); //Modelo.this = this
-        this.mensaje = "Se ha añadido correctamente el modelo " + this.nombre;
         borrarTodo();
     }
 
@@ -107,7 +87,6 @@ public class Modelo implements Serializable {
             DAOFactory df = DAOFactory.getDAOFactory();
             IGenericoDAO igd = df.getGenericoDAO();
             igd.update(Modelo.this); //Modelo.this = this
-            this.mensaje = "Se ha actualizado correctamente el modelo con id = " + this.id;
             borrarTodo();
         }
     }
@@ -117,7 +96,6 @@ public class Modelo implements Serializable {
             DAOFactory df = DAOFactory.getDAOFactory();
             IGenericoDAO igd = df.getGenericoDAO();
             igd.delete(Modelo.this); //Modelo.this = this
-            this.mensaje = "Se ha eliminado correctamente el modelo con id = " + this.id;
             borrarTodo();
         }
     }
@@ -127,39 +105,13 @@ public class Modelo implements Serializable {
         this.nombre = "";
     }
 
-//    public List<Producto> getProductos() {
-//        return productos;
-//    }
-//
-//    public void setProductos(List<Producto> productos) {
-//        this.productos = productos;
-//    }
-//
-//    public List<Stock> getStocks() {
-//        return Stocks;
-//    }
-//
-//    public void setStocks(List<Stock> Stocks) {
-//        this.Stocks = Stocks;
-//    }
-
-    public Caracteristicas getCaracteristicas() {
-        return caracteristicas;
-    }
-
-    public void setCaracteristicas(Caracteristicas host) {
-        this.caracteristicas = host;
-    }
-
-    public Caracteristicas getMarca() {
+    public Marca getMarca() {
         return marca;
     }
 
-    public void setMarca(Caracteristicas marca) {
+    public void setMarca(Marca marca) {
         this.marca = marca;
     }
-
-    
     
     public int getId() {
         return id;
@@ -176,13 +128,4 @@ public class Modelo implements Serializable {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
-    public String getMensaje() {
-        return mensaje;
-    }
-
-    public void setMensaje(String mensaje) {
-        this.mensaje = mensaje;
-    }
-
 }

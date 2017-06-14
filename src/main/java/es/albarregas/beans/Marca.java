@@ -40,8 +40,7 @@ public class Marca implements Serializable {
 
     //Campo usuario y una relación uno a muchos con direcciones
     //Para atributos que no forman parte de la tabla
-    @Transient
-    private String mensaje;
+
 
 //    @OneToMany(cascade= CascadeType.ALL)
 //    @JoinColumn(name="IdMarca")
@@ -50,6 +49,15 @@ public class Marca implements Serializable {
 //    @OneToMany(cascade= CascadeType.ALL)
 //    @JoinColumn(name="IdMarca")
 //    private List<Modelo> modelos;
+
+    public Marca(int id, String nombre) {
+        this.id = id;
+        this.nombre = nombre;
+    }
+
+    public Marca() {
+    }
+    
     
     public void oneMarca() {
         if (this.id > 0) {
@@ -74,7 +82,6 @@ public class Marca implements Serializable {
         DAOFactory df = DAOFactory.getDAOFactory();
         IGenericoDAO igd = df.getGenericoDAO();
         igd.add(Marca.this); //Marca.this = this
-        this.mensaje = "Se ha añadido correctamente el marca " + this.nombre;
         borrarTodo();
     }
 
@@ -83,7 +90,6 @@ public class Marca implements Serializable {
             DAOFactory df = DAOFactory.getDAOFactory();
             IGenericoDAO igd = df.getGenericoDAO();
             igd.update(Marca.this); //Marca.this = this
-            this.mensaje = "Se ha actualizado correctamente el marca con id = " + this.id;
             borrarTodo();
         }
     }
@@ -93,7 +99,6 @@ public class Marca implements Serializable {
             DAOFactory df = DAOFactory.getDAOFactory();
             IGenericoDAO igd = df.getGenericoDAO();
             igd.delete(Marca.this); //Marca.this = this
-            this.mensaje = "Se ha eliminado correctamente el marca con id = " + this.id;
             borrarTodo();
         }
     }
@@ -133,14 +138,6 @@ public class Marca implements Serializable {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public String getMensaje() {
-        return mensaje;
-    }
-
-    public void setMensaje(String mensaje) {
-        this.mensaje = mensaje;
     }
 
 }
