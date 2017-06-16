@@ -58,7 +58,7 @@
                         <f:facet name="output"><h:outputText value="#{alumnos.producto.marca.nombre}" /></f:facet>
                         <f:facet name="input">
                             <h:selectOneMenu value="#{alumnos.producto.id}" style="width:100%">
-                                <f:selectItems value="#{producto.listaProductos}" var="producto" itemLabel="#{producto.marca.nombre}" itemValue="#{producto.id}" />
+                                <f:selectItems value="#{producto.allProductos()}" var="producto" itemLabel="#{producto.marca.nombre}" itemValue="#{producto.id}" />
                             </h:selectOneMenu>
                         </f:facet>
                     </p:cellEditor>

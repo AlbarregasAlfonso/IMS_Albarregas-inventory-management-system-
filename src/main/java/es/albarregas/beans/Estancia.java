@@ -44,19 +44,6 @@ public class Estancia implements Serializable {
     //Para atributos que no forman parte de la tabla
     @Transient
     private String mensaje;
-//
-//    @OneToMany(cascade= CascadeType.ALL)
-//    @JoinColumn(name="IdLocalizacion")
-////    @IndexColumn(name="idx")
-//    private List<Alumno> correosElectronicos;
-//     @OneToMany(cascade= CascadeType.ALL)
-//    @JoinColumn(name="IdEstancia")
-////    @IndexColumn(name="idx")
-//    private List<Alumnos> Alumnos;
-    
-//    @OneToMany(cascade= CascadeType.ALL)
-//    @JoinColumn(name="IdEstancia")
-//    private List<Producto> productos;
     
     public void oneEstancia() {
         if (this.id > 0) {
@@ -78,19 +65,7 @@ public class Estancia implements Serializable {
         ArrayList listaestancia = (ArrayList<Estancia>) igd.get("Estancia");
         return listaestancia;
     }
-    
-//      public ArrayList allEstanciasWhere() {
-//         ArrayList<Estancia> estancias=null;
-//        if (id > 0) {
-//            DAOFactory df = DAOFactory.getDAOFactory();
-//            IGenericoDAO igd = df.getGenericoDAO();
-//            
-//            estancias = (ArrayList<Estancia>) igd.ObtenerUno("Estancias","");
-//            
-//            
-//        }
-//        return estancias;
-//    }
+
 public ArrayList allLocalizacionWhere() {
          ArrayList<Estancia> estancias=null;
         if (id > 0) {

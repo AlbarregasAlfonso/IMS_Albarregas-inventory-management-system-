@@ -122,13 +122,6 @@ public class Producto implements Serializable {
 
     }
 
-    public void onCountryChange(int valor) {
-        valor = valor + 1;
-    }
-
-    public void productosPorClases() {
-        System.out.println("Entramos aqui");
-    }
 
     public ArrayList allProductosWherePorLocalizacion(int id) {
         ArrayList<Producto> productos = null;
@@ -185,7 +178,7 @@ public class Producto implements Serializable {
     public void addDatos() {
         DAOFactory df = DAOFactory.getDAOFactory();
         IGenericoDAO igd = df.getGenericoDAO();
-        String DATE_FORMAT_NOW = "yyyy-MM-dd";
+        String DATE_FORMAT_NOW = "dd-MM-yyyy";
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT_NOW);
         String fechaActual = sdf.format(date);
@@ -197,6 +190,9 @@ public class Producto implements Serializable {
     }
 
     public void updDatos() {
+        if(this.estancia.getId()==0){
+            this.estancia.setId(1);
+        }
         if (this.id > 0) {
             DAOFactory df = DAOFactory.getDAOFactory();
             IGenericoDAO igd = df.getGenericoDAO();

@@ -7,46 +7,49 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core">
 
-  
-         <h:head>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"/>
+
+    <h:head>
+        <h:outputStylesheet library="css" name="style2.css"  />
+        <h:outputScript library="js" name="Animations.js"/>
     </h:head>
 
     <h:body>
-        <ui:decorate template="/resources/plantilla/template.xhtml"/>
-        <h:form>
-            <h:selectOneMenu value="#{producto.id}" id="umenu">
-                <!--                            <f:selectItem itemLabel="# {msj.opcion0}" itemValue="0" />-->
-                <f:selectItems value="#{producto.listaProductos}" var="c" itemLabel="#{c.fecha_compra}" itemValue="#{c.id}"/>
+        <div id="top">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#">Mover ordenador de Aula</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="row">
+            <div class="col-sm-5"></div>
+            <div class="col-sm-5">
+                <ui:decorate template="/resources/plantilla/template.xhtml"/>    
+                <h:form>
 
-                <f:ajax event="change" render="aula idProducto idEstancia idModelo idEstancia idEstado idCaracteristica" listener="#{producto.oneProducto()}"/>
-
-            </h:selectOneMenu>
-
-
-<!--            <h:inputText style="visibility:hidden" value="# {producto.id}" id="idProducto"/>
-            <h:inputText style="visibility:hidden" value="# {producto.caracteristicas.id}" id="idCaracteristica"/>
-            <h:inputText style="visibility:hidden" value="# {producto.marca.id}" id="idMarca"/>
-            <h:inputText style="visibility:hidden" value="# {producto.modelo.id}" id="idModelo"/>
-            <h:inputText style="visibility:hidden" value="# {producto.estancia.id}" id="idEstancia"/>
-            <h:inputText style="visibility:hidden" value="# {producto.estado.id}" id="idEstado"/>    
-            <h:inputText style="visibility:hidden" value="# {producto.categoria.id}" id="idCategoria"/>-->
-
-            <h:selectOneMenu value="#{producto.estancia.id}" id="aula">
-                <f:selectItems value="#{estancia.allEstancias()}" var="c" itemLabel="#{c.nombre}" itemValue="#{c.id}"/>
-            </h:selectOneMenu>
-
-            <h:commandButton value="Actualizar" action="#{producto.updDatos()}" styleClass="boton">
-                <f:ajax render="aula" execute="@form"/>
-            </h:commandButton>
-
-
-
-            <!--<h:inputText value="# {producto.estancia.nombre}" id="nombre1" required="true" requiredMessage="Introduzca el nombre"/>-->
-
-
-            <!--<h:inputText value="# {producto.estancia.nombre}" id="apellidos1" required="true" requiredMessage="Introduzca los apellidos"/>-->
-
-        </h:form>
+                    <div id="selectAulaOrdenador">
+                        <p:selectOneMenu value="#{producto.id}" id="umenu" style="width:150px" filter="true" filterMatchMode="startsWith" panelStyle="width:250px">                            
+                            <f:selectItems id="seleccion" value="#{producto.listaProductos}" var="c" itemLabel="#{c.id} #{c.marca.nombre},#{c.modelo.nombre}" itemValue="#{c.id}"/>
+                            <f:ajax event="change" listener="#{producto.oneProducto()}"/>
+                        </p:selectOneMenu>
+                    </div>
+                    <br/>
+                    <h:selectOneMenu value="#{producto.estancia.id}" id="aula" style="width:150px" styleClass="mymenu">
+                        <f:selectItems value="#{estancia.allEstancias()}" var="c" itemLabel="#{c.nombre}" itemValue="#{c.id}"/>
+                    </h:selectOneMenu>
+                    <br/>
+                    <br/>
+                    <div id="BotonActualizarOrdenador">
+                        <h:commandButton id="BotonActualizarOrdenador1" value="Actualizar" action="#{producto.updDatos()}" styleClass="boton">
+                            <f:ajax render="aula" execute="@form"/>
+                        </h:commandButton>
+                    </div>
+                    <div id="mensajeCambioAula" class="alert alert-danger">Has cambiado dicho ordenador de aula</div> 
+                </h:form>
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
     </h:body>
 </html>

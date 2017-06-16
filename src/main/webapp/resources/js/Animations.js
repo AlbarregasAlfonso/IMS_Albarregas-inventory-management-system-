@@ -15,7 +15,7 @@ $(document).ready(function () {
     $("#InfoDespiezar").hide();     //icono de informacion                  BorradoDeOrdenador.jsp
     $("#radioDespiece").hide();     //check de despiece                     BorradoDeOrdenador.jsp
     $("#mensajeAlumnos").hide();
-    $(".alert").hide();
+   // $(".alert").hide();
     $("#DespiezarFinal").hide();
     $("#IntentarArreglar").hide();
     $("#ArreglarOrdenadorAlmacen").hide();
@@ -26,8 +26,7 @@ $(document).ready(function () {
     $("#NuevaMarca").hide();
     $("#modelo").hide();
     $("#icoMasModelos").hide();
-    
-    
+    $("#mensajeCambioAula").hide();
 
     setTimeout(descargar, 1000);
 
@@ -181,7 +180,13 @@ $(document).ready(function () {
         $("#precio").fadeOut(1400);
     });
 
+$("#BotonActualizarOrdenador").click(function(){
+     $("#mensajeCambioAula").show(500);
+});
 
+$("#selectAulaOrdenador").click(function(){
+     $("#mensajeCambioAula").hide(500);
+});
 
 });
 

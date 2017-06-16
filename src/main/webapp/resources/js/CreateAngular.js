@@ -1,10 +1,13 @@
 angular.module('miApp', []).controller('controladorPractica', ['$scope', function ($scope) {
 
         $scope.propiedades = [];
-        $scope.piezasAlmacen = [];  
+        $scope.piezasAlmacen = [];
         $scope.eliminar = [];
         $scope.modelosSegunMarca = [];
 
+        $scope.patternNombre = /^[a-zA-Z]*$/;
+        $scope.patternDisco = /[0-9]{4,5}/;
+        
         $("#codigoBarras").focusin(function () {
             //$("#nombreOrdenador").fadeOut("slow");
             $("#Despiezar").fadeOut(1000);
@@ -26,15 +29,14 @@ angular.module('miApp', []).controller('controladorPractica', ['$scope', functio
         }
 
 //cuando hacemos seleccionamos alguna marca
-        $scope.mostrarModelos = function(){
-               $("#modelo").show(400);
-               $("#icoMasModelos").show(400);
-               
-               var idMarca = {
+        $scope.mostrarModelos = function () {
+            $("#modelo").show(400);
+            $("#icoMasModelos").show(400);
+
+            var idMarca = {
                 "idMarca": $scope.marca
             };
-                 $.ajax({
-                    
+            $.ajax({
                 data: idMarca,
                 url: '../../Controlador',
                 type: 'post',
@@ -44,15 +46,14 @@ angular.module('miApp', []).controller('controladorPractica', ['$scope', functio
                 },
                 success: function (response) {
                     $scope.modelosSegunMarca = JSON.parse(response);
-                    
+
                 }, error: function (jqXHR, textStatus, errorThown) {
                     alert("Algo fallo");
                 }
             });
-          
+
         };
-             
-        
+
         $scope.cargarCaracteristicas = function () {
 
             var caracteristica = "caracteristicas";
@@ -85,17 +86,16 @@ angular.module('miApp', []).controller('controladorPractica', ['$scope', functio
 
         };
 
-
         $scope.anadir = function () {
 
             var f = new Date();
 
-            $scope.marcaNueva= {id:0,
-                                nombre: $scope.Marcanueva};
+            $scope.marcaNueva = {id: 0,
+                nombre: $scope.Marcanueva};
 
-            $scope.nuevoModelo= {id:0,
-                                nombre: $scope.ModelosNuevos,
-                                marcaNueva:{id:"0",nombre:"null"}
+            $scope.nuevoModelo = {id: 0,
+                nombre: $scope.ModelosNuevos,
+                marcaNueva: {id: "0", nombre: "null"}
             };
 
             $scope.nuevoOrdenadorPrueba = {
@@ -115,28 +115,28 @@ angular.module('miApp', []).controller('controladorPractica', ['$scope', functio
             $scope.nuevaCaracteristicaProcesador = {
                 id: 0,
                 descripcion: $scope.procesador,
-                producto: {id: 6},
+                producto: {id: 0},
                 propiedad: {id: 2}
             };
 
             $scope.nuevaCaracteristicaRam = {
                 id: 0,
                 descripcion: $scope.ram,
-                producto: {id: 6},
+                producto: {id: 0},
                 propiedad: {id: 1}
             };
 
             $scope.nuevaCaracteristicaPlaca = {
                 id: 0,
                 descripcion: $scope.placa,
-                producto: {id: 6},
+                producto: {id: 0},
                 propiedad: {id: 3}
             };
 
             $scope.nuevaCaracteristicaDiscoDuro = {
                 id: 0,
                 descripcion: $scope.discoDuro,
-                producto: {id: 6},
+                producto: {id: 0},
                 propiedad: {id: 4}
             };
 //        alert(JSON.stringify($scope.nuevoOrdenadorPrueba));

@@ -9,8 +9,10 @@
         <script src="resources/js/CreateAngular.js"></script>
         <script src="resources/js/Animations.js"></script>
         <script src="resources/js/bootstrap.min.js"></script>
+       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script> 
         <link rel="stylesheet" href="resources/css/bootstrap.min.css" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+        
         <link rel="stylesheet" href="resources/css/style2.css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
@@ -29,48 +31,48 @@
             <div class="row">
                 <div class="col-sm-4"></div>
                 <div class="col-sm-4">
-
+                    <form name="miFormulario">
                     <div class="form-group">
-                        <input ng-model="precio" placeholder="precio" type="text" class="form-control" id="precio"/>
+                        <input name="precio" ng-model="precio" placeholder="precio" type="text" class="form-control" id="precio" required/>
                     </div>
                     <div class="form-group">
-                        <input ng-model="ubicacion" placeholder="ubicacion" type="text" class="form-control" id="ubicacion"/>
+                        <input name="ubicacion" ng-model="ubicacion" placeholder="ubicacion" type="text" class="form-control" id="ubicacion" ng-pattern="patternNombre" required/>
                     </div>
-                    <select class="form-control" ng-model="estado" id="estado">
+                    <select name="estado" class="form-control" ng-model="estado" id="estado" required>
                         <option value="">Estado</option> 
-                        <c:forEach items="#{Estado.allEstados()}" var="lp">
-                            <option ng-value="${lp.id}"><c:out value="${lp.descripcion}"/></option>               
+                        <c:forEach items="#{Estado.allEstados()}" var="lp" >
+                            <option ng-value="${lp.id}"><c:out value="${lp.descripcion}" /></option>               
                         </c:forEach>
                     </select>
                     <br/>
-                    <select  class="form-control" ng-model="estancia" id="estancia">
+                    <select name="estancia" class="form-control" ng-model="estancia" id="estancia" required>
                         <option value="">Estancias</option> 
                         <c:forEach items="#{estancia.allEstancias()}" var="lp">
-                            <option ng-value="${lp.id}"><c:out value="${lp.nombre}" /></option>               
+                            <option ng-value="${lp.id}"><c:out value="${lp.nombre}"/></option>               
                         </c:forEach>
                     </select>
                     <br/>
-                    <select  class="form-control" ng-model="categoria" id="categoria">
+                    <select name="categoria" class="form-control" ng-model="categoria" id="categoria" required>
                         <option value="">Categoria</option> 
                         <c:forEach items="#{Categoria.allCategoria()}" var="lp">
-                            <option ng-value="${lp.id}"><c:out value="${lp.nombre}" /></option>               
+                            <option ng-value="${lp.id}"><c:out value="${lp.nombre}"/></option>               
                         </c:forEach>
                     </select>
                     <br/>
                     <div class="form-group">
-                        <input ng-model="procesador" placeholder="Procesador" type="text" class="form-control" id="procesador"/>
+                        <input name="procesador" ng-model="procesador" placeholder="Procesador" type="text" class="form-control" id="procesador" required/>
                     </div>
                     <div class="form-group">
-                        <input ng-model="ram" placeholder="Ram" type="text" class="form-control" id="ram"/>
+                        <input  name="ram" ng-model="ram" placeholder="Ram" type="text" class="form-control" id="ram" required/>
                     </div>
                     <div class="form-group">
-                        <input ng-model="placa" placeholder="Placa" type="text" class="form-control" id="placa"/>
+                        <input name="placa" ng-model="placa" placeholder="Placa" type="text" class="form-control" id="placa" required/>
                     </div>
                     <div class="form-group">
-                        <input ng-model="discoDuro" placeholder="DiscoDuro" type="text" class="form-control" id="discoDuro"/>
+                        <input name="disco" ng-model="discoDuro" placeholder="DiscoDuro" type="text" class="form-control" id="discoDuro" required ng-pattern="patternDisco"/>
                     </div>
 
-                    <select  class="form-control" ng-model="marca" ng-change="mostrarModelos()" id="Marca">
+                    <select  class="form-control" ng-model="marca" ng-change="mostrarModelos()" id="Marca" required>
                         <option value="1">Marca</option> 
                         <c:forEach items="#{Marca.allMarcas()}" var="lp">	
                             <option ng-value="${lp.id}"><c:out value="${lp.nombre}"/></option>            
@@ -88,13 +90,14 @@
                         </select>
 
                     <div class="form-group">
-                        <input ng-model="ModelosNuevos" placeholder="Nueva Modelo" type="text" class="form-control" id="NuevoModelo"/>
+                        <input name="nuevoModelo" ng-model="ModelosNuevos" placeholder="Nueva Modelo" type="text" class="form-control" id="NuevoModelo" required/>
                     </div>
                     <div class="form-group">
-                        <input ng-model="Marcanueva" placeholder="Nueva Marca" type="text" class="form-control" id="NuevaMarca"/>
+                        <input name="nuevaMarca" ng-model="Marcanueva" placeholder="Nueva Marca" type="text" class="form-control" id="NuevaMarca" required/>
                     </div>
                     <br/>
-                    <button id="guardar" ng-click="anadir()" ng-model="botonGuardar" class="btn btn-warning">Guardar</button>
+                    <button id="guardar" ng-show="miFormulario.procesador.$valid && miFormulario.precio.$valid && miFormulario.ubicacion.$valid && estancia>0  && miFormulario.placa.$valid && categoria>0 && estado>0 && miFormulario.disco.$valid && marca>0 || miFormulario.nuevaMarca.$valid && modelo>0 || miFormulario.nuevoModelo.$valid" ng-click="anadir()" ng-model="botonGuardar" class="btn btn-warning">Guardar</button>
+                </form>
                 </div>
                 <div class="col-sm-4"></div>
             </div>

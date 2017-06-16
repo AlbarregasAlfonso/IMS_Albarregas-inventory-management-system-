@@ -66,6 +66,12 @@ public class Controlador extends HttpServlet {
             String jsonDiscoDuro = request.getParameter("discoDuro");
             String jsonPlaca = request.getParameter("placa");
             
+            
+            ProduPropiedad discoPro = gson.fromJson(jsonDiscoDuro, ProduPropiedad.class);
+            ProduPropiedad ramPro = gson.fromJson(jsonRam, ProduPropiedad.class);
+            ProduPropiedad procesadorPro = gson.fromJson(jsonProcesador, ProduPropiedad.class);
+            ProduPropiedad placaPro = gson.fromJson(jsonPlaca, ProduPropiedad.class);
+            
             String StringNuevaMarca = request.getParameter("nuevaMarca");
             Marca objetoNuevaMarca = gson.fromJson(StringNuevaMarca, Marca.class);
             
@@ -84,32 +90,41 @@ public class Controlador extends HttpServlet {
                 
                 productoNuevo.setMarca(marcaIdMax);
                 productoNuevo.setModelo(modeloIdMax);
-                productoNuevo.addDatos();
+             //   productoNuevo.addDatos();
             }else if(objetoNuevaMarca.getNombre()==null && (objetoNuevoModelo.getNombre()!=null)){
                 Marca marcaIdSeleccionado = (Marca) igd.getOneHQL("Marca where id='"+productoNuevo.getMarca().getId()+"'"); //marca Max
                 objetoNuevoModelo.setMarca(marcaIdSeleccionado);
                 objetoNuevoModelo.addDatos();
-            
+                Modelo modeloIdMax = (Modelo) igd.getOneHQL("Modelo where id=(select max(id) from Modelo)"); //modelo Max
+                productoNuevo.setModelo(modeloIdMax);
+             //   productoNuevo.addDatos();
             }else{
-                productoNuevo.addDatos();
+              //  productoNuevo.addDatos();
             }
-
-            ProduPropiedad procesador = gson.fromJson(jsonProcesador, ProduPropiedad.class);
-            procesador.setProducto(productoNuevo);
-            procesador.addDatos();
-
-            ProduPropiedad ram = gson.fromJson(jsonRam, ProduPropiedad.class);
-            ram.setProducto(productoNuevo);
-            ram.addDatos();
-
-            ProduPropiedad placa = gson.fromJson(jsonPlaca, ProduPropiedad.class);
-            placa.setProducto(productoNuevo);
-            placa.addDatos();
-
-            ProduPropiedad disco = gson.fromJson(jsonDiscoDuro, ProduPropiedad.class);
-            disco.setProducto(productoNuevo);
-            disco.addDatos();
-
+            productoNuevo.addDatos();
+            Producto productoIdMax = (Producto) igd.getOneHQL("Producto where id=(select max(id) from Producto)"); //marca Max
+            
+            Propiedad propiedadDisco= (Propiedad) igd.getOneHQL("Propiedad where id='"+procesadorPro.getPropiedad().getId()+"'"); //marca Max
+            Propiedad propiedadPlaca= (Propiedad) igd.getOneHQL("Propiedad where id='"+discoPro.getPropiedad().getId()+"'"); //marca Max
+            Propiedad propiedadRam= (Propiedad) igd.getOneHQL("Propiedad where id='"+ramPro.getPropiedad().getId()+"'"); //marca Max
+            Propiedad propiedadProcesador= (Propiedad) igd.getOneHQL("Propiedad where id='"+placaPro.getPropiedad().getId()+"'"); //marca Max
+  
+            procesadorPro.setPropiedad(propiedadProcesador);
+            procesadorPro.setProducto(productoIdMax);
+            procesadorPro.addDatos();
+            
+            ramPro.setPropiedad(propiedadRam);
+            ramPro.setProducto(productoIdMax);
+            ramPro.addDatos();
+            
+            discoPro.setPropiedad(propiedadDisco);
+            discoPro.setProducto(productoIdMax);
+            discoPro.addDatos();
+            
+            placaPro.setPropiedad(propiedadPlaca);
+            placaPro.setProducto(productoIdMax);
+            placaPro.addDatos();
+            
         }
 
         String borradoString = request.getParameter("codigo");

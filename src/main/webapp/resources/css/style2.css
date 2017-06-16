@@ -352,3 +352,17 @@ input#NuevaMarca {
     left: 3%;
     width: 70%;
 }
+
+input.ng-invalid {
+    background-color:pink;
+}
+input.ng-valid {
+    background-color:lightgreen;
+}
+
+div#mensajeCambioAula {
+    position: absolute;
+    top: 154%;
+    right: 49%;
+}
+

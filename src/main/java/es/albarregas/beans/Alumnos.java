@@ -96,6 +96,17 @@ public class Alumnos implements Serializable{
         }
         return alumnos;
     }
+      
+           public ArrayList allAlumnosWhereidAula(int id) {
+         ArrayList<Alumnos> alumnos=null;
+        if (id > 0) {
+            DAOFactory df = DAOFactory.getDAOFactory();
+            IGenericoDAO igd = df.getGenericoDAO();
+            alumnos = (ArrayList<Alumnos>) igd.ObtenerUno("Alumnos", " where IdEstancia="+id);
+  
+        }
+        return alumnos;
+    }
 
     public ArrayList allalumnos() {
         DAOFactory df = DAOFactory.getDAOFactory();
