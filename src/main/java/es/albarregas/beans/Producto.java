@@ -190,7 +190,10 @@ public class Producto implements Serializable {
     }
 
     public void updDatos() {
-        if(this.estancia.getId()==0){
+        if(this.estancia==null){
+            
+        }else{
+           if(this.estancia.getId()==0){
             this.estancia.setId(1);
         }
         if (this.id > 0) {
@@ -199,7 +202,10 @@ public class Producto implements Serializable {
             igd.update(Producto.this); //Producto.this = this
             this.mensaje = "Se ha actualizado correctamente el producto con id = " + this.id;
             borrarTodo();
+        }  
         }
+       
+        
     }
 
     public void delDatos() {

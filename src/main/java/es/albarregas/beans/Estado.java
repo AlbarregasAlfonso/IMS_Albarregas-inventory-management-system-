@@ -37,7 +37,7 @@ public class Estado implements Serializable {
     @Column(name = "IdEstado")
     private int id;
     private String descripcion;
-
+  
     //Campo usuario y una relación uno a muchos con direcciones
     //Para atributos que no forman parte de la tabla
     @Transient

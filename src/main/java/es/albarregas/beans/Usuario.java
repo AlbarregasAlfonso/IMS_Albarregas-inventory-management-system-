@@ -18,6 +18,7 @@ import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -28,49 +29,53 @@ import org.hibernate.annotations.IndexColumn;
  * @author Alfonso
  */
 @Entity
-@ManagedBean(name = "stock")
-@Table(name = "Stock")
-public class Stock implements Serializable {
+@ManagedBean(name = "usuario")
+@Table(name = "Usuario")
+public class Usuario implements Serializable {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "IdStock")
+    @Column(name = "IdUsuario")
     private int id;
-    private int cantidad;
-
-    @OneToMany(cascade= CascadeType.ALL)
-    @JoinColumn(name="IdModelo")
-    //Campo usuario y una relación uno a muchos con direcciones
-    //Para atributos que no forman parte de la tabla
-    @Transient
-    private String mensaje;
-
+    private String nombre;
+    private String clave;
     
-    
-    public void oneStock() {
+    public void oneUsuario() {
         if (this.id > 0) {
             DAOFactory df = DAOFactory.getDAOFactory();
             IGenericoDAO igd = df.getGenericoDAO();
-            Stock stock = (Stock) igd.getOne(this.id, Stock.class);
-            this.id = stock.getId();
-            this.cantidad = stock.getCantidad();
+            Usuario usuario = (Usuario) igd.getOne(this.id, Usuario.class);
+            this.id = usuario.getId();
+            this.nombre = usuario.getNombre();
+            this.clave = usuario.getClave();
 
         }
 
     }
+    
+     public ArrayList allUsuarioWhere(int id) {
+         ArrayList<Usuario> usuarios=null;
+        if (id > 0) {
+            DAOFactory df = DAOFactory.getDAOFactory();
+            IGenericoDAO igd = df.getGenericoDAO();
+            
+            usuarios = (ArrayList<Usuario>) igd.ObtenerUno("Usuario", " where IdUsuario="+id);
 
-    public ArrayList allStocks() {
+        }
+        return usuarios;
+    }
+
+    public ArrayList allUsuarios() {
         DAOFactory df = DAOFactory.getDAOFactory();
         IGenericoDAO igd = df.getGenericoDAO();
-        ArrayList listaStocks = (ArrayList<Stock>) igd.get("Stock");
-        return listaStocks;
+        ArrayList listaUsuarios = (ArrayList<Usuario>) igd.get("Usuario");
+        return listaUsuarios;
     }
 
     public void addDatos() {
         DAOFactory df = DAOFactory.getDAOFactory();
         IGenericoDAO igd = df.getGenericoDAO();
-        igd.add(Stock.this); //Stock.this = this
-        this.mensaje = "Se ha añadido correctamente el stock " + this.cantidad;
+        igd.add(Usuario.this); //Usuario.this = this
         borrarTodo();
     }
 
@@ -78,8 +83,7 @@ public class Stock implements Serializable {
         if (this.id > 0) {
             DAOFactory df = DAOFactory.getDAOFactory();
             IGenericoDAO igd = df.getGenericoDAO();
-            igd.update(Stock.this); //Stock.this = this
-            this.mensaje = "Se ha actualizado correctamente el stock con id = " + this.id;
+            igd.update(Usuario.this); //Usuario.this = this
             borrarTodo();
         }
     }
@@ -88,19 +92,16 @@ public class Stock implements Serializable {
         if (this.id > 0) {
             DAOFactory df = DAOFactory.getDAOFactory();
             IGenericoDAO igd = df.getGenericoDAO();
-            igd.delete(Stock.this); //Stock.this = this
-            this.mensaje = "Se ha eliminado correctamente el stock con id = " + this.id;
+            igd.delete(Usuario.this); //Usuario.this = this
             borrarTodo();
         }
     }
 
     private void borrarTodo() {
         this.id = 0;
-        this.cantidad = 0;
+        this.nombre = "";
+        this.clave="";
     }
-
-    
-    
     
     public int getId() {
         return id;
@@ -110,22 +111,21 @@ public class Stock implements Serializable {
         this.id = id;
     }
 
-    public int getCantidad() {
-        return cantidad;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    
-
-    public String getMensaje() {
-        return mensaje;
+    public String getClave() {
+        return clave;
     }
 
-    public void setMensaje(String mensaje) {
-        this.mensaje = mensaje;
+    public void setClave(String clave) {
+        this.clave = clave;
     }
+
 
 }

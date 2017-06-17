@@ -15,7 +15,7 @@
 <!--        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>-->
         <link rel="stylesheet" href="resources/css/style2.css" />
-        <script src="resources/js/OrdenadorAlumnoAngular.js"></script>
+        <script src="resources/js/OrdenadorAlumnoYAulaAdminAngular.js"></script>
 
 <!--                <script src="resources/js/jquery-3.2.1.min.js"></script>
         <script src="resources/js/angular.min.js"></script>

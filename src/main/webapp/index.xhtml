@@ -24,21 +24,21 @@ and open the template in the editor.
             <br />
             <br />
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <br/>
                     <br/>
                     <br/>
                     <br/>
                     <div id="escudo" ><h:graphicImage  alt="" name="imagenes/escudo.png" /></div>   
                 </div>
-                <div class="col-md-9">
+                <div class="col-md-10">
                     <div id="panelPrincipal" class="panel panel-primary">
                         <div id="botonMenu2" class="panel-body">
                             <div  class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <h:link outcome="ListadoProductosAula" styleClass="enlace" onclick="MyFunction();return false;">
                                         <div class="panel panel-primary">
-                                            <div class="panel-heading">
+                                            <div class="panel-heading" id="equiposporaula">
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="panel-heading">
@@ -55,7 +55,7 @@ and open the template in the editor.
                                         </div>
                                     </h:link>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <h:link outcome="OrdenadorYAlumno" styleClass="enlace" onclick="MyFunction();return false;">
                                         <div class="panel panel-primary">
                                             <div class="panel-heading" id="equiposporaula">
@@ -75,8 +75,9 @@ and open the template in the editor.
                                         </div>
                                     </h:link>
                                 </div>
-                                <div class="col-md-4">
-                                    <h:link outcome="editarDatos" styleClass="enlace" onclick="MyFunction();return false;">
+                                <div class="col-md-3">
+     
+                                    <a class="botonesPanel" href="/20170222_CRUDHibernateJSF//faces/OrdenadorAula.jsp">
                                         <div class="panel panel-primary">
                                             <div class="panel-heading" id="equiposporaula">
                                                 <div class="row">
@@ -93,11 +94,33 @@ and open the template in the editor.
                                             <div class="panel-body">
                                             </div>
                                         </div>
-                                    </h:link>
+                                    </a>
+                                </div>
+                                <div class="col-md-3">
+                                     <div id="botonMenu1" class="col-md-3">
+                                     <a class="botonesPanel" href="/20170222_CRUDHibernateJSF//faces/BorradoDeOrdenador.jsp">
+                                        <div class="panel panel-primary">
+                                            <div class="panel-heading" id="equiposporaula">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="panel-heading">
+                                                            despiezar Ordenador en componentes
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <span style="size:200%" class="glyphicon glyphicon-search iconosPrincipal"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel-body">
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <a class="botonesPanel" href="/20170222_CRUDHibernateJSF//faces/AsignarOrdenadorAAlumnoJSP.jsp">
                                         <div class="panel panel-primary">
                                             <div class="panel-heading" id="equiposporaula">
@@ -117,7 +140,7 @@ and open the template in the editor.
                                         </div>
                                     </a>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
 
                                     <a class="botonesPanel" href="/20170222_CRUDHibernateJSF//faces/ComprarOrdenador.jsp">
                                         <div class="panel panel-primary">
@@ -138,8 +161,30 @@ and open the template in the editor.
                                         </div>
                                     </a>
                                 </div>
-                                <div id="botonMenu1" class="col-md-4">
-                                     <a class="botonesPanel" href="/20170222_CRUDHibernateJSF//faces/BorradoDeOrdenador.jsp">
+                                <div class="col-md-3">
+                                    <div id="botonMenu1" class="col-md-4">
+                                     <a class="botonesPanel" href="/20170222_CRUDHibernateJSF//faces/AnadirAlumno.jsp">
+                                        <div class="panel panel-primary">
+                                            <div class="panel-heading" id="equiposporaula">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="panel-heading">
+                                                            Añadir nuevo alumno
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <span style="size:200%" class="glyphicon glyphicon-search iconosPrincipal"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel-body">
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                </div>
+                                 <div class="col-md-3">
+                                   <a class="botonesPanel" href="/20170222_CRUDHibernateJSF//faces/BorradoDeOrdenador.jsp">
                                         <div class="panel panel-primary">
                                             <div class="panel-heading" id="equiposporaula">
                                                 <div class="row">
@@ -157,7 +202,7 @@ and open the template in the editor.
                                             </div>
                                         </div>
                                     </a>
-                                </div>
+                                 </div>
                             </div>
                         </div>
                     </div>

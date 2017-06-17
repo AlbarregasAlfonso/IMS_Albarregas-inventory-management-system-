@@ -2,8 +2,13 @@ body {
     background-image: url("../../Imagenes/Fondo.jpg");
 }
 
-#panelPrincipal{
+#panelPrincipal {
     background: rgba(255,255,255,0.5);
+  width: 115%;
+}
+
+div#botonMenu1 {
+    width: 100%;
 }
 
 #cargando{
@@ -143,14 +148,14 @@ label#InfoDespiezar, label#docEliminar , label#docInfo, h1#tuloBorrar, label#nom
 }
 
 /*casilla del codigo*/
-input#codigoBarras {
+input#codigoBarras, input#posicionamiento{
     width: 75%;
     position: absolute;
     left: 12%;
     transition: width 2s, left 2s;
 }
 /*aumenta de tamaño al poner el ratón sobre el*/
-input#codigoBarras:hover, #componentesDañados:hover{
+input#codigoBarras:hover, #componentesDañados:hover ,input#posicionamiento:hover{
     left: 0%;
     width: 100%;
 }
@@ -365,4 +370,5 @@ div#mensajeCambioAula {
     top: 154%;
     right: 49%;
 }
+
 

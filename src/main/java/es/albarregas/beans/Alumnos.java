@@ -47,6 +47,17 @@ public class Alumnos implements Serializable{
      @ManyToOne
     @JoinColumn(name = "IdProducto")
     private Producto producto;
+
+    public Alumnos(int id, String Nombre, String Apellidos, Estancia estancia, Producto producto) {
+        this.id = id;
+        this.Nombre = Nombre;
+        this.Apellidos = Apellidos;
+        this.estancia = estancia;
+        this.producto = producto;
+    }
+
+    public Alumnos() {
+    }
      
      
       public void init() {
