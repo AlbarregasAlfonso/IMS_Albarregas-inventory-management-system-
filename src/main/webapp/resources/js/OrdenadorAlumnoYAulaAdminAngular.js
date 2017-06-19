@@ -70,6 +70,15 @@ angular.module('miAppAula', []).controller('controladorPracticaAula', ['$scope',
 
                         //$("#nombreOrdenador").fadeIn("slow");
                         $("#borrar").fadeOut(1000);
+                        $("#buscarOrdenador").fadeOut(700);
+                        setTimeout(descargarMas, 500);
+
+                        function descargarMas() {
+                            $("#Aulas").fadeIn(300);
+                            //$("#AplicarCambio").fadeIn(300);
+                            //$("#PrefieroAsignarAlumno").fadeIn(1000);
+
+                        }
 
                     }
                     //  alert('Fonnnso'+JSON.stringify($scope.eliminar.ubicacion));
@@ -120,16 +129,16 @@ angular.module('miAppAula', []).controller('controladorPracticaAula', ['$scope',
         };
 
         $scope.AsignarSinAlumno = function () {
-            
-          alert($scope.codigoBarras);
-          alert($scope.SelectAulasParaOrdenador);
-          alert($scope.posicionamiento);
-          
+
+            alert($scope.codigoBarras);
+            alert($scope.SelectAulasParaOrdenador);
+            alert($scope.posicionamiento);
+
             var compnentesCambio = {
                 "ordenadorSimpleCambioDeAula": $scope.codigoBarras,
                 "aulaCambioDeOrdenador": $scope.SelectAulasParaOrdenador,
                 "posicionamiento": $scope.posicionamiento
-               // "alumno": $scope.SelectAlumnos
+                        // "alumno": $scope.SelectAlumnos
             };
 
             $.ajax({
@@ -148,9 +157,10 @@ angular.module('miAppAula', []).controller('controladorPracticaAula', ['$scope',
 
                     $scope.mensajeDeAlumnos = "";
                     for (var i = 0; i < $scope.alumnosSinOrdenador.length; i++) {
-                        $scope.mensajeDeAlumnos = $scope.mensajeDeAlumnos + $scope.alumnosSinOrdenador[i].Nombre + ", ";
-                    }
-                    ;
+                        $scope.mensajeDeAlumnos = $scope.mensajeDeAlumnos + $scope.alumnosSinOrdenador[i].Nombre +" "+ $scope.alumnosSinOrdenador[i].Apellidos+", ";
+                    };
+                    
+
                     alert($scope.mensajeDeAlumnos);
 
                 }, error: function (jqXHR, textStatus, errorThown) {
@@ -159,14 +169,14 @@ angular.module('miAppAula', []).controller('controladorPracticaAula', ['$scope',
             });
 
         };
-        
+
         $scope.AsignarConAlumno = function () {
-            
-          alert($scope.codigoBarras);
-          alert($scope.SelectAulasParaOrdenador);
-          alert($scope.posicionamiento);
-          alert($scope.SelectAlumnos);
-          
+
+            alert($scope.codigoBarras);
+            alert($scope.SelectAulasParaOrdenador);
+            alert($scope.posicionamiento);
+            alert($scope.SelectAlumnos);
+
             var compnentesCambio = {
                 "ordenadorSimpleCambioDeAula": $scope.codigoBarras,
                 "aulaCambioDeOrdenador": $scope.SelectAulasParaOrdenador,

@@ -1,0 +1,74 @@
+body {
+    background-image: url("../../Imagenes/fondoLogin.jpg");
+}
+
+#panelPrincipal {
+    background: rgba(255,255,255,0.5);
+    position: absolute;
+    width: 74%;
+    top: 30%;
+    padding-bottom: 20%;
+}
+
+/*casilla del codigo*/
+input#usuario, input#clave{
+    width: 75%;
+    transition: width 2s, left 2s;
+}
+/*aumenta de tamaño al poner el ratón sobre el*/
+input#usuario:hover, input#clave:hover{
+    left: 0%;
+    width: 100%;
+}
+
+input#usuario {
+    position: absolute;
+    top: 20%;
+    left: 11%;
+}
+
+input#clave {
+    position: absolute;
+    top: 40%;
+    left: 11%;
+}
+
+button#acceder {
+    position: absolute;
+    top: 70%;
+    width: 45%;
+    left: 25%;
+    padding-top: 1.4%;
+    padding-bottom: 1.4%;
+}
+
+button#acceder {
+    position: absolute;
+    top: 70%;
+    width: 45%;
+    left: 25%;
+    padding-top: 1.4%;
+    padding-bottom: 1.4%;
+}
+
+button#accederAceptado {
+    position: absolute;
+    top: 70%;
+    width: 45%;
+    left: 25%;
+    padding-top: 1.4%;
+    padding-bottom: 1.4%;
+}
+
+img#imagenCorrecto {
+    position: absolute;
+    width: 5%;
+    top: 33%;
+    right: 63%;
+}
+
+label#mensajelogincorrecto {
+    position: absolute;
+    top: 40%;
+    right: 45%;
+}

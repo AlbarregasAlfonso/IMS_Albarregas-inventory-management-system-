@@ -1,10 +1,11 @@
 body {
+   
     background-image: url("../../Imagenes/Fondo.jpg");
 }
 
 #panelPrincipal {
     background: rgba(255,255,255,0.5);
-  width: 115%;
+    width: 115%;
 }
 
 div#botonMenu1 {
@@ -148,14 +149,14 @@ label#InfoDespiezar, label#docEliminar , label#docInfo, h1#tuloBorrar, label#nom
 }
 
 /*casilla del codigo*/
-input#codigoBarras, input#posicionamiento{
+input#codigoBarras ,#BuscarOrdenadorCodigo{
     width: 75%;
     position: absolute;
     left: 12%;
     transition: width 2s, left 2s;
 }
 /*aumenta de tamaño al poner el ratón sobre el*/
-input#codigoBarras:hover, #componentesDañados:hover ,input#posicionamiento:hover{
+input#codigoBarras:hover, #componentesDañados:hover , #BuscarOrdenadorCodigo:hover{
     left: 0%;
     width: 100%;
 }
@@ -303,7 +304,7 @@ span#icoMasModelos {
 }
 
 span#icoMenosModelos {
-  position: absolute;
+    position: absolute;
     top: 98%;
     right: 102%;
     color: white;
@@ -319,7 +320,7 @@ span#icoMasMarcas {
 }
 
 span#icoMenosMarcas{
- position: absolute;
+    position: absolute;
     top: 89%;
     right: 102%;
     font-size: 30px;
@@ -371,4 +372,111 @@ div#mensajeCambioAula {
     right: 49%;
 }
 
+select#AulasAsig {
+    position: absolute;
+    top: 108%;
+}
 
+select#AlumnosAsig{
+    position: absolute;
+    top: 201%;
+}
+
+button#Buscar {
+   position: absolute;
+    top: 330%;
+    width: 45%;
+}
+button#AplicarCambio {
+    position: absolute;
+    top: 33%;
+    right: 40%;
+    width: 25%;
+}
+
+button#AplicarCambioConAlumno {
+    position: absolute;
+    top: 141%;
+}
+
+label#nombreOrdenador {
+    position: absolute;
+    top: 50%;
+}
+
+select#Aulas {
+    position: absolute;
+    top: 83%;
+}
+#posicionamiento{
+        width: 25%;
+    position: absolute;
+    left: 35%;
+    transition: width 0.5s, left 0.5s;
+    top: 25%;
+}
+#posicionamiento:hover {
+    left: 32.5%;
+    width: 30%;
+}
+
+input#codigoBarras1{
+    width: 25%;
+    position: absolute;
+    left: 35%;
+    transition: width 0.5s, left 0.5s;
+}
+/*aumenta de tamaño al poner el ratón sobre el*/
+input#codigoBarras1:hover {
+    left: 32.5%;
+    width: 30%;
+}
+
+button#buscarOrdenador {
+    position: absolute;
+    top: 20%;
+    left: 35%;
+    width: 25%;
+}
+label#nombreOrdenador1 {
+    left: 35%;
+    position: absolute;
+    top: 15%;
+    color: white;
+}
+
+button#PrefieroAsignarAlumno {
+    position: absolute;
+    top: 26%;
+    right: 40%;
+    width: 25%;
+}
+
+select#Aulas {
+    position: absolute;
+    top: 19%;
+    right: 40%;
+    width: 25%;
+}
+
+select#Alumnos {
+    width: 25%;
+    position: absolute;
+    left: 35%;
+    top: 32%;
+}
+
+button#AplicarCambioConAlumno {
+    width: 25%;
+    position: absolute;
+    left: 35%;
+    top: 39%;
+}
+
+label#mensajeAlumnosQuitarOrdenador {
+    position: absolute;
+    top: 46%;
+    color: white;
+    left: 35%;
+    width: 26%;
+}

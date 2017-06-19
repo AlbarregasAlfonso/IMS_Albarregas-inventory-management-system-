@@ -15,7 +15,7 @@ $(document).ready(function () {
     $("#InfoDespiezar").hide();     //icono de informacion                  BorradoDeOrdenador.jsp
     $("#radioDespiece").hide();     //check de despiece                     BorradoDeOrdenador.jsp
     $("#mensajeAlumnos").hide();
-   // $(".alert").hide();
+    // $(".alert").hide();
     $("#DespiezarFinal").hide();
     $("#IntentarArreglar").hide();
     $("#ArreglarOrdenadorAlmacen").hide();
@@ -27,6 +27,17 @@ $(document).ready(function () {
     $("#modelo").hide();
     $("#icoMasModelos").hide();
     $("#mensajeCambioAula").hide();
+    $("#accederAceptado").hide();
+    $("#imagenCorrecto").hide();
+    $("#mensajelogincorrecto").hide();
+
+    $("#Aulas").hide();
+    // $("#AplicarCambio").hide();
+    //$("#PrefieroAsignarAlumno").hide();
+    $("#Alumnos").hide();
+    $("#posicionamiento").hide();
+    $("#AplicarCambioConAlumno").hide();
+    $("#mensajeAlumnosQuitarOrdenador").hide();
 
     setTimeout(descargar, 1000);
 
@@ -125,7 +136,7 @@ $(document).ready(function () {
         $("#icoMenosModelos").hide();
         $("#NuevoModelo").hide(400);
         $("#NuevoModelo").val(null);
-        
+
         setTimeout(inputCompraMenosModelo, 400);
     });
     function inputCompraMenosModelo() {
@@ -155,11 +166,12 @@ $(document).ready(function () {
     function inputCompraMasMarca() {
         $("#Marca").show(400);
 
-    };
-    
-     
+    }
+    ;
 
-    $("#guardar").click(function(){
+
+
+    $("#guardar").click(function () {
         $("#guardar").fadeOut(300);
         $("#modelo").fadeOut(400);
         $("#icoMasModelos").fadeOut(400);
@@ -168,11 +180,11 @@ $(document).ready(function () {
         $("#icoMenosMarcas").fadeOut(500);
         $("#NuevoModelo").fadeOut(500);
         $("#Marca").fadeOut(500);
-        $("#NuevaMarca").fadeOut(500);        
-        $("#discoDuro").fadeOut(600); 
+        $("#NuevaMarca").fadeOut(500);
+        $("#discoDuro").fadeOut(600);
         $("#placa").fadeOut(700);
         $("#ram").fadeOut(800);
-        $("#procesador").fadeOut(900);    
+        $("#procesador").fadeOut(900);
         $("#categoria").fadeOut(1000);
         $("#estancia").fadeOut(1100);
         $("#estado").fadeOut(1200);
@@ -180,14 +192,54 @@ $(document).ready(function () {
         $("#precio").fadeOut(1400);
     });
 
-$("#BotonActualizarOrdenador").click(function(){
-     $("#mensajeCambioAula").show(500);
+    $("#BotonActualizarOrdenador").click(function () {
+        $("#mensajeCambioAula").show(500);
+    });
+
+    $("#selectAulaOrdenador").click(function () {
+        $("#mensajeCambioAula").hide(500);
+    });
+
+    $("#PrefieroAsignarAlumno").click(function () {
+
+        $("#PrefieroAsignarAlumno").hide(200);
+        $("#AplicarCambio").hide(200);
+        setTimeout(OrdenadoresYAulas, 400);
+    });
+    
+    function OrdenadoresYAulas() {
+        $("#Alumnos").fadeIn(300);
+        $("#posicionamiento").fadeIn(500);
+        $("#AplicarCambioConAlumno").fadeIn(700);
+    }
+
+
+
+$("#AplicarCambioConAlumno").click(function(){
+     $("#mensajeAlumnosQuitarOrdenador").show(200);
 });
 
-$("#selectAulaOrdenador").click(function(){
-     $("#mensajeCambioAula").hide(500);
+$("#codigoBarras1").focusin(function(){
+    $("#Aulas").hide(300);
+    $("#AplicarCambio").hide(500);
+    $("#PrefieroAsignarAlumno").hide(500);
+    $("#Alumnos").hide(500);
+    $("#posicionamiento").hide(600);
+    $("#AplicarCambioConAlumno").hide(600);
+    $("#mensajeAlumnosQuitarOrdenador").hide(600);
+    setTimeout(focusOcultar, 600);
+    
+});
+function focusOcultar() {
+    $("#buscarOrdenador").show(200);
+}
+
+$("#codigoBarras1").focusout(function(){
+    $("#AplicarCambio").show(500);
+    $("#PrefieroAsignarAlumno").show(500);
 });
 
 });
+
 
 

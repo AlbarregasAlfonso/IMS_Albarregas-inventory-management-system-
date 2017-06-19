@@ -51,8 +51,8 @@ public class Controlador extends HttpServlet {
         
         String json = request.getParameter("ordenador");
         String jsonIdMarca = request.getParameter("idMarca");
-
-        if(jsonIdMarca!=null){
+        
+     if(jsonIdMarca!=null){
             Modelo mo=new Modelo();
             ArrayList<Modelo> modelosIdMarca = new ArrayList();
             int id=Integer.parseInt(jsonIdMarca);

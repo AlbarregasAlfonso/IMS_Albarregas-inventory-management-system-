@@ -27,37 +27,36 @@
             </nav>
         </div>
         <div ng-controller="controladorPracticaAula">
-            <div class="row">
-                <div class="col-sm-4">
-               </div>
-                
-                <div class="col-sm-4">
-                 <div class="form-group">
-                        <input ng-model="codigoBarras" placeholder="Codigo de barras del ordenador" type="text" class="form-control" id="codigoBarras"/>
-                    </div>
-                     <label id="nombreOrdenador">{{ordenador}}</label>
-                    <button id="buscarOrdenador" ng-click="borrar()" ng-model="botonBorrar" class="btn btn-warning">Borrar</button>
-                   
-                    <select class="form-control" id="Aulas" ng-model="SelectAulasParaOrdenador">
-                        <option  ng-repeat="x in Aulas" value="{{x.id}}">{{x.nombre}}</option>
-                    </select>
-                    
-                                       <select class="form-control" id="Alumnos" ng-model="SelectAlumnos">
-                        <option  ng-repeat="x in Alumnos" value="{{x.id}}">{{x.Nombre}}</option>
-                    </select>
-                    
-                     <div class="form-group">
-                        <input ng-model="posicionamiento" placeholder="lugar donde esta colocado" type="text" class="form-control" id="posicionamiento"/>
-                    </div>
-                    
-                      <button id="AplicarCambio" ng-click="AsignarSinAlumno()" ng-model="botonBorrar" class="btn btn-warning">Aplicar Cambios</button>
-                      <button id="AplicarCambioConAlumno" ng-click="AsignarConAlumno()" ng-model="AplicarCambioConAlumno" class="btn btn-warning">Asignarselo A Alumnos</button>
-                </div>
-                <div class="col-sm-4">
-                   
-                </div>
+
+
+            <div class="form-group">
+                <input ng-model="codigoBarras" placeholder="Codigo de barras del ordenador" type="text" class="form-control" id="codigoBarras1"/>
             </div>
-           
+            <label id="nombreOrdenador1">{{ordenador}}</label>
+            <button id="buscarOrdenador" ng-click="borrar()" ng-model="botonBorrar" class="btn btn-warning">Borrar</button>
+
+            <select class="form-control" id="Aulas" ng-model="SelectAulasParaOrdenador">
+                <option value="0">Seleccione Aula</option>                       
+                <option  ng-repeat="x in Aulas" value="{{x.id}}">{{x.nombre}}</option>
+            </select>
+
+            <select class="form-control" id="Alumnos" ng-model="SelectAlumnos">
+                <option value="0">Seleccione Alumno</option>
+                <option  ng-repeat="x in Alumnos" value="{{x.id}}">{{x.Nombre}} {{x.Apellido}}</option>
+            </select>
+
+            <div class="form-group">
+                <input ng-model="posicionamiento" placeholder="Posición que ocupará" type="text" class="form-control" id="posicionamiento"/>
+            </div>
+
+            <button id="AplicarCambio" ng-show="SelectAulasParaOrdenador > 0" ng-click="AsignarSinAlumno()" ng-model="botonBorrar" class="btn btn-warning">Aplicar Cambios</button>
+            <button id="PrefieroAsignarAlumno" ng-show="SelectAulasParaOrdenador > 0" ng-model="PrefieroAsignarAlumno" class="btn btn-warning">Prefiero asignarselo a un alumno</button>
+            <button id="AplicarCambioConAlumno" ng-show="SelectAulasParaOrdenador > 0 && SelectAlumnos > 0 "ng-click="AsignarConAlumno()" ng-model="AplicarCambioConAlumno" class="btn btn-warning">Asignarselo A Alumnos</button>
+        
+            <label id="mensajeAlumnosQuitarOrdenador">El alumno {{mensajeDeAlumnos}} de este aula era el antiguo propietario del ordenador y actualmetne no posee ninguno</label>
         </div>
+
+
+
     </body>
 </html>

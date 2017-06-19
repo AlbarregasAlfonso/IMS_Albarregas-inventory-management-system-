@@ -15,8 +15,9 @@ and open the template in the editor.
 
     <h:head>
         <script src="resources/js/jquery-3.2.1.min.js"/>
+         <h:outputStylesheet library="css" name="style2.css"  />
     </h:head>
-    <h:body>
+    <h:body style="background-image: url('../../Imagenes/Fondo.jpg')">
         <ui:decorate template="/resources/plantilla/template.xhtml"/>
         <div id="cargando" ><h:graphicImage style=" width: 5%" alt="" name="imagenes/Cargando.gif" /></div>
         <div  ng-controller="controladorPractica" class="container">
@@ -184,13 +185,13 @@ and open the template in the editor.
                                 </div>
                                 </div>
                                  <div class="col-md-3">
-                                   <a class="botonesPanel" href="/20170222_CRUDHibernateJSF//faces/BorradoDeOrdenador.jsp">
+                                   <a class="botonesPanel" href="/20170222_CRUDHibernateJSF//faces/Primera.jsp">
                                         <div class="panel panel-primary">
                                             <div class="panel-heading" id="equiposporaula">
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="panel-heading">
-                                                            despiezar Ordenador en componentes
+                                                            Prueba despiezar Ordenador en componentes
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">

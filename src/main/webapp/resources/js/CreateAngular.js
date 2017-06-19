@@ -360,6 +360,38 @@ angular.module('miApp', []).controller('controladorPractica', ['$scope', functio
                 }
             });
         };
+        
+        
+        
+         $scope.Inicio = function () {
+
+            var caracteristica = "caracteristicas";
+
+            var codigoB = {
+                "caracteristicas": caracteristica
+
+            };
+
+            $.ajax({
+                data: codigoB,
+                url: 'ControladorEliminarDespiezar',
+                type: 'post',
+                async: false,
+                dataType: "json",
+                beforeSend: function () {
+
+                },
+                success: function (response) {
+
+                    $scope.propiedades = response;
+                    //  $scope.propiedades = JSON.parse($scope.propiedadesJson);              
+                    //  alert(JSON.stringify($scope.propiedades));
+                }, error: function (jqXHR, textStatus, errorThown) {
+                    alert("Algo fallo");
+                }
+            });
+        };
+        
     }]);
 
 

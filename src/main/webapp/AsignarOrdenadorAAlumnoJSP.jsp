@@ -46,17 +46,17 @@
 
                 </div>
                 <div class="col-sm-4">
-                    <select class="form-control" id="Aulas" ng-model="SelectAulas">
+                    <select class="form-control" id="AulasAsig" ng-model="SelectAulas">
                         <option  ng-repeat="x in Aulas" value="{{x.id}}">{{x.nombre}}</option>
                     </select>
-                    <select class="form-control" id="Alumnos" ng-model="SelectAlumnos">
+                    <select class="form-control" id="AlumnosAsig" ng-model="SelectAlumnos">
                         <option  ng-repeat="x in Alumnos" value="{{x.id}}">{{x.Nombre}}</option>
                     </select>
                       <div class="form-group">
-                        <input ng-model="codigoBarras" placeholder="Codigo de barras del ordenador" type="text" class="form-control" id="codigoBarras"/>
+                        <input ng-model="codigoBarras" placeholder="Codigo de barras del ordenador" type="text" class="form-control" id="BuscarOrdenadorCodigo"/>
                     </div>
                      <label id="nombreOrdenador">{{ordenador}}</label>
-                    <button id="borrar" ng-click="borrar()" ng-model="botonBorrar" class="btn btn-warning">Borrar</button>
+                    <button id="Buscar" ng-click="borrar()" ng-model="botonBorrar" class="btn btn-warning">Borrar</button>
                     <button id="asignarOrdenadorAlumno" ng-click="asignarUnOrdenador()" ng-model="asignarOrdenadorAlumno" class="btn btn-warning">Asignar</button>
                     <label>{{mensajeDeAlumnos}}</label>
                 </div>

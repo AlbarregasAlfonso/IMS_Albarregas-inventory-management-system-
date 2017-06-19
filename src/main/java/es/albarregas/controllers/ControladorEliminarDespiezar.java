@@ -59,7 +59,12 @@ public class ControladorEliminarDespiezar extends HttpServlet {
         String jsonidProductopropiedadARemplazar = request.getParameter("idProductopropiedadARemplazar");
         String jsonidPropiedad = request.getParameter("idPropiedad");
         String jsonalmacenARemplazar = request.getParameter("almacenARemplazar");
-        
+        String jsonUsuario = request.getParameter("usuario");
+        String jsonClave = request.getParameter("clave");
+
+        if (jsonUsuario != null) {
+
+        }
 
         if (json != null) {
             Producto productoNuevo = gson.fromJson(json, Producto.class);
@@ -80,21 +85,20 @@ public class ControladorEliminarDespiezar extends HttpServlet {
             };
 
             caracteristicasProductos = PP.allcaracteristicasWhereIdProducto(idProducto);
-             ProduPropiedad propiedadesDeProductoAEliminar = (ProduPropiedad) igd.getOneHQL("ProduPropiedad where IdProducto='" + idProducto + "' and IdPropiedad='3'"); //ordenador a borrar
-            
-            
+            ProduPropiedad propiedadesDeProductoAEliminar = (ProduPropiedad) igd.getOneHQL("ProduPropiedad where IdProducto='" + idProducto + "' and IdPropiedad='3'"); //ordenador a borrar
+
             for (ProduPropiedad x : caracteristicasProductos) {
                 if (jsonElementoCorrupto != x.getPropiedad().getId() && x.getPropiedad().getId() == 1) {
-                    Ram ram = new Ram(0,x.getDescripcion(),propiedadesDeProductoAEliminar.getDescripcion());
+                    Ram ram = new Ram(0, x.getDescripcion(), propiedadesDeProductoAEliminar.getDescripcion());
                     ram.addDatos();
                 } else if (jsonElementoCorrupto != x.getPropiedad().getId() && x.getPropiedad().getId() == 2) {
-                    Procesador procesador = new Procesador(0, x.getDescripcion(),propiedadesDeProductoAEliminar.getDescripcion());
+                    Procesador procesador = new Procesador(0, x.getDescripcion(), propiedadesDeProductoAEliminar.getDescripcion());
                     procesador.addDatos();
                 } else if (jsonElementoCorrupto != x.getPropiedad().getId() && x.getPropiedad().getId() == 3) {
                     Placa placa = new Placa(0, x.getDescripcion());
                     placa.addDatos();
                 } else if (jsonElementoCorrupto != x.getPropiedad().getId() && x.getPropiedad().getId() == 4) {
-                    Disco disco = new Disco(0, x.getDescripcion(),propiedadesDeProductoAEliminar.getDescripcion());
+                    Disco disco = new Disco(0, x.getDescripcion(), propiedadesDeProductoAEliminar.getDescripcion());
                     disco.addDatos();
                 }
             }
@@ -169,43 +173,43 @@ public class ControladorEliminarDespiezar extends HttpServlet {
         if (jsonPropiedadParaSustituir != null) {
             switch (jsonPropiedadParaSustituir) {
                 case "1": {
-                    Ram r=new Ram();
+                    Ram r = new Ram();
                     ArrayList<Ram> rams = new ArrayList();
-                    rams=r.allRams();
+                    rams = r.allRams();
                     String ramsJson = gson.toJson(rams);
                     response.getWriter().write(ramsJson);
-                break;
+                    break;
                 }
                 case "2": {
-                    Procesador r=new Procesador();
+                    Procesador r = new Procesador();
                     ArrayList<Procesador> procesadores = new ArrayList();
-                    procesadores=r.allProcesadors();
+                    procesadores = r.allProcesadors();
                     String procesadoresJson = gson.toJson(procesadores);
                     response.getWriter().write(procesadoresJson);
-                break;
+                    break;
                 }
                 case "3": {
-                    Placa p=new Placa();
+                    Placa p = new Placa();
                     ArrayList<Placa> placas = new ArrayList();
-                    placas=p.allPlacas();
+                    placas = p.allPlacas();
                     String placasJson = gson.toJson(placas);
                     response.getWriter().write(placasJson);
-                break;
+                    break;
                 }
                 case "4": {
-                    Disco d=new Disco();
+                    Disco d = new Disco();
                     ArrayList<Disco> discos = new ArrayList();
-                    discos=d.allDiscos();
+                    discos = d.allDiscos();
                     String discosJson = gson.toJson(discos);
                     response.getWriter().write(discosJson);
-                break;
+                    break;
                 }
             }
         }
-        
-        if(jsonidProductopropiedadARemplazar!=null){          
-            ProduPropiedad propiedadACambiar = (ProduPropiedad) igd.getOneHQL("ProduPropiedad where IdProducto='"+jsonidProductopropiedadARemplazar+"' and IdPropiedad='"+jsonidPropiedad+"'"); //propìedad a remplazar
-            ProduPropiedad proNueva = new ProduPropiedad(propiedadACambiar.getId(),jsonalmacenARemplazar,propiedadACambiar.getProducto(),propiedadACambiar.getPropiedad());
+
+        if (jsonidProductopropiedadARemplazar != null) {
+            ProduPropiedad propiedadACambiar = (ProduPropiedad) igd.getOneHQL("ProduPropiedad where IdProducto='" + jsonidProductopropiedadARemplazar + "' and IdPropiedad='" + jsonidPropiedad + "'"); //propìedad a remplazar
+            ProduPropiedad proNueva = new ProduPropiedad(propiedadACambiar.getId(), jsonalmacenARemplazar, propiedadACambiar.getProducto(), propiedadACambiar.getPropiedad());
             proNueva.updDatos();
         }
 
