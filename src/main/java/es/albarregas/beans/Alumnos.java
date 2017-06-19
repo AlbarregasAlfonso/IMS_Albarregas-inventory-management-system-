@@ -5,7 +5,7 @@
  */
 package es.albarregas.beans;
 
-import static es.albarregas.beans.Alumno.listaAlumnos;
+
 import es.albarregas.dao.IGenericoDAO;
 import es.albarregas.daofactory.DAOFactory;
 import java.io.Serializable;
@@ -120,9 +120,18 @@ public class Alumnos implements Serializable{
     }
 
     public ArrayList allalumnos() {
+        ArrayList<Alumnos> listaalumnos = new ArrayList();
         DAOFactory df = DAOFactory.getDAOFactory();
         IGenericoDAO igd = df.getGenericoDAO();
-        ArrayList listaalumnos = (ArrayList<Alumnos>) igd.get("Alumnos");
+        ArrayList listaalumnos1 = (ArrayList<Alumnos>) igd.get("Alumnos");
+        listaalumnos=listaalumnos1;
+        
+        Producto p=new Producto(0);
+       for(Alumnos a:listaalumnos){
+               if(a.getProducto()==null){
+                   a.setProducto(p);
+               }
+            }
         return listaalumnos;
     }
 

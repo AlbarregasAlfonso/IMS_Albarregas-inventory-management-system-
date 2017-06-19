@@ -92,6 +92,13 @@ public class Producto implements Serializable {
 ////    @IndexColumn(name="idx")
 //    private List<Alumnos> Alumnos;
 
+    public Producto() {
+    }
+
+    public Producto(int id) {
+        this.id = id;
+    }
+
     public void oneProducto() {
         if (this.id > 0) {
             DAOFactory df = DAOFactory.getDAOFactory();
@@ -111,7 +118,6 @@ public class Producto implements Serializable {
             this.marca = producto.getMarca();
 
         }
-
     }
 
     @PostConstruct

@@ -1,0 +1,91 @@
+body {
+
+    background-image: url("../../Imagenes/Fondo.jpg");
+}
+input.ng-invalid {
+    background-color:pink;
+}
+input.ng-valid {
+    background-color:lightgreen;
+}
+
+
+button#AplicarCambio {
+    position: absolute;
+    top: 33%;
+    right: 40%;
+    width: 25%;
+}
+
+#posicionamiento{
+    width: 25%;
+    position: absolute;
+    left: 35%;
+    transition: width 0.5s, left 0.5s;
+    top: 25%;
+}
+#posicionamiento:hover {
+    left: 32.5%;
+    width: 30%;
+}
+
+input#codigoBarras1,input#BuscarOrdenadorCodigo66{
+    width: 25%;
+    position: absolute;
+    left: 35%;
+    transition: width 0.5s, left 0.5s;
+}
+
+input#codigoBarras1:hover ,input#BuscarOrdenadorCodigo66:hover{
+    left: 32.5%;
+    width: 30%;
+}
+
+button#buscarOrdenador {
+    position: absolute;
+    top: 20%;
+    left: 35%;
+    width: 25%;
+}
+label#nombreOrdenador1 {
+    left: 35%;
+    position: absolute;
+    top: 15%;
+    color: white;
+}
+
+button#PrefieroAsignarAlumno {
+    position: absolute;
+    top: 26%;
+    right: 40%;
+    width: 25%;
+}
+
+select#Aulas1 {
+       position: absolute;
+    top: 20%;
+    left: 35%;
+    width: 25%;
+}
+
+select#Alumnos1 {
+        position: absolute;
+    top: 20%;
+    left: 35%;
+    width: 25%;
+}
+
+div#mensajeAlumnosQuitarOrdenador {
+    position: absolute;
+    width: 35%;
+    top: 50%;
+    right: 35%;
+}
+
+button#AplicarCambioConAlumno {
+    width: 25%;
+    position: absolute;
+    left: 35%;
+    top: 39%;
+}
+

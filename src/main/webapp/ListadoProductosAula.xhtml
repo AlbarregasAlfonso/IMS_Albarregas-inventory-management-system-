@@ -11,7 +11,7 @@
  <h:outputStylesheet library="css" name="style2.css"  />
     </h:head>
 
-    <h:body>
+    <h:body style="background-image: url('Imagenes/Fondo.jpg')">
         <div id="top">
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
@@ -33,7 +33,7 @@
                             <p:selectOneMenu id="aula" value="#{estancia.id}" style="width:150px">
                                 <p:ajax listener="#{producto.allProductosWherePorAula(estancia.id)}" update="tablaProductos" />
                                 <f:selectItem itemLabel="Seleccione aula" itemValue="" noSelectionOption="true" />
-                                <f:selectItems value="#{estancia.allEstancias()}" var="e" itemLabel=" #{e.nombre}" itemValue="#{e.id}"/>
+                                <f:selectItems value="#{estancia.allEstancias()}" var="e" itemLabel=" #{e.nombre} " itemValue="#{e.id}"/>
                             </p:selectOneMenu>
                         </h:panelGrid>
                         <!--<p:separator />-->

@@ -1,5 +1,4 @@
 
-
 $(document).ready(function () {
 
     $("#docInfo").hide();
@@ -38,6 +37,9 @@ $(document).ready(function () {
     $("#posicionamiento").hide();
     $("#AplicarCambioConAlumno").hide();
     $("#mensajeAlumnosQuitarOrdenador").hide();
+    $("#Aulas1").hide();
+    $("#Alumnos1").hide();
+    $("#alertAsignarOrdenador").hide();
 
     setTimeout(descargar, 1000);
 
@@ -206,7 +208,7 @@ $(document).ready(function () {
         $("#AplicarCambio").hide(200);
         setTimeout(OrdenadoresYAulas, 400);
     });
-    
+
     function OrdenadoresYAulas() {
         $("#Alumnos").fadeIn(300);
         $("#posicionamiento").fadeIn(500);
@@ -215,31 +217,30 @@ $(document).ready(function () {
 
 
 
-$("#AplicarCambioConAlumno").click(function(){
-     $("#mensajeAlumnosQuitarOrdenador").show(200);
+    $("#AplicarCambioConAlumno").click(function () {
+        $("#mensajeAlumnosQuitarOrdenador").show(200);
+    });
+
+    $("#codigoBarras1").focusin(function () {
+        $("#Aulas").hide(300);
+        $("#AplicarCambio").hide(500);
+        $("#PrefieroAsignarAlumno").hide(500);
+        $("#Alumnos").hide(500);
+        $("#posicionamiento").hide(600);
+        $("#AplicarCambioConAlumno").hide(600);
+        $("#mensajeAlumnosQuitarOrdenador").hide(600);
+        setTimeout(focusOcultar, 600);
+
+    });
+    function focusOcultar() {
+        $("#buscarOrdenador").show(200);
+    }
+
+    $("#codigoBarras1").focusout(function () {
+        $("#AplicarCambio").show(500);
+        $("#PrefieroAsignarAlumno").show(500);
+    });
+
+
+
 });
-
-$("#codigoBarras1").focusin(function(){
-    $("#Aulas").hide(300);
-    $("#AplicarCambio").hide(500);
-    $("#PrefieroAsignarAlumno").hide(500);
-    $("#Alumnos").hide(500);
-    $("#posicionamiento").hide(600);
-    $("#AplicarCambioConAlumno").hide(600);
-    $("#mensajeAlumnosQuitarOrdenador").hide(600);
-    setTimeout(focusOcultar, 600);
-    
-});
-function focusOcultar() {
-    $("#buscarOrdenador").show(200);
-}
-
-$("#codigoBarras1").focusout(function(){
-    $("#AplicarCambio").show(500);
-    $("#PrefieroAsignarAlumno").show(500);
-});
-
-});
-
-
-

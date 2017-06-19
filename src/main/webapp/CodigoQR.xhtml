@@ -9,11 +9,11 @@
 
     <h:head>
         <h:outputStylesheet library="css" name="style2.css"  />
-         <h:outputStylesheet library="css" name="style2.css"  />
+        <h:outputStylesheet library="css" name="style2.css"  />
     </h:head>
 
     <h:body style="background-image: url('Imagenes/Fondo.jpg')">
-          <div id="top">
+        <div id="top">
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
                     <div class="navbar-header">
@@ -45,60 +45,53 @@
                     <p:dataTable var="pro" value="#{producto.listaProductos}" id="tablaProductos" paginator="true" rows="5" style="margin-bottom:10px">>
                         <p:columnGroup type="header">
                             <p:row>
-                                <p:column colspan="12" headerText="Productos" />
+                                <p:column colspan="4" headerText="Productos" />
                             </p:row>             
                             <p:row>                    
-                                <p:column colspan="1" headerText="Categoria" />             
                                 <p:column colspan="2" headerText="Producto" />             
-                                <p:column colspan="3" headerText="Caracteristicas" />             
-                                <p:column colspan="1" headerText="Estado" />             
-                                <p:column colspan="2" headerText="Fechas" /> 
-                                <p:column colspan="1" headerText="Precio" />
-                                <p:column colspan="1" headerText="Ubicacion" />
-                                <p:column colspan="1" headerText="Aula" />
-
+                                <p:column colspan="1" headerText="Aula" />             
+                                <p:column colspan="1" headerText="QR" />             
                             </p:row>             
-                            <p:row>             
-                                <p:column headerText="Categoría" />              
+                            <p:row>                        
                                 <p:column headerText="Marca" />              
                                 <p:column headerText="Modelo" />             
-                                <p:column headerText="Disco Duro" />    
-                                <p:column headerText="Ram" />
-                                <p:column headerText="Procesador" />
-                                <p:column headerText="Estado" />
-                                <p:column headerText="Fecha Compra" />
-                                <p:column headerText="Fecha Baja" />
-                                <p:column headerText="Precio" />
                                 <p:column headerText="Ubicación" />
-                                <p:column headerText="Aula" />
+                                <p:column headerText="QR" />
                             </p:row> 
                         </p:columnGroup> 
-
-                        <p:column>#{pro.categoria.nombre}</p:column> 
-                        <p:column>#{pro.marca.nombre}</p:column> 
-                        <p:column>#{pro.modelo.nombre}</p:column>  
-                        <p:column>#{pro.caracteristicas.hd}</p:column> 
-                        <p:column>#{pro.caracteristicas.ram}</p:column>
-                        <p:column>#{pro.caracteristicas.procesador}</p:column>  
-                        <p:column>#{pro.estado.descripcion}</p:column> 
-                        <p:column>#{pro.fecha_compra}</p:column>  
-                        <p:column>#{pro.fecha_baja}</p:column> 
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Precio"/>
+                                <h:outputText value="Marca"/>
                             </f:facet>
-                            <h:outputText value="#{pro.precio}" />
+                            <h:outputText value="#{pro.marca.nombre}" />
+
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Modelo"/>
+                            </f:facet>
+                             <h:outputText value="#{pro.modelo.nombre}" />
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Ubicación"/>
+                            </f:facet>
+                                <h:outputText value="#{pro.estancia.nombre}" />
+                        </p:column>
+                        <p:column>
+                            <p:barcode value="#{pro.id}#{pro.id}" type="qr"/>
                         </p:column>
 
-                        <!--<p:column># {pro.precio}</p:column>--> 
-                        <p:column>#{pro.ubicacion}</p:column>
-                        <p:column>#{pro.estancia.nombre}</p:column>  
+
                         <p:columnGroup type="footer"> 
-                            <p:row> <p:column colspan="12" style="text-align:left" footerText="Albarregas"/>                             
+                            <p:row> <p:column colspan="4" style="text-align:left" footerText="Albarregas"/>                             
                             </p:row>   
                         </p:columnGroup>                   
                     </p:dataTable>
-
+                    <h:commandLink>
+                        <p:graphicImage name="imagenes/pdf.png" width="80" />
+                        <p:dataExporter type="pdf" target="tablaProductos" fileName="QR" pageOnly="true" />
+                    </h:commandLink>
                 </h:form>
             </div>
             <div class="col-sm-2"></div>

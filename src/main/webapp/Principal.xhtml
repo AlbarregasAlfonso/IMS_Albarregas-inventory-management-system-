@@ -17,7 +17,7 @@ and open the template in the editor.
         <script src="resources/js/jquery-3.2.1.min.js"/>
          <h:outputStylesheet library="css" name="style2.css"  />
     </h:head>
-    <h:body style="background-image: url('../../Imagenes/Fondo.jpg')">
+    <h:body style="background-image: url('Imagenes/Fondo.jpg')">
         <ui:decorate template="/resources/plantilla/template.xhtml"/>
         <div id="cargando" ><h:graphicImage style=" width: 5%" alt="" name="imagenes/Cargando.gif" /></div>
         <div  ng-controller="controladorPractica" class="container">
@@ -84,7 +84,7 @@ and open the template in the editor.
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="panel-heading">
-                                                            Ordenador por alumno
+                                                            Asignar Ordenado-Aula
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -128,7 +128,7 @@ and open the template in the editor.
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="panel-heading">
-                                                            Asignar ordenador a Alumno
+                                                            Asignar Ordenado-Alumno
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -185,13 +185,15 @@ and open the template in the editor.
                                 </div>
                                 </div>
                                  <div class="col-md-3">
-                                   <a class="botonesPanel" href="/20170222_CRUDHibernateJSF//faces/Primera.jsp">
+                                     
+                                     <h:link outcome="CodigoQR" styleClass="enlace" onclick="MyFunction();return false;">
+                                  
                                         <div class="panel panel-primary">
                                             <div class="panel-heading" id="equiposporaula">
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="panel-heading">
-                                                            Prueba despiezar Ordenador en componentes
+                                                            impresión QR
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -202,7 +204,7 @@ and open the template in the editor.
                                             <div class="panel-body">
                                             </div>
                                         </div>
-                                    </a>
+                                    </h:link>
                                  </div>
                             </div>
                         </div>
