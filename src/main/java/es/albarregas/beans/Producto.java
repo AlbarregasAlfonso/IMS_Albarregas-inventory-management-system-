@@ -128,7 +128,11 @@ public class Producto implements Serializable {
 
     }
 
-
+/**
+ * todos los productos por idLocalizacion
+ * @param id
+ * @return listado producto
+ */
     public ArrayList allProductosWherePorLocalizacion(int id) {
         ArrayList<Producto> productos = null;
         if (id > 0) {
@@ -152,6 +156,12 @@ public class Producto implements Serializable {
         }
         return productos;
     };
+   
+   /**
+    * lsitado de productos por aula
+    * @param id
+    * @return productos de aula
+    */
     public ArrayList allProductosWherePorAula(int id) {
         listaProductos = null;
         if (id > 0) {
@@ -164,6 +174,11 @@ public class Producto implements Serializable {
         return listaProductos;
     }
 
+    /**
+     * lsitado de producto por alumno
+     * @param id
+     * @return producto de alumno
+     */
     public ArrayList allProductosWherePorAlumno(int id) {
         listaProductos = null;
         if (id > 0) {

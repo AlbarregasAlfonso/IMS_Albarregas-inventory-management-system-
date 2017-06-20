@@ -6,3 +6,7 @@
 30/05/2017:	Estoy haciendo la funcionalidad de comprar nuevos ordenadores intentandolo desarrollar con angular y JSon.
 01/06/2017:	Compramos ordenadores con Angular, Ajax y JSon.
 04/06/2017:	Podemos eliminar ordenadores, eliminamos mediante comunicacion Ajax
+Usuario:	admin
+Contraseña: 	admin
+API
+\IMS_AlfonsoTerronesMoreno_Final\target\site\apidocs\

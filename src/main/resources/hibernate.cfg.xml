@@ -11,7 +11,7 @@
         <!-- Pool de conexiones -->
         <property name="hibernate.connection.pool_size">1</property>
         <property name="hibernate.connection.datasource">java:comp/env/jdbc/UAU</property>
-    
+
         <mapping class="es.albarregas.beans.Alumnos"/>
         <mapping class="es.albarregas.beans.Usuario"/>
         <mapping class="es.albarregas.beans.Caracteristicas"/>
@@ -21,14 +21,14 @@
         <mapping class="es.albarregas.beans.Localizacion"/>
         <mapping class="es.albarregas.beans.Modelo"/>
         <mapping class="es.albarregas.beans.Marca"/>
-        <mapping class="es.albarregas.beans.Producto"/>       
+        <mapping class="es.albarregas.beans.Producto"/>
         <mapping class="es.albarregas.beans.Disco"/>
         <mapping class="es.albarregas.beans.Ram"/>
         <mapping class="es.albarregas.beans.Procesador"/>
         <mapping class="es.albarregas.beans.Propiedad"/>
         <mapping class="es.albarregas.beans.ProduPropiedad"/>
         <mapping class="es.albarregas.beans.Placa"/>
-    
-        
+
+
     </session-factory>
 </hibernate-configuration>

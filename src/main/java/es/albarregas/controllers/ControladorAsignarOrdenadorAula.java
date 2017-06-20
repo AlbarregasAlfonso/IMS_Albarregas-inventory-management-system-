@@ -29,6 +29,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  *
  * @author AlfonsoTerrones
+ * En este metodo asignaremos ordenadores a las diferentes aulas
  */
 @WebServlet(name = "ControladorAsignarOrdenadorAula", urlPatterns = {"/ControladorAsignarOrdenadorAula"})
 public class ControladorAsignarOrdenadorAula extends HttpServlet {

@@ -47,7 +47,14 @@ public class Alumnos implements Serializable{
      @ManyToOne
     @JoinColumn(name = "IdProducto")
     private Producto producto;
-
+/**
+ * creamos alumno
+ * @param id
+ * @param Nombre
+ * @param Apellidos
+ * @param estancia
+ * @param producto 
+ */
     public Alumnos(int id, String Nombre, String Apellidos, Estancia estancia, Producto producto) {
         this.id = id;
         this.Nombre = Nombre;
@@ -59,7 +66,9 @@ public class Alumnos implements Serializable{
     public Alumnos() {
     }
      
-     
+     /**
+      * inicializamos el listado de alumnos
+      */
       public void init() {
         DAOFactory df = DAOFactory.getDAOFactory();
         IGenericoDAO igd = df.getGenericoDAO();
@@ -70,7 +79,9 @@ public class Alumnos implements Serializable{
             }
     }
      
-     
+     /**
+      * un solo alumno
+      */
      public void oneAlumnos() {
         if (this.id > 0) {
             DAOFactory df = DAOFactory.getDAOFactory();
@@ -85,7 +96,11 @@ public class Alumnos implements Serializable{
         }
 
     }
-    
+    /**
+     * todos los alumnos
+     * @param id
+     * @return 
+     */
      public ArrayList allAlumnosWhere(int id) {
          ArrayList<Alumnos> alumnos=null;
         if (id > 0) {
@@ -96,7 +111,11 @@ public class Alumnos implements Serializable{
         }
         return alumnos;
     }
-     
+     /**
+      * obtenemos todos los alumnos
+      * @param id
+      * @return 
+      */
       public ArrayList allAlumnosWhereidPoducto(int id) {
          ArrayList<Alumnos> alumnos=null;
         if (id > 0) {
@@ -107,7 +126,11 @@ public class Alumnos implements Serializable{
         }
         return alumnos;
     }
-      
+      /**
+       * obtenemos los alumnos por aula
+       * @param id
+       * @return listado de alumnos
+       */
            public ArrayList allAlumnosWhereidAula(int id) {
          ArrayList<Alumnos> alumnos=null;
         if (id > 0) {
@@ -118,7 +141,10 @@ public class Alumnos implements Serializable{
         }
         return alumnos;
     }
-
+/**
+ * todo los alumnos
+ * @return listado de alumnos
+ */
     public ArrayList allalumnos() {
         ArrayList<Alumnos> listaalumnos = new ArrayList();
         DAOFactory df = DAOFactory.getDAOFactory();
@@ -134,7 +160,9 @@ public class Alumnos implements Serializable{
             }
         return listaalumnos;
     }
-
+/**
+ * añadir datos
+ */
     public void addDatos() {
         DAOFactory df = DAOFactory.getDAOFactory();
         IGenericoDAO igd = df.getGenericoDAO();
@@ -143,6 +171,9 @@ public class Alumnos implements Serializable{
         borrarTodo();
     }
 
+    /**
+     * actualizar datos
+     */
     public void updDatos() {
         if (this.id > 0) {
             DAOFactory df = DAOFactory.getDAOFactory();
@@ -154,6 +185,10 @@ public class Alumnos implements Serializable{
         }
     }
 
+    /**
+     * borrar datos
+     * 
+     */
     public void delDatos() {
         if (this.id > 0) {
             DAOFactory df = DAOFactory.getDAOFactory();

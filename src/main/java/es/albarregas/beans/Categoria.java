@@ -48,6 +48,9 @@ public class Categoria implements Serializable {
 ////    @IndexColumn(name="idx")
 //    private List<Producto> productos;
     
+    /**
+     * una categoria
+     */
     public void oneCategoria() {
         if (this.id > 0) {
             DAOFactory df = DAOFactory.getDAOFactory();
@@ -66,7 +69,9 @@ public class Categoria implements Serializable {
         ArrayList listaCategoria = (ArrayList<Categoria>) igd.get("Categoria");
         return listaCategoria;
     }
-
+/**
+ * añadir datos
+ */
     public void addDatos() {
         DAOFactory df = DAOFactory.getDAOFactory();
         IGenericoDAO igd = df.getGenericoDAO();
@@ -75,6 +80,9 @@ public class Categoria implements Serializable {
         borrarTodo();
     }
 
+    /**
+     * actualizar datos
+     */
     public void updDatos() {
         if (this.id > 0) {
             DAOFactory df = DAOFactory.getDAOFactory();
@@ -85,6 +93,9 @@ public class Categoria implements Serializable {
         }
     }
 
+    /**
+     * borrar datos
+     */
     public void delDatos() {
         if (this.id > 0) {
             DAOFactory df = DAOFactory.getDAOFactory();

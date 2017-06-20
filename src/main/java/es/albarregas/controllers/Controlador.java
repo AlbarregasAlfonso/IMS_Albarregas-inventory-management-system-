@@ -32,8 +32,8 @@ import javax.servlet.http.HttpServletResponse;
 public class Controlador extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
+     * Realizaremos funciones como crear un ordenador nuevo o borrar ordenadores
+     * 
      *
      * @param request servlet request
      * @param response servlet response

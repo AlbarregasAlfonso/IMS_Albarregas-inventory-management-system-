@@ -55,6 +55,11 @@ public class Modelo implements Serializable {
 
     }
     
+    /**
+     * obtenemos los modelos con id marca
+     * @param id de marca
+     * @return listado de modelos
+     */
      public ArrayList allModeloWhere(int id) {
          ArrayList<Modelo> modelos=null;
         if (id > 0) {

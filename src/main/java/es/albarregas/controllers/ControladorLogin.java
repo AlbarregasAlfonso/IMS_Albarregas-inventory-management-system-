@@ -26,8 +26,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ControladorLogin extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
+     * En este controlador controlamos simplemente el login
      *
      * @param request servlet request
      * @param response servlet response

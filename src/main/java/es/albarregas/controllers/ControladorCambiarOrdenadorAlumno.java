@@ -27,8 +27,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ControladorCambiarOrdenadorAlumno extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
+     * En este controlador podremos camiar los ordenadores de los alumnos 
      *
      * @param request servlet request
      * @param response servlet response

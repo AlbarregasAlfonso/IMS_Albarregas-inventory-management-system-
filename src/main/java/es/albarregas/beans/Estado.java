@@ -60,6 +60,10 @@ public class Estado implements Serializable {
 
     }
 
+    /**
+     * todos los estados
+     * @return nos devuelve todos los estados
+     */
     public ArrayList allEstados() {
         DAOFactory df = DAOFactory.getDAOFactory();
         IGenericoDAO igd = df.getGenericoDAO();

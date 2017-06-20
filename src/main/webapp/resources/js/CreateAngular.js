@@ -158,7 +158,6 @@ angular.module('miApp', []).controller('controladorPractica', ['$scope', functio
                 "nuevoModelo": angular.toJson($scope.nuevoModelo)
             };
 
-            alert(JSON.stringify(nuevoOrdenador));
 
             $.ajax({
                 data: nuevoOrdenador,

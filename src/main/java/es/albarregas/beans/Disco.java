@@ -42,12 +42,21 @@ public class Disco implements Serializable {
     public Disco() {
     }
 
+    /**
+     * cosntructor de disco
+     * @param id
+     * @param nombre
+     * @param compatibilidad 
+     */
     public Disco(int id, String nombre,String compatibilidad) {
         this.id = id;
         this.nombre = nombre;
         this.compatibilidad = compatibilidad;
     }
 
+    /**
+     * obtener un disco
+     */
     public void oneDisco() {
         if (this.id > 0) {
             DAOFactory df = DAOFactory.getDAOFactory();
@@ -61,6 +70,10 @@ public class Disco implements Serializable {
 
     }
 
+    /**
+     * todos los discos
+     * @return nos devuelve discos
+     */
     public ArrayList allDiscos() {
         DAOFactory df = DAOFactory.getDAOFactory();
         IGenericoDAO igd = df.getGenericoDAO();

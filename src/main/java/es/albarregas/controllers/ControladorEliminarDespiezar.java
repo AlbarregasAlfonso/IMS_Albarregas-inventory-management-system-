@@ -28,6 +28,8 @@ import javax.servlet.http.HttpServletResponse;
 /**
  *
  * @author AlfonsoTerrones
+ * En esta clase eliminamos los ordenadores y grabamos las piezas que esten bien de los ordenadores a otros ordenadores
+ *
  */
 @WebServlet(name = "ControladorEliminarDespiezar", urlPatterns = {"/ControladorEliminarDespiezar"})
 public class ControladorEliminarDespiezar extends HttpServlet {

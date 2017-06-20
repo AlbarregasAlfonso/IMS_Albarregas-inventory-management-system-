@@ -75,6 +75,10 @@ public class Localizacion implements Serializable {
         return localizacion;
     }
 
+         /**
+          * todas las localizaciones
+          * @return listado localizacion
+          */
     public ArrayList allLocalizacions() {
         DAOFactory df = DAOFactory.getDAOFactory();
         IGenericoDAO igd = df.getGenericoDAO();

@@ -59,6 +59,10 @@ public class Estancia implements Serializable {
 
     }
 
+    /**
+     * todas las estancias
+     * @return listado estancias
+     */
     public ArrayList allEstancias() {
         DAOFactory df = DAOFactory.getDAOFactory();
         IGenericoDAO igd = df.getGenericoDAO();
@@ -66,6 +70,10 @@ public class Estancia implements Serializable {
         return listaestancia;
     }
 
+    /**
+     * todas las localizaciones
+     * @return listado de localizacion
+     */
 public ArrayList allLocalizacionWhere() {
          ArrayList<Estancia> estancias=null;
         if (id > 0) {

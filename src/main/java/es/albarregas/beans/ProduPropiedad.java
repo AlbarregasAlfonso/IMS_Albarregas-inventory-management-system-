@@ -49,7 +49,13 @@ public class ProduPropiedad implements Serializable {
 
     public ProduPropiedad() {
     }
-
+/**
+ * contructor de muchos a muchos
+ * @param id
+ * @param descripcion
+ * @param producto
+ * @param propiedad 
+ */
     public ProduPropiedad(int id, String descripcion, Producto producto, Propiedad propiedad) {
         this.id = id;
         this.descripcion = descripcion;
@@ -67,7 +73,11 @@ public class ProduPropiedad implements Serializable {
         }
 
     }
-
+/**
+ * todas las caracteristicas
+ * @param id id del producto
+ * @return lsitado de propiedaddes
+ */
     public ArrayList allcaracteristicasWhereIdProducto(int id) {
         ArrayList<ProduPropiedad> produPropiedad = null;
         if (id > 0) {
@@ -80,6 +90,11 @@ public class ProduPropiedad implements Serializable {
         return produPropiedad;
     }
 
+    /**
+     * todas las caracteristicas segun el producto
+     * @param id
+     * @return listado de propiedad
+     */
     public ArrayList allcaracteristicasWhereIdPropiedad(int id) {
         ArrayList<ProduPropiedad> produPropiedad = null;
         if (id > 0) {

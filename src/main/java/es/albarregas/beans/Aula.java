@@ -44,11 +44,9 @@ public class Aula implements Serializable {
     @Transient
     private String mensaje;
 
-//    @OneToMany(cascade= CascadeType.ALL)
-//    @JoinColumn(name="IdAula")
-////    @IndexColumn(name="idx")
-//    private List<Alumno> correosElectronicos;
-//    
+    /**
+     * un solo cliente
+     */
     public void oneCliente() {
         if (this.id > 0) {
             DAOFactory df = DAOFactory.getDAOFactory();
@@ -61,7 +59,10 @@ public class Aula implements Serializable {
         }
 
     }
-
+/**
+ * obtenemos todos los clientes
+ * @return listado de clientes
+ */
     public ArrayList allClientes() {
         DAOFactory df = DAOFactory.getDAOFactory();
         IGenericoDAO igd = df.getGenericoDAO();
@@ -69,6 +70,9 @@ public class Aula implements Serializable {
         return listaClientes;
     }
 
+    /**
+     * todos ls datos
+     */
     public void addDatos() {
         DAOFactory df = DAOFactory.getDAOFactory();
         IGenericoDAO igd = df.getGenericoDAO();
@@ -77,6 +81,9 @@ public class Aula implements Serializable {
         borrarTodo();
     }
 
+    /**
+     * Actualizamos los datos
+     */
     public void updDatos() {
         if (this.id > 0) {
             DAOFactory df = DAOFactory.getDAOFactory();
@@ -87,6 +94,9 @@ public class Aula implements Serializable {
         }
     }
 
+    /**
+     * eliminasmo los datos
+     */
     public void delDatos() {
         if (this.id > 0) {
             DAOFactory df = DAOFactory.getDAOFactory();

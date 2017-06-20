@@ -39,6 +39,9 @@ public class Cliente implements Serializable {
     @Transient
     private String mensaje;
 
+    /**
+     * obtener un cliente
+     */
     public void oneCliente() {
         if (this.id > 0) {
             DAOFactory df = DAOFactory.getDAOFactory();
