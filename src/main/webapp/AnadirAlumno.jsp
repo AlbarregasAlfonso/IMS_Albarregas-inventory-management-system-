@@ -23,8 +23,11 @@
                 <nav class="navbar navbar-default">
                     <div class="container-fluid">
                         <div class="navbar-header">
-                            <a class="navbar-brand" href="#">Eliminar ordenador</a>
+                            <a class="navbar-brand" href="#">Agregar un nuevo alumno</a>
                         </div>
+                        <a class="botonesPanel" href="/20170222_CRUDHibernateJSF//faces/Principal.xhtml">
+                            <span style="width: 50%; color: background" class="glyphicon glyphicon-home iconosPrincipal"></span>
+                        </a>
                     </div>
                 </nav>
             </div>
@@ -33,11 +36,11 @@
                 <div class="col-sm-4">
                     <form name="miFormulario">
                         <div class="form-group">
-                            <input name="nombre" ng-model="apellido" placeholder="nombre Alumno" type="text" class="form-control" id="discoDuro" required />
+                            <input name="nombre" ng-model="apellido" placeholder="nombre Alumno" type="text" class="form-control" id="anadirAlumnoName" required />
                         </div>
-                        <br/>
+                        
                         <div class="form-group">
-                            <input name="apellido" ng-model="nombre" placeholder="nombre Alumno" type="text" class="form-control" id="discoDuro" required />
+                            <input name="apellido" ng-model="nombre" placeholder="nombre Apellido" type="text" class="form-control" id="anadirAlumnoApe" required />
                         </div>
                         <div class="form-group">
                             <input name="posicion" ng-model="posicion" placeholder="Posicion" type="text" class="form-control" id="posicion" required />
@@ -57,6 +60,7 @@
                         <button id="guardar" ng-show="miFormulario.apellido.$valid && miFormulario.nombre.$valid && estancia > 0" ng-click="anadirAlumno()" ng-model="botonGuardar" class="btn btn-warning">Guardar</button>
                         <button id="buscar" ng-show="miFormulario.apellido.$valid && miFormulario.nombre.$valid && estancia > 0" ng-click="buscarOrdenadoresSinAlumno()" ng-model="botonGuardar" class="btn btn-warning">Buscarle Ordenador</button>
                   <button id="guardarConAlumno" ng-show="miFormulario.apellido.$valid && miFormulario.nombre.$valid && estancia > 0 && SelectOrdenador > 0" ng-click="AnadirAlumnoConSuOrdendor()" ng-model="botonGuardar" class="btn btn-warning">Guardar Con Ordenador</button>
+                    <div id="mensajeHasAnadidonuevoAlumno" class="alert alert-danger">¡Has añadido un nuevo Alumno!</div>
                     </form>
                 </div>
                 <div class="col-sm-4"></div>

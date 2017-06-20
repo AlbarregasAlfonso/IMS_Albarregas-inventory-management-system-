@@ -23,8 +23,11 @@
                 <nav class="navbar navbar-default">
                     <div class="container-fluid">
                         <div class="navbar-header">
-                            <a class="navbar-brand" href="#">Eliminar ordenador</a>
+                            <a class="navbar-brand" href="#">Comprar ordenador</a>
                         </div>
+                        <a class="botonesPanel" href="/20170222_CRUDHibernateJSF//faces/Principal.xhtml">
+                            <span style="width: 50%; color: background" class="glyphicon glyphicon-home iconosPrincipal"></span>
+                        </a>
                     </div>
                 </nav>
             </div>
@@ -33,10 +36,10 @@
                 <div class="col-sm-4">
                     <form name="miFormulario">
                     <div class="form-group">
-                        <input name="precio" ng-model="precio" placeholder="precio" type="text" class="form-control" id="precio" required/>
+                        <input name="precio" ng-model="precio" placeholder="precio" type="text" class="form-control" id="precio" ng-pattern="patternCodigoOrdenador" required/>
                     </div>
                     <div class="form-group">
-                        <input name="ubicacion" ng-model="ubicacion" placeholder="ubicacion" type="text" class="form-control" id="ubicacion" ng-pattern="patternNombre" required/>
+                        <input name="ubicacion" ng-model="ubicacion" placeholder="ubicacion" type="text" class="form-control" id="ubicacion" required/>
                     </div>
                     <select name="estado" class="form-control" ng-model="estado" id="estado" required>
                         <option value="">Estado</option> 
@@ -69,7 +72,7 @@
                         <input name="placa" ng-model="placa" placeholder="Placa" type="text" class="form-control" id="placa" required/>
                     </div>
                     <div class="form-group">
-                        <input name="disco" ng-model="discoDuro" placeholder="DiscoDuro" type="text" class="form-control" id="discoDuro" required ng-pattern="patternDisco"/>
+                        <input name="disco" ng-model="discoDuro" placeholder="DiscoDuro" type="text" class="form-control" id="discoDuro" required ng-pattern="patternCodigoOrdenador"/>
                     </div>
 
                     <select  class="form-control" ng-model="marca" ng-change="mostrarModelos()" id="Marca" required>

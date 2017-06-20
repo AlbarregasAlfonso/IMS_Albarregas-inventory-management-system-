@@ -5,9 +5,11 @@ angular.module('miApp', []).controller('controladorPractica', ['$scope', functio
         $scope.eliminar = [];
         $scope.modelosSegunMarca = [];
 
+        $scope.patternCodigoOrdenador = /[0-9]/;
         $scope.patternNombre = /^[a-zA-Z]*$/;
         $scope.patternDisco = /[0-9]{4,5}/;
         
+
         $("#codigoBarras").focusin(function () {
             //$("#nombreOrdenador").fadeOut("slow");
             $("#Despiezar").fadeOut(1000);
@@ -18,6 +20,8 @@ angular.module('miApp', []).controller('controladorPractica', ['$scope', functio
             //$scope.ordenador = "";
             $("#nombreOrdenador").hide("slow");
             $("#IntentarArreglar").fadeOut("slow");
+            $("#componentesAlmacen").hide(1000);
+            $("#DespiezarFinal").fadeOut(400);
             setTimeout(botonBorrar, 1000);
         });
 
@@ -27,7 +31,10 @@ angular.module('miApp', []).controller('controladorPractica', ['$scope', functio
             $("#infoIcoEliminar").fadeOut("slow");
             $(".alert").fadeOut("slow");
         }
-
+        
+        $("#codigoBarras").focusout(function () {
+      
+        });
 //cuando hacemos seleccionamos alguna marca
         $scope.mostrarModelos = function () {
             $("#modelo").show(400);
@@ -251,7 +258,16 @@ angular.module('miApp', []).controller('controladorPractica', ['$scope', functio
                     for (var i = 0; i < $scope.alumnosSinOrdenadorArray.length; i++) {
                         $scope.mensajeDeAlumnos = $scope.mensajeDeAlumnos + $scope.alumnosSinOrdenadorArray[i].Nombre + ", ";
                     }
-                    $(".alert").fadeIn(2000);
+                    if ($scope.mensajeDeAlumnos !== "") {
+                        $scope.mensajeDeAlumnos = $scope.mensajeDeAlumnos+" es el alumno que se ha quedado sin ordenador debido a que estaba averiado, las piezas que estan bien de este ordenador se han guardado en el almacen";
+
+                    } else {
+                        $scope.mensajeDeAlumnos = "Ordenador aliminado, no afecta a ningun alumno";
+                    }
+                    
+                    
+                     $("#mensajeOrdenadorSinRecuperacion").show(1000);
+                    //$(".alert").fadeIn(2000);
 
                 }, error: function (jqXHR, textStatus, errorThown) {
                     alert("Algo fallo");
@@ -277,7 +293,7 @@ angular.module('miApp', []).controller('controladorPractica', ['$scope', functio
                 success: function (response) {
 
                     $scope.HayComponenteParaReparar = response;
-                    alert($scope.HayComponenteParaReparar);
+
                     $("#productosParaArreglar").fadeIn("slow");
 //                    $scope.alumnosSinOrdenadorArray = JSON.parse($scope.alumnosSinOrdenadorJson);
 //                    $scope.mensajeDeAlumnos = "";
@@ -323,9 +339,8 @@ angular.module('miApp', []).controller('controladorPractica', ['$scope', functio
                 },
                 success: function (response) {
                     $scope.piezasAlmacen = response;
-                    alert($scope.piezasAlmacen);
                     $scope.arrayPiezasAlmacen = $.parseJSON(response);
-                    alert(arrayPiezasAlmacen);
+              
 
                 }, error: function (jqXHR, textStatus, errorThown) {
                     alert("Algo fallo");
@@ -337,7 +352,7 @@ angular.module('miApp', []).controller('controladorPractica', ['$scope', functio
 //            alert("Id del elemento seleccionado "+$scope.arrayPiezasAlmacen[index].id);
 //            alert("Id del ordenador "+$scope.eliminar.id);
 //            alert("Tipo propiedad seleccionada "+$scope.SelectPropiedades); 
-            alert($scope.arrayPiezasAlmacen[index]);
+           $("#componentesAlmacen").hide(1000);
 
             var UtilidadesParaArreglarOrdenador = {
                 "almacenARemplazar": $scope.arrayPiezasAlmacen[index].nombre,
@@ -360,10 +375,10 @@ angular.module('miApp', []).controller('controladorPractica', ['$scope', functio
                 }
             });
         };
-        
-        
-        
-         $scope.Inicio = function () {
+
+
+
+        $scope.Inicio = function () {
 
             var caracteristica = "caracteristicas";
 
@@ -391,7 +406,7 @@ angular.module('miApp', []).controller('controladorPractica', ['$scope', functio
                 }
             });
         };
-        
+
     }]);
 
 

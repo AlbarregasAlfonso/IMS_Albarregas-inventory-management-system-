@@ -35,29 +35,32 @@
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="#">Eliminar ordenador</a>
+                        <a class="navbar-brand" href="#">Asignar ordenador a alumno</a>
                     </div>
+                    <a class="botonesPanel" href="/20170222_CRUDHibernateJSF//faces/Principal.xhtml">
+                        <span style="width: 50%; color: background" class="glyphicon glyphicon-home iconosPrincipal"></span>
+                    </a>
                 </div>
             </nav>
         </div>
         <div ng-controller="controladorPracticaAula">
             <form name="miFormulario">
-                        <select class="form-control" id="Aulas1" ng-model="SelectAulas">
-                            <option value="0">Seleccione Aula</option>                       
-                            <option  ng-repeat="x in Aulas" value="{{x.id}}">{{x.nombre}}</option>
-                        </select>
+                <select class="form-control" id="Aulas1" ng-model="SelectAulas">
+                    <option value="0">Seleccione Aula</option>                       
+                    <option  ng-repeat="x in Aulas" value="{{x.id}}">{{x.nombre}}</option>
+                </select>
 
-                        <select class="form-control" id="Alumnos1" ng-model="SelectAlumnos">
-                            <option value="0">Seleccione Alumno</option>
-                            <option  ng-repeat="x in Alumnos" value="{{x.id}}">{{x.Nombre}} {{x.Apellidos}}</option>
-                        </select>
-                        <div class="form-group">
-                            <input name="codigo" ng-model="codigoBarras" placeholder="Codigo de barras del ordenador" type="text" class="form-control" id="BuscarOrdenadorCodigo66" ng-pattern="patternCodigoOrdenador" required />
-                        </div>
-                        <label id="nombreOrdenadorAsignacion">{{ordenador}}</label>
-                        <button id="Buscar1" ng-click="borrar()" ng-show="miFormulario.codigo.$valid"ng-model="botonBorrar" class="btn btn-warning">Buscar</button>
-                        <button id="asignarOrdenadorAlumno1" ng-show="SelectAulas>0 && SelectAlumnos>0 " ng-click="asignarUnOrdenador()" ng-model="asignarOrdenadorAlumno" class="btn btn-warning">Asignar</button>
-           <div id="alertAsignarOrdenador" class="alert alert-danger"> {{mensajeDeAlumnos}}</div> 
+                <select class="form-control" id="Alumnos1" ng-model="SelectAlumnos">
+                    <option value="0">Seleccione Alumno</option>
+                    <option  ng-repeat="x in Alumnos" value="{{x.id}}">{{x.Nombre}} {{x.Apellidos}}</option>
+                </select>
+                <div class="form-group">
+                    <input name="codigo" ng-model="codigoBarras" placeholder="Codigo de barras del ordenador" type="text" class="form-control" id="BuscarOrdenadorCodigo66" ng-pattern="patternCodigoOrdenador" required />
+                </div>
+                <label id="nombreOrdenadorAsignacion">{{ordenador}}</label>
+                <button id="Buscar1" ng-click="borrar()" ng-show="miFormulario.codigo.$valid"ng-model="botonBorrar" class="btn btn-warning">Buscar</button>
+                <button id="asignarOrdenadorAlumno1" ng-show="SelectAulas > 0 && SelectAlumnos > 0" ng-click="asignarUnOrdenador()" ng-model="asignarOrdenadorAlumno" class="btn btn-warning">Asignar</button>
+                <div id="alertAsignarOrdenador" class="alert alert-danger"> {{mensajeDeAlumnos}}</div> 
             </form>
         </div>
     </body>

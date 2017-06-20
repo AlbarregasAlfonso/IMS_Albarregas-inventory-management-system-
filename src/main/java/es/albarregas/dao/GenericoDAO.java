@@ -108,7 +108,11 @@ public class GenericoDAO<T> implements IGenericoDAO<T> {
             this.cierraSesion();
         }
     }
-
+/**
+ * Este método es muy util para poder ebtener un objeto determinado realizando un filtrado
+ * @param hql Introduciríamos el valor de la sentencia ej "Producto where id='1'"
+ * @return nos devolvera el objeto que haya filtrado en la sentencia en el caso anterior seria el producto de id=1
+ */
     @Override
     public Object getOneHQL(String hql) {
         Object object = null;

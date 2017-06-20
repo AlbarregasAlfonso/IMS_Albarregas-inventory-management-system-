@@ -30,7 +30,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author AlfonsoTerrones
  */
-@WebServlet(name = "ControladorEliminarDespiezar", urlPatterns = {"/ControladorEliminarDespiezar"})
+@WebServlet(name = "ControladorAsignarOrdenadorAula", urlPatterns = {"/ControladorAsignarOrdenadorAula"})
 public class ControladorAsignarOrdenadorAula extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)

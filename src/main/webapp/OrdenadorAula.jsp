@@ -22,6 +22,9 @@
                     <div class="navbar-header">
                         <a class="navbar-brand" href="#">Mover Ordenador</a>
                     </div>
+                    <a class="botonesPanel" href="/20170222_CRUDHibernateJSF//faces/Principal.xhtml">
+                        <span style="width: 50%; color: background" class="glyphicon glyphicon-home iconosPrincipal"></span>
+                    </a>
                 </div>
             </nav>
         </div>
@@ -51,7 +54,7 @@
                 <button id="AplicarCambio" ng-show="SelectAulasParaOrdenador > 0" ng-click="AsignarSinAlumno()" ng-model="botonBorrar" class="btn btn-warning">Aplicar Cambios</button>
                 <button id="PrefieroAsignarAlumno" ng-show="SelectAulasParaOrdenador > 0" ng-model="PrefieroAsignarAlumno" class="btn btn-warning">Prefiero asignarselo a un alumno</button>
                 <button id="AplicarCambioConAlumno" ng-show="SelectAlumnos > 0 && miFormulario.posicionamiento.$valid" ng-click="AsignarConAlumno()" ng-model="AplicarCambioConAlumno" class="btn btn-warning">Asignarselo A Alumnos</button>
-                <div id="mensajeAlumnosQuitarOrdenador" class="alert alert-danger">El alumno {{mensajeDeAlumnos}} de este aula era el antiguo propietario del ordenador y actualmetne no posee ninguno</div> 
+                <div id="mensajeAlumnosQuitarOrdenador" class="alert alert-danger">{{mensajeDeAlumnos}}</div> 
             </form>
         </div>
 

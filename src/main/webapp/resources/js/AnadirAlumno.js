@@ -1,12 +1,26 @@
 angular.module('miAppAula', []).controller('controladorPracticaAula', ['$scope', function ($scope) {
 
- $scope.ordenadoresSinAlumnos= [];
+        $("#OrdenadoresSinAlumno").hide();
+        
+
+
+        $scope.ordenadoresSinAlumnos = [];
 
         $scope.anadirAlumno = function () {
-
+            
+            $("#anadirAlumnoName").hide(700);
+            $("#anadirAlumnoApe").hide(700);
+            $("#posicion").hide(600);
+            $("#estancia").hide(600);
+            $("#OrdenadoresSinAlumno").hide(500);
+            $("#guardar").hide(400);
+            $("#buscar").hide(400);
+            $("#guardarConAlumno").hide(400);
+            $("#mensajeHasAnadidonuevoAlumno").show(1500);
+            
             var nuevoAlumno = {nombre: $scope.nombre,
                 apellido: $scope.apellido,
-                estancia: $scope.estancia 
+                estancia: $scope.estancia
             };
 
             $.ajax({
@@ -26,9 +40,11 @@ angular.module('miAppAula', []).controller('controladorPracticaAula', ['$scope',
             });
 
         };
-        
-         $scope.buscarOrdenadoresSinAlumno = function () {
 
+        $scope.buscarOrdenadoresSinAlumno = function () {
+
+
+            $("#OrdenadoresSinAlumno").show(300);
             var buscarOrdenador = {ordenador: "Ordenador"
             };
 
@@ -36,7 +52,7 @@ angular.module('miAppAula', []).controller('controladorPracticaAula', ['$scope',
                 data: buscarOrdenador,
                 url: '../../ControladorNuevoAlumno',
                 type: 'post',
-                
+                async: false,
                 beforeSend: function () {
 
                 },
@@ -50,21 +66,28 @@ angular.module('miAppAula', []).controller('controladorPracticaAula', ['$scope',
 
         };
 
-$scope.AnadirAlumnoConSuOrdendor = function () {
-
+        $scope.AnadirAlumnoConSuOrdendor = function () {
+            $("#anadirAlumnoName").hide(700);
+            $("#anadirAlumnoApe").hide(700);
+            $("#posicion").hide(600);
+            $("#estancia").hide(600);
+            $("#OrdenadoresSinAlumno").hide(500);
+            $("#guardar").hide(400);
+            $("#buscar").hide(400);
+            $("#guardarConAlumno").hide(400);
+            $("#mensajeHasAnadidonuevoAlumno").show(1500);
 
             var nuevoAlumnoConOrdenador = {nombre: $scope.nombre,
                 apellido: $scope.apellido,
                 estancia: $scope.estancia,
                 ordenadorSinAlumno: $scope.SelectOrdenador,
-                posicion : $scope.posicion
+                posicion: $scope.posicion
             };
 
             $.ajax({
                 data: nuevoAlumnoConOrdenador,
                 url: '../../ControladorNuevoAlumno',
                 type: 'post',
-                
                 beforeSend: function () {
 
                 },

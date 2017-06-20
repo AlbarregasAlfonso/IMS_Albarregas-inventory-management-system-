@@ -133,7 +133,7 @@ $(document).ready(function () {
                         $scope.mensajeDeAlumnos = $scope.mensajeDeAlumnos + $scope.alumnosSinOrdenador[i].Nombre + ", ";
                     };
                     if ($scope.mensajeDeAlumnos !== "") {
-                        $scope.mensajeDeAlumnos=$scope.mensajeDeAlumnos+"Las personas que poseian antiguamente este ordenador son:";
+                        $scope.mensajeDeAlumnos=$scope.mensajeDeAlumnos+" es el antiguo alumno que tenia el ordenador, ahora no tiene ninguno";
                         $("#alertAsignarOrdenador").show(1000);
                     }else{
                         $scope.mensajeDeAlumnos = "Cambio realizado con exito";

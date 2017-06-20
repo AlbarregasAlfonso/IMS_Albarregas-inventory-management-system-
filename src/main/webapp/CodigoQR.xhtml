@@ -64,25 +64,28 @@
                                 <h:outputText value="Marca"/>
                             </f:facet>
                             <h:outputText value="#{pro.marca.nombre}" />
-
                         </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="Modelo"/>
                             </f:facet>
-                             <h:outputText value="#{pro.modelo.nombre}" />
+                            <h:outputText value="#{pro.modelo.nombre}" />
                         </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="Ubicación"/>
                             </f:facet>
-                                <h:outputText value="#{pro.estancia.nombre}" />
+                            <h:outputText value="#{pro.estancia.nombre}" />
                         </p:column>
-                        <p:column>
+                        <p:column headerText="Qr Code">     
                             <p:barcode value="#{pro.id}#{pro.id}" type="qr"/>
                         </p:column>
-
-
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Id" />
+                            </f:facet>
+                            <p:barcode value="#{pro.id}#{pro.id}" type="qr"/>
+                        </p:column>
                         <p:columnGroup type="footer"> 
                             <p:row> <p:column colspan="4" style="text-align:left" footerText="Albarregas"/>                             
                             </p:row>   

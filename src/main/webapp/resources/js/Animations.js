@@ -40,6 +40,11 @@ $(document).ready(function () {
     $("#Aulas1").hide();
     $("#Alumnos1").hide();
     $("#alertAsignarOrdenador").hide();
+    $("mensajeEliminarOrdendaor").hide();
+    $("#mensajeOrdenadorSinRecuperacion").hide();
+$("#productosParaArreglar").hide();
+$("#mensajeHasAnadidonuevoAlumno").hide();
+
 
     setTimeout(descargar, 1000);
 

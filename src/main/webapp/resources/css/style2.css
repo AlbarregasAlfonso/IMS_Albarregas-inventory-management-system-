@@ -201,7 +201,7 @@ button#DespiezarFinal {
 
 select#componentesDanados {
     position: fixed;
-    top: 22%;
+        top: 18%;
     width: 14%;
 }
 
@@ -400,8 +400,9 @@ button#AplicarCambioConAlumno {
 }
 
 label#nombreOrdenador {
-    position: absolute;
-    top: 50%;
+        position: absolute;
+    top: 15%;
+    left: 36%;
 }
 
 select#Aulas {
@@ -526,4 +527,27 @@ div#alertAsignarOrdenador {
     right: 35%;
 }
 
+#anadirAlumnoName,#anadirAlumnoApe, #posicion{
+    width: 75%;
+    left: 12%;
+    transition: width 1s, left 1s;
+}
+/*aumenta de tamaño al poner el ratón sobre el*/
+#anadirAlumnoName:hover ,#anadirAlumnoApe:hover, #posicion:hover{
+    left: 0%;
+    width: 100%;
+}
+
+select#OrdenadoresSinAlumno {
+    position: absolute;
+    top: 86.5%;
+    width: 68%;
+}
+
+button#guardarConAlumno {
+    position: absolute;
+    top: 106%;
+    width: 74%;
+    right: 24%;
+}
 

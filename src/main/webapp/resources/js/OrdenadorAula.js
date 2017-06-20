@@ -28,23 +28,23 @@ angular.module('miAppAula', []).controller('controladorPracticaAula', ['$scope',
                 $("#AplicarCambio").hide(200);
                 $("#PrefieroAsignarAlumno").hide(400);
                 $("#AplicarCambioConAlumno").hide(500);
-           
+
             });
-            
-            $("#codigoBarras1").focusout(function(){
-               
+
+            $("#codigoBarras1").focusout(function () {
+
                 $("#AplicarCambio").show();
                 $("#PrefieroAsignarAlumno").show();
                 $("#AplicarCambioConAlumno").show();
-                $scope.SelectAulasParaOrdenador=0;
-                $scope.SelectAlumnos=0;
+                $scope.SelectAulasParaOrdenador = 0;
+                $scope.SelectAlumnos = 0;
             });
-            
-            $("#AplicarCambioConAlumno").click(function(){
-                  $("#buscarOrdenador").show();
+
+            $("#AplicarCambioConAlumno").click(function () {
+                $("#buscarOrdenador").show();
                 $("#Aulas1").hide(400);
                 $("#Alumnos1").hide(300);
-                $("#posicionamiento").hide(200);              
+                $("#posicionamiento").hide(200);
                 $("#AplicarCambio").hide(200);
                 $("#PrefieroAsignarAlumno").hide(400);
                 $("#AplicarCambioConAlumno").hide(500);
@@ -170,9 +170,12 @@ angular.module('miAppAula', []).controller('controladorPracticaAula', ['$scope',
                     }
                     ;
                     if ($scope.mensajeDeAlumnos !== "") {
-                        $("#mensajeAlumnosQuitarOrdenador").show(1000);
-                    }
+                        $scope.mensajeDeAlumnos = $scope.mensajeDeAlumnos+"es el antiguo propietario de este ordenador por lo que actualmente no tiene ninguno ";
 
+                    } else {
+                        $scope.mensajeDeAlumnos = "Cambio realizado con exito";
+                    }
+                    $("#mensajeAlumnosQuitarOrdenador").show(1000);
 
                 }, error: function (jqXHR, textStatus, errorThown) {
                     alert("algo ha fallado");
@@ -207,8 +210,12 @@ angular.module('miAppAula', []).controller('controladorPracticaAula', ['$scope',
                     }
                     ;
                     if ($scope.mensajeDeAlumnos !== "") {
-                        $("#mensajeAlumnosQuitarOrdenador").show(1000);
+                        $scope.mensajeDeAlumnos = $scope.mensajeDeAlumnos+"es el antiguo propietario de este ordenador por lo que actualmente no tiene ninguno ";
+
+                    } else {
+                        $scope.mensajeDeAlumnos = "Cambio realizado con exito";
                     }
+                    $("#mensajeAlumnosQuitarOrdenador").show(1000);
 
 
 
