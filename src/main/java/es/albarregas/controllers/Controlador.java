@@ -104,10 +104,10 @@ public class Controlador extends HttpServlet {
             productoNuevo.addDatos();
             Producto productoIdMax = (Producto) igd.getOneHQL("Producto where id=(select max(id) from Producto)"); //marca Max
             
-            Propiedad propiedadDisco= (Propiedad) igd.getOneHQL("Propiedad where id='"+procesadorPro.getPropiedad().getId()+"'"); //marca Max
-            Propiedad propiedadPlaca= (Propiedad) igd.getOneHQL("Propiedad where id='"+discoPro.getPropiedad().getId()+"'"); //marca Max
+            Propiedad propiedadProcesador= (Propiedad) igd.getOneHQL("Propiedad where id='"+procesadorPro.getPropiedad().getId()+"'"); //marca Max
+            Propiedad propiedadDisco= (Propiedad) igd.getOneHQL("Propiedad where id='"+discoPro.getPropiedad().getId()+"'"); //marca Max
             Propiedad propiedadRam= (Propiedad) igd.getOneHQL("Propiedad where id='"+ramPro.getPropiedad().getId()+"'"); //marca Max
-            Propiedad propiedadProcesador= (Propiedad) igd.getOneHQL("Propiedad where id='"+placaPro.getPropiedad().getId()+"'"); //marca Max
+            Propiedad propiedadPlaca= (Propiedad) igd.getOneHQL("Propiedad where id='"+placaPro.getPropiedad().getId()+"'"); //marca Max
   
             procesadorPro.setPropiedad(propiedadProcesador);
             procesadorPro.setProducto(productoIdMax);

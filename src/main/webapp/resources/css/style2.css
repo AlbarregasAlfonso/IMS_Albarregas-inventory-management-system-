@@ -1,6 +1,7 @@
 body {
 
     background-image: url("../../Imagenes/Fondo.jpg");
+    width: 100%;
 }
 
 #panelPrincipal {

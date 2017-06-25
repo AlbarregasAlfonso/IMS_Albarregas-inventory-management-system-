@@ -28,7 +28,7 @@
                 <link rel="stylesheet" href="resources/css/style2.css" />-->
 
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Asignar ordenador</title>
     </head>
     <body ng-app="miAppAula" >
         <div id="top">
@@ -37,7 +37,7 @@
                     <div class="navbar-header">
                         <a class="navbar-brand" href="#">Asignar ordenador a alumno</a>
                     </div>
-                    <a class="botonesPanel" href="/20170222_CRUDHibernateJSF//faces/Principal.xhtml">
+                    <a class="botonesPanel" href="/InventoryManagerSystem//faces/Principal.xhtml">
                         <span style="width: 50%; color: background" class="glyphicon glyphicon-home iconosPrincipal"></span>
                     </a>
                 </div>

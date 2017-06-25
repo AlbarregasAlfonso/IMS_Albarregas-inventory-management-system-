@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="resources/css/style1.css" />
 
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Inventario</title>
     </head>
     <body ng-app="miApp">
         <div  ng-controller="controladorPractica" class="container">

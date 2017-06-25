@@ -15,7 +15,7 @@
 
         <link rel="stylesheet" href="resources/css/style2.css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Nuevo Ordenador</title>
     </head>
     <body ng-app="miAppAula" >
         <div ng-controller="controladorPracticaAula">
@@ -25,7 +25,7 @@
                         <div class="navbar-header">
                             <a class="navbar-brand" href="#">Agregar un nuevo alumno</a>
                         </div>
-                        <a class="botonesPanel" href="/20170222_CRUDHibernateJSF//faces/Principal.xhtml">
+                        <a class="botonesPanel" href="/InventoryManagerSystem//faces/Principal.xhtml">
                             <span style="width: 50%; color: background" class="glyphicon glyphicon-home iconosPrincipal"></span>
                         </a>
                     </div>
@@ -36,11 +36,11 @@
                 <div class="col-sm-4">
                     <form name="miFormulario">
                         <div class="form-group">
-                            <input name="nombre" ng-model="apellido" placeholder="nombre Alumno" type="text" class="form-control" id="anadirAlumnoName" required />
+                            <input name="nombre" ng-model="apellido" placeholder="Apellidos Alumno" type="text" class="form-control" id="anadirAlumnoName" required />
                         </div>
                         
                         <div class="form-group">
-                            <input name="apellido" ng-model="nombre" placeholder="nombre Apellido" type="text" class="form-control" id="anadirAlumnoApe" required />
+                            <input name="apellido" ng-model="nombre" placeholder="Nombre Alumno" type="text" class="form-control" id="anadirAlumnoApe" required />
                         </div>
                         <div class="form-group">
                             <input name="posicion" ng-model="posicion" placeholder="Posicion" type="text" class="form-control" id="posicion" required />

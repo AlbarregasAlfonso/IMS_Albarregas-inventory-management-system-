@@ -155,7 +155,7 @@ angular.module('miAppAula', []).controller('controladorPracticaAula', ['$scope',
 
             $.ajax({
                 data: compnentesCambio,
-                url: '../../ControladorEliminarDespiezar',
+                url: '../../ControladorAsignarOrdenadorAula',
                 type: 'post',
                 async: false,
                 //dataType: "json",
@@ -194,7 +194,7 @@ angular.module('miAppAula', []).controller('controladorPracticaAula', ['$scope',
 
             $.ajax({
                 data: compnentesCambio,
-                url: '../../ControladorEliminarDespiezar',
+                url: '../../ControladorAsignarOrdenadorAula',
                 type: 'post',
                 async: false,
                 //dataType: "json",

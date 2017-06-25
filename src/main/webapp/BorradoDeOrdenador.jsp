@@ -14,7 +14,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
         <link rel="stylesheet" href="resources/css/style2.css" />
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Borrar ordenador</title>
     </head>
     <body ng-app="miApp" >
         <div id="top">
@@ -23,7 +23,7 @@
                     <div class="navbar-header">
                         <a class="navbar-brand" href="#">Eliminar ordenador</a>
                     </div>
-                    <a class="botonesPanel" href="/20170222_CRUDHibernateJSF//faces/Principal.xhtml">
+                    <a class="botonesPanel" href="/InventoryManagerSystem//faces/Principal.xhtml">
                         <span style="width: 50%; color: background" class="glyphicon glyphicon-home iconosPrincipal"></span>
                     </a>
                 </div>

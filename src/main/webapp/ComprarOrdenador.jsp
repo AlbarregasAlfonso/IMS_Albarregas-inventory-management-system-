@@ -15,7 +15,7 @@
         
         <link rel="stylesheet" href="resources/css/style2.css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Comprar Ordenador</title>
     </head>
     <body ng-app="miApp" >
         <div ng-controller="controladorPractica">
@@ -25,7 +25,7 @@
                         <div class="navbar-header">
                             <a class="navbar-brand" href="#">Comprar ordenador</a>
                         </div>
-                        <a class="botonesPanel" href="/20170222_CRUDHibernateJSF//faces/Principal.xhtml">
+                        <a class="botonesPanel" href="/InventoryManagerSystem//faces/Principal.xhtml">
                             <span style="width: 50%; color: background" class="glyphicon glyphicon-home iconosPrincipal"></span>
                         </a>
                     </div>
